@@ -1,0 +1,563 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     21773,        554]
+NotebookOptionsPosition[     20918,        522]
+NotebookOutlinePosition[     21259,        537]
+CellTagsIndexPosition[     21216,        534]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Resolution of Sp", "Title",
+ CellChangeTimes->{{3.600406249790063*^9, 3.6004062645969963`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"c", "=", "299.792458"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Z0", " ", "=", " ", "1022.37"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"mp", "=", "938.272"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"m14O", " ", "=", " ", "13048.92"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.600406444546556*^9, 3.600406451501556*^9}, {
+  3.600406863703369*^9, 3.600406871314542*^9}, {3.6004070928613777`*^9, 
+  3.600407101080205*^9}, {3.600407677947092*^9, 3.600407687982958*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"FL", "[", 
+   RowBox[{"mwdc_", ",", "\[Theta]_", ",", "\[Phi]_"}], "]"}], ":=", 
+  FractionBox["Z0", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"mwdc", " ", 
+       RowBox[{"Sin", "[", 
+        FractionBox["\[Pi]", "3"], "]"}]}], ",", "0", ",", 
+      RowBox[{"Cos", "[", 
+       FractionBox["\[Pi]", "3"], "]"}]}], "}"}], ".", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Cos", "[", "\[Phi]", "]"}], 
+       RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ",", " ", 
+      RowBox[{
+       RowBox[{"Sin", "[", "\[Phi]", "]"}], 
+       RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ",", " ", 
+      RowBox[{"Cos", "[", "\[Theta]", "]"}]}], 
+     "}"}]}]]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Beta]", "[", 
+   RowBox[{"mwdc_", ",", "\[Theta]_", ",", "\[Phi]_", ",", "tof_"}], "]"}], ":=", 
+  FractionBox[
+   RowBox[{"FL", "[", 
+    RowBox[{"mwdc", ",", "\[Theta]", ",", "\[Phi]"}], "]"}], 
+   RowBox[{"c", " ", "tof"}]]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Gamma]", "[", 
+   RowBox[{"mwdc_", ",", "\[Theta]_", ",", "\[Phi]_", ",", "tof_"}], "]"}], ":=", 
+  FractionBox[
+   RowBox[{"c", " ", "tof"}], 
+   SqrtBox[
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["c", "2"], 
+      SuperscriptBox["tof", "2"]}], "-", 
+     SuperscriptBox[
+      RowBox[{"FL", "[", 
+       RowBox[{"mwdc", ",", "\[Theta]", ",", "\[Phi]"}], "]"}], 
+      "2"]}]]]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Gamma]\[Beta]", "[", 
+   RowBox[{"mwdc_", ",", "\[Theta]_", ",", "\[Phi]_", ",", "tof_"}], "]"}], ":=", 
+  FractionBox[
+   RowBox[{"FL", "[", 
+    RowBox[{"mwdc", ",", "\[Theta]", ",", "\[Phi]"}], "]"}], 
+   SqrtBox[
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["c", "2"], 
+      SuperscriptBox["tof", "2"]}], "-", 
+     SuperscriptBox[
+      RowBox[{"FL", "[", 
+       RowBox[{"mwdc", ",", "\[Theta]", ",", "\[Phi]"}], "]"}], 
+      "2"]}]]]}]}], "Input",
+ CellChangeTimes->{{3.600406409672248*^9, 3.600406441942449*^9}, {
+  3.600406475678425*^9, 3.600406548707144*^9}, {3.600406593790202*^9, 
+  3.60040660280427*^9}, {3.600406703929615*^9, 3.600406748310458*^9}, {
+  3.6004068756672573`*^9, 3.600407025524467*^9}, {3.600408058628375*^9, 
+  3.600408061564983*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"P", "[", 
+   RowBox[{
+   "mwdc_", ",", "\[Theta]_", ",", "\[Phi]_", ",", " ", "tof_", ",", "m_"}], 
+   "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"\[Gamma]", "[", 
+      RowBox[{"mwdc", ",", "\[Theta]", ",", "\[Phi]", ",", "tof"}], "]"}], 
+     "m"}], ",", 
+    RowBox[{
+     RowBox[{"\[Gamma]\[Beta]", "[", 
+      RowBox[{"mwdc", ",", "\[Theta]", ",", "\[Phi]", ",", "tof"}], "]"}], 
+     "m", " ", 
+     RowBox[{"Cos", "[", "\[Phi]", "]"}], 
+     RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ",", 
+    RowBox[{
+     RowBox[{"\[Gamma]\[Beta]", "[", 
+      RowBox[{"mwdc", ",", "\[Theta]", ",", "\[Phi]", ",", "tof"}], "]"}], 
+     "m", " ", 
+     RowBox[{"Sin", "[", "\[Phi]", "]"}], 
+     RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ",", 
+    RowBox[{
+     RowBox[{"\[Gamma]\[Beta]", "[", 
+      RowBox[{"mwdc", ",", "\[Theta]", ",", "\[Phi]", ",", "tof"}], "]"}], 
+     "m", " ", 
+     RowBox[{"Cos", "[", "\[Theta]", "]"}]}]}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Pinc", "[", 
+   RowBox[{"m_", ",", "TKA_"}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"m", "+", "TKA"}], ",", "0", ",", "0", ",", 
+    SqrtBox[
+     RowBox[{
+      RowBox[{"2", " ", "m", " ", "TKA"}], "+", 
+      SuperscriptBox["TKA", "2"]}]]}], "}"}]}]}], "Input",
+ CellChangeTimes->{{3.6004062796450663`*^9, 3.600406298827376*^9}, {
+  3.600406359690915*^9, 3.6004064053492413`*^9}, {3.6004066120424547`*^9, 
+  3.600406689438795*^9}, {3.60040672627*^9, 3.600406726654573*^9}, {
+  3.600407031886938*^9, 3.600407066377554*^9}, {3.600407544900558*^9, 
+  3.600407631977481*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"TKA", "[", "A_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"A", "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "-", "mp"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Momt", "[", "A_", "]"}], ":=", 
+  RowBox[{"Norm", "[", 
+   RowBox[{"A", "[", 
+    RowBox[{"[", 
+     RowBox[{"2", ";;", "4"}], "]"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Angle", "[", "A_", "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"ArcTan", "[", 
+     RowBox[{
+      RowBox[{"A", "[", 
+       RowBox[{"[", "4", "]"}], "]"}], ",", 
+      RowBox[{"Norm", "[", 
+       RowBox[{"A", "[", 
+        RowBox[{"[", 
+         RowBox[{"2", ";;", "3"}], "]"}], "]"}], "]"}]}], "]"}], ",", 
+    RowBox[{"If", "[", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"ArcTan", "[", 
+        RowBox[{
+         RowBox[{"A", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], ",", 
+         RowBox[{"A", "[", 
+          RowBox[{"[", "3", "]"}], "]"}]}], "]"}], "<", 
+       FractionBox[
+        RowBox[{"-", "\[Pi]"}], "2"]}], ",", 
+      RowBox[{
+       RowBox[{"ArcTan", "[", 
+        RowBox[{
+         RowBox[{"A", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], ",", 
+         RowBox[{"A", "[", 
+          RowBox[{"[", "3", "]"}], "]"}]}], "]"}], "+", 
+       RowBox[{"2", "\[Pi]"}]}], ",", 
+      RowBox[{"ArcTan", "[", 
+       RowBox[{
+        RowBox[{"A", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], ",", 
+        RowBox[{"A", "[", 
+         RowBox[{"[", "3", "]"}], "]"}]}], "]"}]}], "]"}]}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Mass", "[", "A_", "]"}], ":=", 
+  SqrtBox[
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"A", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "2"], "-", 
+    SuperscriptBox[
+     RowBox[{"Norm", "[", 
+      RowBox[{"A", "[", 
+       RowBox[{"[", 
+        RowBox[{"2", ";;", "4"}], "]"}], "]"}], "]"}], "2"]}]]}]}], "Input",
+ CellChangeTimes->{{3.600407130323699*^9, 3.600407189364162*^9}, {
+  3.6004072357489557`*^9, 3.600407346214328*^9}, {3.600407381046804*^9, 
+  3.600407436869423*^9}, {3.600407804921376*^9, 3.60040782825422*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"P1", "=", 
+  RowBox[{"P", "[", 
+   RowBox[{
+    RowBox[{"-", "1"}], ",", 
+    RowBox[{"60", " ", "\[Degree]"}], ",", 
+    RowBox[{"180", "\[Degree]"}], ",", "8", ",", "mp"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"TKA", "[", "P1", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Momt", "[", "P1", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Angle", "[", "P1", "]"}], 
+  FractionBox["180", "\[Pi]"]}], "\[IndentingNewLine]", 
+ RowBox[{"Mass", "[", "P1", "]"}]}], "Input",
+ CellChangeTimes->{{3.600407070723748*^9, 3.600407104687726*^9}, {
+  3.600407164938615*^9, 3.600407184606298*^9}, {3.600407229439131*^9, 
+  3.600407231755924*^9}, {3.600407297330308*^9, 3.600407322808847*^9}, {
+  3.600407423039719*^9, 3.6004074250056334`*^9}, {3.600407466325861*^9, 
+  3.600407466971423*^9}, {3.6004075101828527`*^9, 3.6004075150086946`*^9}, {
+  3.600407830163288*^9, 3.600407834916564*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1037.2343941879617`", ",", 
+   RowBox[{"-", "382.9172650545424`"}], ",", "0.`", ",", 
+   "221.07738605659534`"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.600407105210206*^9, {3.600407172600801*^9, 3.600407191516242*^9}, {
+   3.600407299963051*^9, 3.600407323253853*^9}, {3.6004074255154257`*^9, 
+   3.6004074675695953`*^9}, 3.600407515613558*^9, 3.600407835492621*^9}],
+
+Cell[BoxData["98.96239418796165`"], "Output",
+ CellChangeTimes->{
+  3.600407105210206*^9, {3.600407172600801*^9, 3.600407191516242*^9}, {
+   3.600407299963051*^9, 3.600407323253853*^9}, {3.6004074255154257`*^9, 
+   3.6004074675695953`*^9}, 3.600407515613558*^9, 3.6004078354952803`*^9}],
+
+Cell[BoxData["442.1547721131907`"], "Output",
+ CellChangeTimes->{
+  3.600407105210206*^9, {3.600407172600801*^9, 3.600407191516242*^9}, {
+   3.600407299963051*^9, 3.600407323253853*^9}, {3.6004074255154257`*^9, 
+   3.6004074675695953`*^9}, 3.600407515613558*^9, 3.600407835497961*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"60.`", ",", "180.`"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.600407105210206*^9, {3.600407172600801*^9, 3.600407191516242*^9}, {
+   3.600407299963051*^9, 3.600407323253853*^9}, {3.6004074255154257`*^9, 
+   3.6004074675695953`*^9}, 3.600407515613558*^9, 3.6004078355008993`*^9}],
+
+Cell[BoxData["938.2720000000002`"], "Output",
+ CellChangeTimes->{
+  3.600407105210206*^9, {3.600407172600801*^9, 3.600407191516242*^9}, {
+   3.600407299963051*^9, 3.600407323253853*^9}, {3.6004074255154257`*^9, 
+   3.6004074675695953`*^9}, 3.600407515613558*^9, 3.600407835503746*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"PRes", " ", "=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Pinc", "[", 
+     RowBox[{"m14O", ",", "250"}], "]"}], "+", 
+    RowBox[{"Pinc", "[", 
+     RowBox[{"mp", ",", "0"}], "]"}], "-", 
+    RowBox[{"P", "[", 
+     RowBox[{"1", ",", "\[Theta]1", ",", "\[Phi]1", ",", "tof1", ",", "mp"}], 
+     "]"}], "-", 
+    RowBox[{"P", "[", 
+     RowBox[{"2", ",", "\[Theta]2", ",", "\[Phi]2", ",", "tof2", ",", "mp"}], 
+     "]"}]}], "//", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.600407635769354*^9, 3.600407637299499*^9}, {
+  3.600407696286232*^9, 3.6004077841521673`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"TableForm", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<\[Theta]1\>\"", ",", "\[Theta]1", ",", " ", "\"\<\[Theta]2\>\"", 
+        ",", "\[Theta]2", ",", " ", "\"\<\[CapitalDelta]\[Theta]\>\"", ",", 
+        "\[CapitalDelta]\[Theta]"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<\[Phi]1\>\"", ",", "\[Phi]1", ",", " ", "\"\<\[Phi]2\>\"", ",", 
+        "\[Phi]2", ",", "\"\<\[CapitalDelta]\[Phi]\>\"", ",", 
+        "\[CapitalDelta]\[Phi]"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<tof1\>\"", ",", "tof1", ",", " ", "\"\<tof2\>\"", ",", "tof2", 
+        ",", " ", "\"\<\[CapitalDelta]tof\>\"", ",", " ", 
+        "\[CapitalDelta]tof"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"MRes", "=", 
+         RowBox[{"Mass", "[", 
+          RowBox[{
+           RowBox[{"Pinc", "[", 
+            RowBox[{"m14O", ",", "250"}], "]"}], "+", 
+           RowBox[{"Pinc", "[", 
+            RowBox[{"mp", ",", "0"}], "]"}], "-", 
+           RowBox[{"P", "[", 
+            RowBox[{"1", ",", 
+             RowBox[{
+              RowBox[{"(", "\[Theta]1", ")"}], " ", "\[Degree]"}], ",", 
+             RowBox[{
+              RowBox[{"(", "\[Phi]1", ")"}], " ", "\[Degree]"}], ",", "tof1", 
+             ",", "mp"}], "]"}], "-", 
+           RowBox[{"P", "[", 
+            RowBox[{"2", ",", 
+             RowBox[{
+              RowBox[{"(", "\[Theta]2", ")"}], " ", "\[Degree]"}], ",", 
+             RowBox[{
+              RowBox[{"(", "\[Phi]2", ")"}], " ", "\[Degree]"}], ",", "tof2", 
+             ",", "mp"}], "]"}]}], "]"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{"MRes2", "=", 
+         RowBox[{"Mass", "[", 
+          RowBox[{
+           RowBox[{"Pinc", "[", 
+            RowBox[{"m14O", ",", "250"}], "]"}], "+", 
+           RowBox[{"Pinc", "[", 
+            RowBox[{"mp", ",", "0"}], "]"}], "-", 
+           RowBox[{"P", "[", 
+            RowBox[{"1", ",", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"\[Theta]1", "+", "\[CapitalDelta]\[Theta]"}], ")"}], 
+              " ", "\[Degree]"}], ",", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"\[Phi]1", "+", "\[CapitalDelta]\[Phi]"}], ")"}], " ", 
+              "\[Degree]"}], ",", 
+             RowBox[{"tof1", "+", "\[CapitalDelta]tof"}], ",", "mp"}], "]"}], 
+           "-", 
+           RowBox[{"P", "[", 
+            RowBox[{"2", ",", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"\[Theta]2", "+", "\[CapitalDelta]\[Theta]"}], ")"}], 
+              " ", "\[Degree]"}], ",", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"\[Phi]2", "+", "\[CapitalDelta]\[Phi]"}], ")"}], " ", 
+              "\[Degree]"}], ",", 
+             RowBox[{"tof2", "+", "\[CapitalDelta]tof"}], ",", "mp"}], 
+            "]"}]}], "]"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{"MRes", "-", "MRes2"}]}], "\[IndentingNewLine]", "}"}]}], 
+     "}"}], "]"}], "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Theta]1", ",", "20", ",", "70"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Theta]2", ",", "70"}], "}"}], ",", "20", ",", "70"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[CapitalDelta]\[Theta]", ",", "0"}], "}"}], ",", 
+     RowBox[{"-", "0.5"}], ",", "0.5"}], "}"}], "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Phi]1", ",", 
+     RowBox[{"-", "10"}], ",", "10"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Phi]2", ",", "190"}], "}"}], ",", "170", ",", "190"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[CapitalDelta]\[Phi]", ",", "0"}], "}"}], ",", 
+     RowBox[{"-", "2"}], ",", "2"}], "}"}], "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"tof1", ",", "8", ",", "40"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"tof2", ",", "8", ",", "40"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[CapitalDelta]tof", ",", "0"}], "}"}], ",", 
+     RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.600407851117569*^9, 3.600407985902629*^9}, {
+  3.600408074448297*^9, 3.600408217568095*^9}, {3.600408255630907*^9, 
+  3.6004083947957163`*^9}, {3.600408589717587*^9, 3.6004087013805513`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`tof1$$ = 8, $CellContext`tof2$$ = 
+    31.6, $CellContext`\[CapitalDelta]tof$$ = 
+    0.42999999999999994`, $CellContext`\[CapitalDelta]\[Theta]$$ = 
+    0, $CellContext`\[CapitalDelta]\[Phi]$$ = 0, $CellContext`\[Theta]1$$ = 
+    20, $CellContext`\[Theta]2$$ = 
+    70, $CellContext`\[Phi]1$$ = -10, $CellContext`\[Phi]2$$ = 190, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`\[Theta]1$$], 20, 70}, {{
+       Hold[$CellContext`\[Theta]2$$], 70}, 20, 70}, {{
+       Hold[$CellContext`\[CapitalDelta]\[Theta]$$], 0}, -0.5, 0.5}, {
+      Hold[$CellContext`\[Phi]1$$], -10, 10}, {{
+       Hold[$CellContext`\[Phi]2$$], 190}, 170, 190}, {{
+       Hold[$CellContext`\[CapitalDelta]\[Phi]$$], 0}, -2, 2}, {
+      Hold[$CellContext`tof1$$], 8, 40}, {
+      Hold[$CellContext`tof2$$], 8, 40}, {{
+       Hold[$CellContext`\[CapitalDelta]tof$$], 0}, -1, 1}}, 
+    Typeset`size$$ = {775., {27., 32.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`\[Theta]1$3731$$ = 0, $CellContext`\[Theta]2$3732$$ = 
+    0, $CellContext`\[CapitalDelta]\[Theta]$3733$$ = 
+    0, $CellContext`\[Phi]1$3734$$ = 0, $CellContext`\[Phi]2$3735$$ = 
+    0, $CellContext`\[CapitalDelta]\[Phi]$3736$$ = 
+    0, $CellContext`tof1$3737$$ = 0, $CellContext`tof2$3738$$ = 
+    0, $CellContext`\[CapitalDelta]tof$3739$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`tof1$$ = 8, $CellContext`tof2$$ = 
+        8, $CellContext`\[CapitalDelta]tof$$ = 
+        0, $CellContext`\[CapitalDelta]\[Theta]$$ = 
+        0, $CellContext`\[CapitalDelta]\[Phi]$$ = 0, $CellContext`\[Theta]1$$ = 
+        20, $CellContext`\[Theta]2$$ = 
+        70, $CellContext`\[Phi]1$$ = -10, $CellContext`\[Phi]2$$ = 190}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`\[Theta]1$$, $CellContext`\[Theta]1$3731$$, 0], 
+        Hold[$CellContext`\[Theta]2$$, $CellContext`\[Theta]2$3732$$, 0], 
+        Hold[$CellContext`\[CapitalDelta]\[Theta]$$, $CellContext`\
+\[CapitalDelta]\[Theta]$3733$$, 0], 
+        Hold[$CellContext`\[Phi]1$$, $CellContext`\[Phi]1$3734$$, 0], 
+        Hold[$CellContext`\[Phi]2$$, $CellContext`\[Phi]2$3735$$, 0], 
+        Hold[$CellContext`\[CapitalDelta]\[Phi]$$, $CellContext`\
+\[CapitalDelta]\[Phi]$3736$$, 0], 
+        Hold[$CellContext`tof1$$, $CellContext`tof1$3737$$, 0], 
+        Hold[$CellContext`tof2$$, $CellContext`tof2$3738$$, 0], 
+        Hold[$CellContext`\[CapitalDelta]tof$$, \
+$CellContext`\[CapitalDelta]tof$3739$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      TableForm[{{
+         "\[Theta]1", $CellContext`\[Theta]1$$, 
+          "\[Theta]2", $CellContext`\[Theta]2$$, 
+          "\[CapitalDelta]\[Theta]", $CellContext`\[CapitalDelta]\[Theta]$$}, \
+{"\[Phi]1", $CellContext`\[Phi]1$$, "\[Phi]2", $CellContext`\[Phi]2$$, 
+          "\[CapitalDelta]\[Phi]", $CellContext`\[CapitalDelta]\[Phi]$$}, {
+         "tof1", $CellContext`tof1$$, "tof2", $CellContext`tof2$$, 
+          "\[CapitalDelta]tof", $CellContext`\[CapitalDelta]tof$$}, \
+{$CellContext`MRes = $CellContext`Mass[$CellContext`Pinc[$CellContext`m14O, 
+              250] + $CellContext`Pinc[$CellContext`mp, 0] - $CellContext`P[
+            1, $CellContext`\[Theta]1$$ Degree, $CellContext`\[Phi]1$$ 
+             Degree, $CellContext`tof1$$, $CellContext`mp] - $CellContext`P[
+            2, $CellContext`\[Theta]2$$ Degree, $CellContext`\[Phi]2$$ 
+             Degree, $CellContext`tof2$$, $CellContext`mp]], \
+$CellContext`MRes2 = $CellContext`Mass[$CellContext`Pinc[$CellContext`m14O, 
+              250] + $CellContext`Pinc[$CellContext`mp, 0] - $CellContext`P[
+            
+            1, ($CellContext`\[Theta]1$$ + $CellContext`\[CapitalDelta]\
+\[Theta]$$) 
+             Degree, ($CellContext`\[Phi]1$$ + $CellContext`\[CapitalDelta]\
+\[Phi]$$) 
+             Degree, $CellContext`tof1$$ + $CellContext`\[CapitalDelta]tof$$, \
+$CellContext`mp] - $CellContext`P[
+            2, ($CellContext`\[Theta]2$$ + $CellContext`\[CapitalDelta]\
+\[Theta]$$) 
+             Degree, ($CellContext`\[Phi]2$$ + $CellContext`\[CapitalDelta]\
+\[Phi]$$) 
+             Degree, $CellContext`tof2$$ + $CellContext`\[CapitalDelta]tof$$, \
+$CellContext`mp]], $CellContext`MRes - $CellContext`MRes2}}], 
+      "Specifications" :> {{$CellContext`\[Theta]1$$, 20, 
+         70}, {{$CellContext`\[Theta]2$$, 70}, 20, 
+         70}, {{$CellContext`\[CapitalDelta]\[Theta]$$, 0}, -0.5, 
+         0.5}, {$CellContext`\[Phi]1$$, -10, 
+         10}, {{$CellContext`\[Phi]2$$, 190}, 170, 
+         190}, {{$CellContext`\[CapitalDelta]\[Phi]$$, 0}, -2, 
+         2}, {$CellContext`tof1$$, 8, 40}, {$CellContext`tof2$$, 8, 
+         40}, {{$CellContext`\[CapitalDelta]tof$$, 0}, -1, 1}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{1071., {131., 136.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.600407898205522*^9, 3.600408218163639*^9, {3.6004082924766827`*^9, 
+   3.60040831397814*^9}, 3.600408354542253*^9, {3.600408384801858*^9, 
+   3.600408395265398*^9}, {3.6004085975932903`*^9, 3.600408636414301*^9}, 
+   3.6004087033147793`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1090, 855},
+WindowMargins->{{Automatic, -1189}, {47, Automatic}},
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 101, 1, 88, "Title"],
+Cell[683, 25, 538, 11, 88, "Input"],
+Cell[1224, 38, 2243, 63, 236, "Input"],
+Cell[3470, 103, 1632, 44, 86, "Input"],
+Cell[5105, 149, 2127, 66, 151, "Input"],
+Cell[CellGroupData[{
+Cell[7257, 219, 913, 19, 134, "Input"],
+Cell[8173, 240, 410, 8, 30, "Output"],
+Cell[8586, 250, 286, 4, 30, "Output"],
+Cell[8875, 256, 284, 4, 30, "Output"],
+Cell[9162, 262, 321, 6, 30, "Output"],
+Cell[9486, 270, 284, 4, 30, "Output"]
+}, Open  ]],
+Cell[9785, 277, 598, 15, 30, "Input"],
+Cell[CellGroupData[{
+Cell[10408, 296, 4577, 113, 259, "Input"],
+Cell[14988, 411, 5902, 107, 284, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

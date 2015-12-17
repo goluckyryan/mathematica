@@ -1,0 +1,2552 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[    104162,       2543]
+NotebookOptionsPosition[    102092,       2468]
+NotebookOutlinePosition[    102439,       2483]
+CellTagsIndexPosition[    102396,       2480]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Charge and Discharge Cruve", "Title",
+ CellChangeTimes->{{3.529219679089559*^9, 3.529219695785996*^9}, {
+  3.5299077043515234`*^9, 3.52990770638179*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Primary", "Section",
+ CellChangeTimes->{{3.529907664099681*^9, 3.5299076715258417`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DSolve", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"\[Rho]", "'"}], "[", "t", "]"}], "\[Equal]", 
+       RowBox[{
+        FractionBox["1", "\[CapitalGamma]"], 
+        RowBox[{"(", 
+         RowBox[{"C0", "-", 
+          RowBox[{"\[Rho]", "[", "t", "]"}]}], ")"}]}]}], ",", 
+      RowBox[{
+       RowBox[{"\[Rho]", "[", "0", "]"}], "\[Equal]", " ", "\[Rho]0"}]}], 
+     "}"}], ",", 
+    RowBox[{"\[Rho]", "[", "t", "]"}], ",", "t"}], "]"}], "//", 
+  "Expand"}]], "Input",
+ CellChangeTimes->{{3.529215752545495*^9, 3.529215815663661*^9}, {
+  3.529216043122899*^9, 3.529216063451994*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\[Rho]", "[", "t", "]"}], "\[Rule]", 
+    RowBox[{"C0", "-", 
+     RowBox[{"C0", " ", 
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"-", 
+        FractionBox["t", "\[CapitalGamma]"]}]]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"-", 
+        FractionBox["t", "\[CapitalGamma]"]}]], " ", "\[Rho]0"}]}]}], "}"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.529215816796484*^9, {3.5292160520610847`*^9, 3.529216063908654*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"RSolve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"\[Rho]", "[", "n", "]"}], "\[Equal]", " ", 
+      RowBox[{"H", "+", 
+       RowBox[{
+        RowBox[{"\[Rho]", "[", 
+         RowBox[{"n", "-", "1"}], "]"}], "G"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"\[Rho]", "[", "0", "]"}], "\[Equal]", "0"}]}], "}"}], ",", 
+   RowBox[{"\[Rho]", "[", "n", "]"}], ",", "n"}], "]"}]], "Input",
+ CellChangeTimes->{{3.529217037754607*^9, 3.529217093285102*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\[Rho]", "[", "n", "]"}], "\[Rule]", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", 
+        SuperscriptBox["G", "n"]}], ")"}], " ", "H"}], 
+     RowBox[{
+      RowBox[{"-", "1"}], "+", "G"}]]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{3.529217093896781*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"compare", " ", "different", " ", "starting", " ", "point"}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"Manipulate", "[", 
+   RowBox[{
+    RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"1", "-", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"-", 
+           FractionBox[
+            RowBox[{"(", 
+             RowBox[{"t", "+", 
+              RowBox[{"\[Tau]", " ", 
+               RowBox[{"Log", "[", 
+                RowBox[{"1", "-", "\[Rho]0"}], "]"}]}]}], ")"}], "\[Tau]"]}]],
+          "+", 
+         RowBox[{
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"-", 
+            FractionBox[
+             RowBox[{"(", 
+              RowBox[{"t", "+", 
+               RowBox[{"\[Tau]", " ", 
+                RowBox[{"Log", "[", 
+                 RowBox[{"1", "-", "\[Rho]0"}], "]"}]}]}], ")"}], 
+             "\[Tau]"]}]], " ", "\[Rho]0"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{"1", "-", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"-", 
+           FractionBox["t", "\[Tau]"]}]]}]}], "\[IndentingNewLine]", "}"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", "0", ",", "100"}], "}"}], ",", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1"}], "}"}]}]}], "]"}], "\[IndentingNewLine]", ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"\[Tau]", ",", "10"}], "}"}], ",", "0", ",", "100"}], "}"}], 
+    ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Rho]0", ",", "0", ",", "1"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5292206364600267`*^9, 3.529220677110828*^9}, {
+  3.529220743857278*^9, 3.5292207964432487`*^9}, {3.529220873576816*^9, 
+  3.529220923488443*^9}, {3.52922096847045*^9, 3.5292209754612226`*^9}, {
+  3.529907636059828*^9, 3.529907653582659*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`\[Rho]0$$ = 0.436, $CellContext`\[Tau]$$ = 
+    10, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`\[Tau]$$], 10}, 0, 100}, {
+      Hold[$CellContext`\[Rho]0$$], 0, 1}}, Typeset`size$$ = {
+    360., {117., 121.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`\[Tau]$5477$$ = 
+    0, $CellContext`\[Rho]0$5478$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`\[Rho]0$$ = 0, $CellContext`\[Tau]$$ = 10},
+       "ControllerVariables" :> {
+        Hold[$CellContext`\[Tau]$$, $CellContext`\[Tau]$5477$$, 0], 
+        Hold[$CellContext`\[Rho]0$$, $CellContext`\[Rho]0$5478$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Plot[{1 - E^(-(($CellContext`t + $CellContext`\[Tau]$$ 
+             Log[1 - $CellContext`\[Rho]0$$])/$CellContext`\[Tau]$$)) + 
+         E^(-(($CellContext`t + $CellContext`\[Tau]$$ 
+               Log[1 - $CellContext`\[Rho]0$$])/$CellContext`\[Tau]$$)) \
+$CellContext`\[Rho]0$$, 1 - 
+         E^(-($CellContext`t/$CellContext`\[Tau]$$))}, {$CellContext`t, 0, 
+         100}, PlotRange -> {0, 1}], 
+      "Specifications" :> {{{$CellContext`\[Tau]$$, 10}, 0, 
+         100}, {$CellContext`\[Rho]0$$, 0, 1}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{409., {177., 182.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.5292207692535152`*^9, 3.529220780231854*^9}, 
+   3.5292209259334803`*^9, 3.5292209760008087`*^9}]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Polulation and Residual", "Section",
+ CellChangeTimes->{{3.529907680018661*^9, 3.529907697982712*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"\[Rho]", "[", 
+   RowBox[{
+   "n_", ",", "C0_", ",", "f_", ",", "duty_", ",", "\[Tau]_", ",", "T_"}], 
+   "]"}], ":=", 
+  RowBox[{"C0", " ", 
+   RowBox[{"(", 
+    RowBox[{"1", "-", 
+     RowBox[{"Exp", "[", 
+      FractionBox[
+       RowBox[{"-", " ", "duty"}], 
+       RowBox[{"f", " ", "\[Tau]"}]], "]"}]}], ")"}], 
+   FractionBox[
+    RowBox[{"1", "-", 
+     RowBox[{"Exp", "[", 
+      RowBox[{
+       RowBox[{"-", "n"}], 
+       RowBox[{"(", " ", 
+        RowBox[{
+         FractionBox[
+          RowBox[{"1", "-", "duty"}], 
+          RowBox[{"f", " ", "T"}]], "+", " ", 
+         FractionBox["duty", 
+          RowBox[{"f", " ", "\[Tau]"}]]}], ")"}]}], "]"}]}], 
+    RowBox[{"1", "-", 
+     RowBox[{"Exp", "[", 
+      RowBox[{"-", 
+       RowBox[{"(", 
+        RowBox[{
+         FractionBox[
+          RowBox[{"1", "-", "duty"}], 
+          RowBox[{"f", " ", "T"}]], "+", " ", 
+         FractionBox["duty", 
+          RowBox[{"f", " ", "\[Tau]"}]]}], ")"}]}], 
+      "]"}]}]]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Eta]", "[", 
+   RowBox[{
+   "n_", ",", "C0_", ",", "f_", ",", "duty_", ",", "\[Tau]_", ",", "T_"}], 
+   "]"}], ":=", 
+  RowBox[{
+   RowBox[{"\[Rho]", "[", 
+    RowBox[{"n", ",", "C0", ",", "f", ",", "duty", ",", "\[Tau]", ",", "T"}], 
+    "]"}], 
+   RowBox[{"Exp", "[", 
+    FractionBox[
+     RowBox[{"-", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", "duty"}], ")"}]}], 
+     RowBox[{"f", " ", "T"}]], "]"}]}]}]}], "Input",
+ CellChangeTimes->{{3.529217235924965*^9, 3.52921739474452*^9}, 
+   3.529217449804775*^9, {3.529219545192754*^9, 3.529219551872995*^9}, {
+   3.5292198853202*^9, 3.529219889346437*^9}, {3.529894840280986*^9, 
+   3.5298949048366785`*^9}, {3.5299066040450506`*^9, 3.529906604793852*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\[Rho]", "[", 
+        RowBox[{"n", ",", "1", ",", 
+         FractionBox["1", "T"], ",", "duty", ",", "\[Tau]", ",", 
+         "\[CapitalGamma]"}], "]"}], ",", 
+       RowBox[{"\[Eta]", "[", 
+        RowBox[{"n", ",", "1", ",", 
+         FractionBox["1", "T"], ",", "duty", ",", "\[Tau]", ",", 
+         "\[CapitalGamma]"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "0", ",", "10"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1"}], "}"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+   
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"T", ",", "100"}], "}"}], ",", "0", ",", "200"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"duty", ",", "0.2"}], "}"}], ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Tau]", ",", "20"}], "}"}], ",", "0.1", ",", "100"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[CapitalGamma]", ",", "50"}], "}"}], ",", "0.1", ",", "100"}],
+     "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5292173995444098`*^9, 3.529217548205262*^9}, {
+   3.5292176124388037`*^9, 3.529217623000229*^9}, 3.5292187837500343`*^9, {
+   3.529219519221616*^9, 3.52921952106081*^9}, {3.52989056135271*^9, 
+   3.5298905905259886`*^9}, {3.5298906305036707`*^9, 3.5298906650198*^9}, {
+   3.529894913000145*^9, 3.5298949183554516`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`duty$$ = 0.2, $CellContext`T$$ = 
+    65.5, $CellContext`\[CapitalGamma]$$ = 50, $CellContext`\[Tau]$$ = 20, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`T$$], 100}, 0, 200}, {{
+       Hold[$CellContext`duty$$], 0.2}, 0, 1}, {{
+       Hold[$CellContext`\[Tau]$$], 20}, 0.1, 100}, {{
+       Hold[$CellContext`\[CapitalGamma]$$], 50}, 0.1, 100}}, 
+    Typeset`size$$ = {360., {117., 121.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`T$10831$$ = 0, $CellContext`duty$10832$$ = 
+    0, $CellContext`\[Tau]$10833$$ = 0, $CellContext`\[CapitalGamma]$10834$$ =
+     0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`duty$$ = 0.2, $CellContext`T$$ = 
+        100, $CellContext`\[CapitalGamma]$$ = 50, $CellContext`\[Tau]$$ = 20},
+       "ControllerVariables" :> {
+        Hold[$CellContext`T$$, $CellContext`T$10831$$, 0], 
+        Hold[$CellContext`duty$$, $CellContext`duty$10832$$, 0], 
+        Hold[$CellContext`\[Tau]$$, $CellContext`\[Tau]$10833$$, 0], 
+        Hold[$CellContext`\[CapitalGamma]$$, \
+$CellContext`\[CapitalGamma]$10834$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Plot[{
+         $CellContext`\[Rho][$CellContext`n, 1, 
+          1/$CellContext`T$$, $CellContext`duty$$, $CellContext`\[Tau]$$, \
+$CellContext`\[CapitalGamma]$$], 
+         $CellContext`\[Eta][$CellContext`n, 1, 
+          1/$CellContext`T$$, $CellContext`duty$$, $CellContext`\[Tau]$$, \
+$CellContext`\[CapitalGamma]$$]}, {$CellContext`n, 0, 10}, 
+        PlotRange -> {0, 1}], 
+      "Specifications" :> {{{$CellContext`T$$, 100}, 0, 
+         200}, {{$CellContext`duty$$, 0.2}, 0, 
+         1}, {{$CellContext`\[Tau]$$, 20}, 0.1, 
+         100}, {{$CellContext`\[CapitalGamma]$$, 50}, 0.1, 100}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{409., {204., 209.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.529217537739472*^9, 3.529217549152746*^9}, 
+   3.52921762399828*^9, 3.529218786696719*^9, {3.5292195070746603`*^9, 
+   3.529219521704999*^9}, {3.529219892136718*^9, 3.529219893390092*^9}, 
+   3.5298904459147267`*^9, 3.529890592486493*^9, 3.5298906658160706`*^9, 
+   3.529894919158497*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"TableForm", "[", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"\[Rho]", "[", 
+         RowBox[{"n", ",", "1", ",", 
+          FractionBox["1", "T"], ",", "duty", ",", "\[Tau]", ",", 
+          "\[CapitalGamma]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"n", ",", "0", ",", "10", ",", "1"}], "}"}]}], "]"}], "]"}], 
+     ",", 
+     RowBox[{"\[Rho]", "[", 
+      RowBox[{"\[Infinity]", ",", "1", ",", 
+       FractionBox["1", "T"], ",", "duty", ",", "\[Tau]", ",", 
+       "\[CapitalGamma]"}], "]"}]}], "}"}], "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"T", ",", "100"}], "}"}], ",", "0", ",", "200"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"duty", ",", "0.2"}], "}"}], ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Tau]", ",", "20"}], "}"}], ",", "0.1", ",", "100"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[CapitalGamma]", ",", "50"}], "}"}], ",", "0.1", ",", "100"}],
+     "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.52921780135472*^9, 3.529217853302411*^9}, {
+  3.529217892039159*^9, 3.529217918940611*^9}, {3.5292179548759527`*^9, 
+  3.529217964347484*^9}, {3.5292196184497004`*^9, 3.529219648213949*^9}, {
+  3.5292204632061987`*^9, 3.5292204781812572`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`duty$$ = 0.2, $CellContext`T$$ = 
+    36., $CellContext`\[CapitalGamma]$$ = 50, $CellContext`\[Tau]$$ = 20, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`T$$], 100}, 0, 200}, {{
+       Hold[$CellContext`duty$$], 0.2}, 0, 1}, {{
+       Hold[$CellContext`\[Tau]$$], 20}, 0.1, 100}, {{
+       Hold[$CellContext`\[CapitalGamma]$$], 50}, 0.1, 100}}, 
+    Typeset`size$$ = {199., {77.5, 82.5}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True, $CellContext`T$3868$$ =
+     0, $CellContext`duty$3869$$ = 0, $CellContext`\[Tau]$3870$$ = 
+    0, $CellContext`\[CapitalGamma]$3871$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`duty$$ = 0.2, $CellContext`T$$ = 
+        100, $CellContext`\[CapitalGamma]$$ = 50, $CellContext`\[Tau]$$ = 20},
+       "ControllerVariables" :> {
+        Hold[$CellContext`T$$, $CellContext`T$3868$$, 0], 
+        Hold[$CellContext`duty$$, $CellContext`duty$3869$$, 0], 
+        Hold[$CellContext`\[Tau]$$, $CellContext`\[Tau]$3870$$, 0], 
+        Hold[$CellContext`\[CapitalGamma]$$, \
+$CellContext`\[CapitalGamma]$3871$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> {
+        TableForm[
+         Table[
+          $CellContext`\[Rho][$CellContext`n, 1, 
+           1/$CellContext`T$$, $CellContext`duty$$, $CellContext`\[Tau]$$, \
+$CellContext`\[CapitalGamma]$$], {$CellContext`n, 0, 10, 1}]], 
+        $CellContext`\[Rho][
+        Infinity, 1, 
+         1/$CellContext`T$$, $CellContext`duty$$, $CellContext`\[Tau]$$, \
+$CellContext`\[CapitalGamma]$$]}, 
+      "Specifications" :> {{{$CellContext`T$$, 100}, 0, 
+         200}, {{$CellContext`duty$$, 0.2}, 0, 
+         1}, {{$CellContext`\[Tau]$$, 20}, 0.1, 
+         100}, {{$CellContext`\[CapitalGamma]$$, 50}, 0.1, 100}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{272., {165., 170.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.529217825218494*^9, 3.5292179681578903`*^9, {3.529219602244894*^9, 
+   3.5292196636954927`*^9}, 3.529219896602929*^9, 3.5292204791047277`*^9}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "[", 
+   RowBox[{"t_", ",", "\[Tau]_"}], "]"}], ":=", 
+  RowBox[{"1", "-", 
+   RowBox[{"Exp", "[", 
+    FractionBox[
+     RowBox[{"-", "t"}], 
+     RowBox[{" ", "\[Tau]"}]], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"g", "[", 
+   RowBox[{"t_", ",", "\[CapitalGamma]_"}], "]"}], ":=", 
+  RowBox[{"Exp", "[", 
+   RowBox[{"-", 
+    FractionBox["t", "\[CapitalGamma]"]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.529893049008201*^9, 3.5298930945065413`*^9}, {
+  3.5298933084411464`*^9, 3.5298933714097977`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"n", "-", "1"}], ")"}], "T"}], "<", "t", "<", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"n", "-", "1"}], ")"}], "T"}], "+", 
+           RowBox[{"T", " ", "duty"}]}]}], ",", 
+         RowBox[{
+          RowBox[{"\[Eta]", "[", 
+           RowBox[{
+            RowBox[{"n", "-", "1"}], ",", "1", ",", 
+            FractionBox["1", "T"], ",", "duty", ",", "\[Tau]1", ",", 
+            "\[CapitalGamma]1"}], "]"}], "+", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"1", "-", 
+             RowBox[{"\[Eta]", "[", 
+              RowBox[{
+               RowBox[{"n", "-", "1"}], ",", "1", ",", 
+               FractionBox["1", "T"], ",", "duty", ",", "\[Tau]1", ",", 
+               "\[CapitalGamma]1"}], "]"}]}], ")"}], 
+           RowBox[{"f", "[", 
+            RowBox[{
+             RowBox[{"t", "-", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"n", "-", "1"}], ")"}], "T"}]}], ",", "\[Tau]1"}], 
+            "]"}]}]}], "\[IndentingNewLine]", ",", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}], "T"}], "+", 
+             RowBox[{"T", " ", "duty"}]}], "<", "t", "<", 
+            RowBox[{"n", " ", "T"}]}], ",", 
+           RowBox[{
+            RowBox[{"\[Rho]", "[", 
+             RowBox[{"n", ",", "1", ",", 
+              FractionBox["1", "T"], ",", "duty", ",", "\[Tau]1", ",", 
+              "\[CapitalGamma]1"}], "]"}], 
+            RowBox[{"g", "[", 
+             RowBox[{
+              RowBox[{"t", "-", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"n", "-", "1"}], ")"}], "T"}], "+", 
+                 RowBox[{"T", " ", "duty"}]}], ")"}]}], ",", 
+              "\[CapitalGamma]1"}], "]"}]}], "\[IndentingNewLine]", ",", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"n", " ", "T"}], "<", "t", "<", 
+              RowBox[{
+               RowBox[{"n", " ", "T"}], " ", "+", " ", 
+               RowBox[{"T", " ", "duty"}]}]}], ",", 
+             RowBox[{
+              RowBox[{"\[Eta]", "[", 
+               RowBox[{"n", ",", "1", ",", 
+                FractionBox["1", "T"], ",", "duty", ",", "\[Tau]1", ",", 
+                "\[CapitalGamma]1"}], "]"}], "+", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "-", 
+                 RowBox[{"\[Eta]", "[", 
+                  RowBox[{"n", ",", "1", ",", 
+                   FractionBox["1", "T"], ",", "duty", ",", "\[Tau]1", ",", 
+                   "\[CapitalGamma]1"}], "]"}]}], ")"}], 
+               RowBox[{"f", "[", 
+                RowBox[{
+                 RowBox[{"t", "-", 
+                  RowBox[{
+                   RowBox[{"(", "n", ")"}], "T"}]}], ",", "\[Tau]1"}], 
+                "]"}]}]}], "\[IndentingNewLine]", ",", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"n", " ", "T"}], "+", 
+                 RowBox[{"T", " ", "duty"}]}], "<", "t", "<", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"n", "+", "1"}], ")"}], " ", "T"}]}], ",", 
+               RowBox[{
+                RowBox[{"\[Rho]", "[", 
+                 RowBox[{
+                  RowBox[{"n", "+", "1"}], ",", "1", ",", 
+                  FractionBox["1", "T"], ",", "duty", ",", "\[Tau]1", ",", 
+                  "\[CapitalGamma]1"}], "]"}], 
+                RowBox[{"g", "[", 
+                 RowBox[{
+                  RowBox[{"t", "-", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"n", " ", "T"}], "+", 
+                    RowBox[{"T", " ", "duty"}]}], ")"}]}], ",", 
+                  "\[CapitalGamma]1"}], "]"}]}]}], "]"}]}], "]"}]}], "]"}]}], 
+        "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"n", "-", "1"}], ")"}], "T"}], "<", "t", "<", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"n", "-", "1"}], ")"}], "T"}], "+", 
+           RowBox[{"T", " ", "duty"}]}]}], ",", 
+         RowBox[{
+          RowBox[{"\[Eta]", "[", 
+           RowBox[{
+            RowBox[{"n", "-", "1"}], ",", "C2", ",", 
+            FractionBox["1", "T"], ",", "duty", ",", "\[Tau]2", ",", 
+            "\[CapitalGamma]2"}], "]"}], "+", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"C2", "-", 
+             RowBox[{"\[Eta]", "[", 
+              RowBox[{
+               RowBox[{"n", "-", "1"}], ",", "C2", ",", 
+               FractionBox["1", "T"], ",", "duty", ",", "\[Tau]2", ",", 
+               "\[CapitalGamma]2"}], "]"}]}], ")"}], 
+           RowBox[{"f", "[", 
+            RowBox[{
+             RowBox[{"t", "-", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"n", "-", "1"}], ")"}], "T"}]}], ",", "\[Tau]2"}], 
+            "]"}]}]}], "\[IndentingNewLine]", ",", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}], "T"}], "+", 
+             RowBox[{"T", " ", "duty"}]}], "<", "t", "<", 
+            RowBox[{"n", " ", "T"}]}], ",", 
+           RowBox[{
+            RowBox[{"\[Rho]", "[", 
+             RowBox[{"n", ",", "C2", ",", 
+              FractionBox["1", "T"], ",", "duty", ",", "\[Tau]2", ",", 
+              "\[CapitalGamma]2"}], "]"}], 
+            RowBox[{"g", "[", 
+             RowBox[{
+              RowBox[{"t", "-", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"n", "-", "1"}], ")"}], "T"}], "+", 
+                 RowBox[{"T", " ", "duty"}]}], ")"}]}], ",", 
+              "\[CapitalGamma]2"}], "]"}]}], "\[IndentingNewLine]", ",", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"n", " ", "T"}], "<", "t", "<", 
+              RowBox[{
+               RowBox[{"n", " ", "T"}], " ", "+", " ", 
+               RowBox[{"T", " ", "duty"}]}]}], ",", 
+             RowBox[{
+              RowBox[{"\[Eta]", "[", 
+               RowBox[{"n", ",", "C2", ",", 
+                FractionBox["1", "T"], ",", "duty", ",", "\[Tau]2", ",", 
+                "\[CapitalGamma]2"}], "]"}], "+", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"C2", "-", 
+                 RowBox[{"\[Eta]", "[", 
+                  RowBox[{"n", ",", "C2", ",", 
+                   FractionBox["1", "T"], ",", "duty", ",", "\[Tau]2", ",", 
+                   "\[CapitalGamma]2"}], "]"}]}], ")"}], 
+               RowBox[{"f", "[", 
+                RowBox[{
+                 RowBox[{"t", "-", 
+                  RowBox[{
+                   RowBox[{"(", "n", ")"}], "T"}]}], ",", "\[Tau]2"}], 
+                "]"}]}]}], "\[IndentingNewLine]", ",", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"n", " ", "T"}], "+", 
+                 RowBox[{"T", " ", "duty"}]}], "<", "t", "<", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"n", "+", "1"}], ")"}], " ", "T"}]}], ",", 
+               RowBox[{
+                RowBox[{"\[Rho]", "[", 
+                 RowBox[{
+                  RowBox[{"n", "+", "1"}], ",", "C2", ",", 
+                  FractionBox["1", "T"], ",", "duty", ",", "\[Tau]2", ",", 
+                  "\[CapitalGamma]2"}], "]"}], 
+                RowBox[{"g", "[", 
+                 RowBox[{
+                  RowBox[{"t", "-", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"n", " ", "T"}], "+", 
+                    RowBox[{"T", " ", "duty"}]}], ")"}]}], ",", 
+                  "\[CapitalGamma]2"}], "]"}]}]}], "]"}]}], "]"}]}], "]"}]}], 
+        "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"n", "-", "1"}], ")"}], "T"}], "<", "t", "<", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"n", "-", "1"}], ")"}], "T"}], "+", 
+           RowBox[{"T", " ", "duty"}]}]}], ",", 
+         RowBox[{
+          RowBox[{"\[Eta]", "[", 
+           RowBox[{
+            RowBox[{"n", "-", "1"}], ",", "1", ",", 
+            FractionBox["1", "T"], ",", "duty", ",", "\[Tau]1", ",", 
+            "\[CapitalGamma]1"}], "]"}], "+", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"1", "-", 
+             RowBox[{"\[Eta]", "[", 
+              RowBox[{
+               RowBox[{"n", "-", "1"}], ",", "1", ",", 
+               FractionBox["1", "T"], ",", "duty", ",", "\[Tau]1", ",", 
+               "\[CapitalGamma]1"}], "]"}]}], ")"}], 
+           RowBox[{"f", "[", 
+            RowBox[{
+             RowBox[{"t", "-", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"n", "-", "1"}], ")"}], "T"}]}], ",", "\[Tau]1"}], 
+            "]"}]}], "-", 
+          RowBox[{"\[Eta]", "[", 
+           RowBox[{
+            RowBox[{"n", "-", "1"}], ",", "C2", ",", 
+            FractionBox["1", "T"], ",", "duty", ",", "\[Tau]2", ",", 
+            "\[CapitalGamma]2"}], "]"}], "-", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"C2", "-", 
+             RowBox[{"\[Eta]", "[", 
+              RowBox[{
+               RowBox[{"n", "-", "1"}], ",", "C2", ",", 
+               FractionBox["1", "T"], ",", "duty", ",", "\[Tau]2", ",", 
+               "\[CapitalGamma]2"}], "]"}]}], ")"}], 
+           RowBox[{"f", "[", 
+            RowBox[{
+             RowBox[{"t", "-", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"n", "-", "1"}], ")"}], "T"}]}], ",", "\[Tau]2"}], 
+            "]"}]}]}], "\[IndentingNewLine]", ",", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}], "T"}], "+", 
+             RowBox[{"T", " ", "duty"}]}], "<", "t", "<", 
+            RowBox[{"n", " ", "T"}]}], ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"\[Rho]", "[", 
+              RowBox[{"n", ",", "1", ",", 
+               FractionBox["1", "T"], ",", "duty", ",", "\[Tau]1", ",", 
+               "\[CapitalGamma]1"}], "]"}], 
+             RowBox[{"g", "[", 
+              RowBox[{
+               RowBox[{"t", "-", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"n", "-", "1"}], ")"}], "T"}], "+", 
+                  RowBox[{"T", " ", "duty"}]}], ")"}]}], ",", 
+               "\[CapitalGamma]1"}], "]"}]}], "-", 
+            RowBox[{
+             RowBox[{"\[Rho]", "[", 
+              RowBox[{"n", ",", "C2", ",", 
+               FractionBox["1", "T"], ",", "duty", ",", "\[Tau]2", ",", 
+               "\[CapitalGamma]2"}], "]"}], 
+             RowBox[{"g", "[", 
+              RowBox[{
+               RowBox[{"t", "-", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"n", "-", "1"}], ")"}], "T"}], "+", 
+                  RowBox[{"T", " ", "duty"}]}], ")"}]}], ",", 
+               "\[CapitalGamma]2"}], "]"}]}]}], "\[IndentingNewLine]", ",", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"n", " ", "T"}], "<", "t", "<", 
+              RowBox[{
+               RowBox[{"n", " ", "T"}], " ", "+", " ", 
+               RowBox[{"T", " ", "duty"}]}]}], ",", 
+             RowBox[{
+              RowBox[{"\[Eta]", "[", 
+               RowBox[{"n", ",", "1", ",", 
+                FractionBox["1", "T"], ",", "duty", ",", "\[Tau]1", ",", 
+                "\[CapitalGamma]1"}], "]"}], "+", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "-", 
+                 RowBox[{"\[Eta]", "[", 
+                  RowBox[{"n", ",", "1", ",", 
+                   FractionBox["1", "T"], ",", "duty", ",", "\[Tau]1", ",", 
+                   "\[CapitalGamma]1"}], "]"}]}], ")"}], 
+               RowBox[{"f", "[", 
+                RowBox[{
+                 RowBox[{"t", "-", 
+                  RowBox[{
+                   RowBox[{"(", "n", ")"}], "T"}]}], ",", "\[Tau]1"}], 
+                "]"}]}], "-", 
+              RowBox[{"\[Eta]", "[", 
+               RowBox[{"n", ",", "C2", ",", 
+                FractionBox["1", "T"], ",", "duty", ",", "\[Tau]2", ",", 
+                "\[CapitalGamma]2"}], "]"}], "-", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"C2", "-", 
+                 RowBox[{"\[Eta]", "[", 
+                  RowBox[{"n", ",", "C2", ",", 
+                   FractionBox["1", "T"], ",", "duty", ",", "\[Tau]2", ",", 
+                   "\[CapitalGamma]2"}], "]"}]}], ")"}], 
+               RowBox[{"f", "[", 
+                RowBox[{
+                 RowBox[{"t", "-", 
+                  RowBox[{
+                   RowBox[{"(", "n", ")"}], "T"}]}], ",", "\[Tau]2"}], 
+                "]"}]}]}], "\[IndentingNewLine]", ",", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"n", " ", "T"}], "+", 
+                 RowBox[{"T", " ", "duty"}]}], "<", "t", "<", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"n", "+", "1"}], ")"}], " ", "T"}]}], ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"\[Rho]", "[", 
+                  RowBox[{
+                   RowBox[{"n", "+", "1"}], ",", "1", ",", 
+                   FractionBox["1", "T"], ",", "duty", ",", "\[Tau]1", ",", 
+                   "\[CapitalGamma]1"}], "]"}], 
+                 RowBox[{"g", "[", 
+                  RowBox[{
+                   RowBox[{"t", "-", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"n", " ", "T"}], "+", 
+                    RowBox[{"T", " ", "duty"}]}], ")"}]}], ",", 
+                   "\[CapitalGamma]1"}], "]"}]}], "-", 
+                RowBox[{
+                 RowBox[{"\[Rho]", "[", 
+                  RowBox[{
+                   RowBox[{"n", "+", "1"}], ",", "C2", ",", 
+                   FractionBox["1", "T"], ",", "duty", ",", "\[Tau]2", ",", 
+                   "\[CapitalGamma]2"}], "]"}], 
+                 RowBox[{"g", "[", 
+                  RowBox[{
+                   RowBox[{"t", "-", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"n", " ", "T"}], "+", 
+                    RowBox[{"T", " ", "duty"}]}], ")"}]}], ",", 
+                   "\[CapitalGamma]2"}], "]"}]}]}]}], "]"}]}], "]"}]}], 
+          "]"}]}], "]"}]}], "\[IndentingNewLine]", "}"}], 
+     "\[IndentingNewLine]", ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"n", "-", "1"}], ")"}], "T"}], ",", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"n", "+", "1"}], ")"}], "T"}]}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "0.5"}], ",", "1"}], "}"}]}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "500"}]}], "]"}], "\[IndentingNewLine]", 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "1", ",", "20", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"T", ",", "100"}], "}"}], ",", "0", ",", "300"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"duty", ",", "0.2"}], "}"}], ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Tau]1", ",", "20"}], "}"}], ",", "0.1", ",", "100"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[CapitalGamma]1", ",", "25"}], "}"}], ",", "0.1", ",", 
+     "100"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"C2", ",", "0.8"}], "}"}], ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Tau]2", ",", "20"}], "}"}], ",", "0.1", ",", "100"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[CapitalGamma]2", ",", "85"}], "}"}], ",", "0.1", ",", 
+     "100"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5298933808230343`*^9, 3.5298934866197643`*^9}, {
+  3.5298935393156843`*^9, 3.529893706555271*^9}, {3.5298947984623876`*^9, 
+  3.529894805023082*^9}, {3.529894951953373*^9, 3.529895215434165*^9}, {
+  3.5298952602003784`*^9, 3.5298953672486944`*^9}, {3.5298954155030847`*^9, 
+  3.5298954179220886`*^9}, {3.5298954789669456`*^9, 3.529895540862075*^9}, {
+  3.5299064453470345`*^9, 3.529906587743022*^9}, {3.5299067100860386`*^9, 
+  3.529906912467174*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`C2$$ = 0.488, $CellContext`duty$$ = 
+    0.17200000000000001`, $CellContext`n$$ = 20, $CellContext`T$$ = 
+    300., $CellContext`\[CapitalGamma]1$$ = 
+    25, $CellContext`\[CapitalGamma]2$$ = 85, $CellContext`\[Tau]1$$ = 
+    20, $CellContext`\[Tau]2$$ = 34.7, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`n$$], 1, 20, 1}, {{
+       Hold[$CellContext`T$$], 100}, 0, 300}, {{
+       Hold[$CellContext`duty$$], 0.2}, 0, 1}, {{
+       Hold[$CellContext`\[Tau]1$$], 20}, 0.1, 100}, {{
+       Hold[$CellContext`\[CapitalGamma]1$$], 25}, 0.1, 100}, {{
+       Hold[$CellContext`C2$$], 0.8}, 0, 1}, {{
+       Hold[$CellContext`\[Tau]2$$], 20}, 0.1, 100}, {{
+       Hold[$CellContext`\[CapitalGamma]2$$], 85}, 0.1, 100}}, 
+    Typeset`size$$ = {500., {152., 155.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`n$15570$$ = 0, $CellContext`T$15571$$ = 
+    0, $CellContext`duty$15572$$ = 0, $CellContext`\[Tau]1$15573$$ = 
+    0, $CellContext`\[CapitalGamma]1$15574$$ = 0, $CellContext`C2$15575$$ = 
+    0, $CellContext`\[Tau]2$15576$$ = 
+    0, $CellContext`\[CapitalGamma]2$15577$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`C2$$ = 0.8, $CellContext`duty$$ = 
+        0.2, $CellContext`n$$ = 1, $CellContext`T$$ = 
+        100, $CellContext`\[CapitalGamma]1$$ = 
+        25, $CellContext`\[CapitalGamma]2$$ = 85, $CellContext`\[Tau]1$$ = 
+        20, $CellContext`\[Tau]2$$ = 20}, "ControllerVariables" :> {
+        Hold[$CellContext`n$$, $CellContext`n$15570$$, 0], 
+        Hold[$CellContext`T$$, $CellContext`T$15571$$, 0], 
+        Hold[$CellContext`duty$$, $CellContext`duty$15572$$, 0], 
+        Hold[$CellContext`\[Tau]1$$, $CellContext`\[Tau]1$15573$$, 0], 
+        Hold[$CellContext`\[CapitalGamma]1$$, \
+$CellContext`\[CapitalGamma]1$15574$$, 0], 
+        Hold[$CellContext`C2$$, $CellContext`C2$15575$$, 0], 
+        Hold[$CellContext`\[Tau]2$$, $CellContext`\[Tau]2$15576$$, 0], 
+        Hold[$CellContext`\[CapitalGamma]2$$, \
+$CellContext`\[CapitalGamma]2$15577$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Plot[{
+         If[($CellContext`n$$ - 
+            1) $CellContext`T$$ < $CellContext`t < ($CellContext`n$$ - 
+             1) $CellContext`T$$ + $CellContext`T$$ $CellContext`duty$$, \
+$CellContext`\[Eta][$CellContext`n$$ - 1, 1, 
+            1/$CellContext`T$$, $CellContext`duty$$, $CellContext`\[Tau]1$$, \
+$CellContext`\[CapitalGamma]1$$] + (
+            1 - $CellContext`\[Eta][$CellContext`n$$ - 1, 1, 
+             1/$CellContext`T$$, $CellContext`duty$$, $CellContext`\[Tau]1$$, \
+$CellContext`\[CapitalGamma]1$$]) $CellContext`f[$CellContext`t - \
+($CellContext`n$$ - 1) $CellContext`T$$, $CellContext`\[Tau]1$$], 
+          
+          If[($CellContext`n$$ - 
+              1) $CellContext`T$$ + $CellContext`T$$ $CellContext`duty$$ < \
+$CellContext`t < $CellContext`n$$ $CellContext`T$$, \
+$CellContext`\[Rho][$CellContext`n$$, 1, 
+             1/$CellContext`T$$, $CellContext`duty$$, $CellContext`\[Tau]1$$, \
+$CellContext`\[CapitalGamma]1$$] $CellContext`g[$CellContext`t - \
+(($CellContext`n$$ - 
+               1) $CellContext`T$$ + $CellContext`T$$ $CellContext`duty$$), \
+$CellContext`\[CapitalGamma]1$$], 
+           
+           If[$CellContext`n$$ $CellContext`T$$ < $CellContext`t < \
+$CellContext`n$$ $CellContext`T$$ + $CellContext`T$$ $CellContext`duty$$, \
+$CellContext`\[Eta][$CellContext`n$$, 1, 
+              1/$CellContext`T$$, $CellContext`duty$$, \
+$CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$] + (
+              1 - $CellContext`\[Eta][$CellContext`n$$, 1, 
+               
+               1/$CellContext`T$$, $CellContext`duty$$, \
+$CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$]) \
+$CellContext`f[$CellContext`t - $CellContext`n$$ $CellContext`T$$, \
+$CellContext`\[Tau]1$$], 
+            
+            If[$CellContext`n$$ $CellContext`T$$ + $CellContext`T$$ \
+$CellContext`duty$$ < $CellContext`t < ($CellContext`n$$ + 
+               1) $CellContext`T$$, $CellContext`\[Rho][$CellContext`n$$ + 1, 
+               1, 1/$CellContext`T$$, $CellContext`duty$$, \
+$CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$] \
+$CellContext`g[$CellContext`t - ($CellContext`n$$ $CellContext`T$$ + \
+$CellContext`T$$ $CellContext`duty$$), $CellContext`\[CapitalGamma]1$$]]]]], 
+         If[($CellContext`n$$ - 
+            1) $CellContext`T$$ < $CellContext`t < ($CellContext`n$$ - 
+             1) $CellContext`T$$ + $CellContext`T$$ $CellContext`duty$$, \
+$CellContext`\[Eta][$CellContext`n$$ - 1, $CellContext`C2$$, 
+            1/$CellContext`T$$, $CellContext`duty$$, $CellContext`\[Tau]2$$, \
+$CellContext`\[CapitalGamma]2$$] + ($CellContext`C2$$ - \
+$CellContext`\[Eta][$CellContext`n$$ - 1, $CellContext`C2$$, 
+             1/$CellContext`T$$, $CellContext`duty$$, $CellContext`\[Tau]2$$, \
+$CellContext`\[CapitalGamma]2$$]) $CellContext`f[$CellContext`t - \
+($CellContext`n$$ - 1) $CellContext`T$$, $CellContext`\[Tau]2$$], 
+          
+          If[($CellContext`n$$ - 
+              1) $CellContext`T$$ + $CellContext`T$$ $CellContext`duty$$ < \
+$CellContext`t < $CellContext`n$$ $CellContext`T$$, \
+$CellContext`\[Rho][$CellContext`n$$, $CellContext`C2$$, 
+             1/$CellContext`T$$, $CellContext`duty$$, $CellContext`\[Tau]2$$, \
+$CellContext`\[CapitalGamma]2$$] $CellContext`g[$CellContext`t - \
+(($CellContext`n$$ - 
+               1) $CellContext`T$$ + $CellContext`T$$ $CellContext`duty$$), \
+$CellContext`\[CapitalGamma]2$$], 
+           
+           If[$CellContext`n$$ $CellContext`T$$ < $CellContext`t < \
+$CellContext`n$$ $CellContext`T$$ + $CellContext`T$$ $CellContext`duty$$, \
+$CellContext`\[Eta][$CellContext`n$$, $CellContext`C2$$, 
+              
+              1/$CellContext`T$$, $CellContext`duty$$, \
+$CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$] + ($CellContext`C2$$ - \
+$CellContext`\[Eta][$CellContext`n$$, $CellContext`C2$$, 
+               1/$CellContext`T$$, $CellContext`duty$$, \
+$CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$]) \
+$CellContext`f[$CellContext`t - $CellContext`n$$ $CellContext`T$$, \
+$CellContext`\[Tau]2$$], 
+            
+            If[$CellContext`n$$ $CellContext`T$$ + $CellContext`T$$ \
+$CellContext`duty$$ < $CellContext`t < ($CellContext`n$$ + 
+               1) $CellContext`T$$, $CellContext`\[Rho][$CellContext`n$$ + 
+               1, $CellContext`C2$$, 
+               1/$CellContext`T$$, $CellContext`duty$$, \
+$CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$] \
+$CellContext`g[$CellContext`t - ($CellContext`n$$ $CellContext`T$$ + \
+$CellContext`T$$ $CellContext`duty$$), $CellContext`\[CapitalGamma]2$$]]]]], 
+         If[($CellContext`n$$ - 
+            1) $CellContext`T$$ < $CellContext`t < ($CellContext`n$$ - 
+             1) $CellContext`T$$ + $CellContext`T$$ $CellContext`duty$$, \
+$CellContext`\[Eta][$CellContext`n$$ - 1, 1, 
+            1/$CellContext`T$$, $CellContext`duty$$, $CellContext`\[Tau]1$$, \
+$CellContext`\[CapitalGamma]1$$] + (
+            1 - $CellContext`\[Eta][$CellContext`n$$ - 1, 1, 
+             1/$CellContext`T$$, $CellContext`duty$$, $CellContext`\[Tau]1$$, \
+$CellContext`\[CapitalGamma]1$$]) $CellContext`f[$CellContext`t - \
+($CellContext`n$$ - 
+              1) $CellContext`T$$, $CellContext`\[Tau]1$$] - $CellContext`\
+\[Eta][$CellContext`n$$ - 1, $CellContext`C2$$, 
+           1/$CellContext`T$$, $CellContext`duty$$, $CellContext`\[Tau]2$$, \
+$CellContext`\[CapitalGamma]2$$] - ($CellContext`C2$$ - \
+$CellContext`\[Eta][$CellContext`n$$ - 1, $CellContext`C2$$, 
+            1/$CellContext`T$$, $CellContext`duty$$, $CellContext`\[Tau]2$$, \
+$CellContext`\[CapitalGamma]2$$]) $CellContext`f[$CellContext`t - \
+($CellContext`n$$ - 1) $CellContext`T$$, $CellContext`\[Tau]2$$], 
+          
+          If[($CellContext`n$$ - 
+              1) $CellContext`T$$ + $CellContext`T$$ $CellContext`duty$$ < \
+$CellContext`t < $CellContext`n$$ $CellContext`T$$, \
+$CellContext`\[Rho][$CellContext`n$$, 1, 
+              1/$CellContext`T$$, $CellContext`duty$$, \
+$CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$] \
+$CellContext`g[$CellContext`t - (($CellContext`n$$ - 
+                1) $CellContext`T$$ + $CellContext`T$$ $CellContext`duty$$), \
+$CellContext`\[CapitalGamma]1$$] - $CellContext`\[Rho][$CellContext`n$$, \
+$CellContext`C2$$, 
+             1/$CellContext`T$$, $CellContext`duty$$, $CellContext`\[Tau]2$$, \
+$CellContext`\[CapitalGamma]2$$] $CellContext`g[$CellContext`t - \
+(($CellContext`n$$ - 
+               1) $CellContext`T$$ + $CellContext`T$$ $CellContext`duty$$), \
+$CellContext`\[CapitalGamma]2$$], 
+           
+           If[$CellContext`n$$ $CellContext`T$$ < $CellContext`t < \
+$CellContext`n$$ $CellContext`T$$ + $CellContext`T$$ $CellContext`duty$$, \
+$CellContext`\[Eta][$CellContext`n$$, 1, 
+              1/$CellContext`T$$, $CellContext`duty$$, \
+$CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$] + (
+              1 - $CellContext`\[Eta][$CellContext`n$$, 1, 
+               1/$CellContext`T$$, $CellContext`duty$$, \
+$CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$]) \
+$CellContext`f[$CellContext`t - $CellContext`n$$ $CellContext`T$$, \
+$CellContext`\[Tau]1$$] - $CellContext`\[Eta][$CellContext`n$$, \
+$CellContext`C2$$, 
+             1/$CellContext`T$$, $CellContext`duty$$, $CellContext`\[Tau]2$$, \
+$CellContext`\[CapitalGamma]2$$] - ($CellContext`C2$$ - \
+$CellContext`\[Eta][$CellContext`n$$, $CellContext`C2$$, 
+              1/$CellContext`T$$, $CellContext`duty$$, \
+$CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$]) \
+$CellContext`f[$CellContext`t - $CellContext`n$$ $CellContext`T$$, \
+$CellContext`\[Tau]2$$], 
+            
+            If[$CellContext`n$$ $CellContext`T$$ + $CellContext`T$$ \
+$CellContext`duty$$ < $CellContext`t < ($CellContext`n$$ + 
+               1) $CellContext`T$$, $CellContext`\[Rho][$CellContext`n$$ + 1, 
+                1, 1/$CellContext`T$$, $CellContext`duty$$, $CellContext`\
+\[Tau]1$$, $CellContext`\[CapitalGamma]1$$] $CellContext`g[$CellContext`t - \
+($CellContext`n$$ $CellContext`T$$ + $CellContext`T$$ $CellContext`duty$$), \
+$CellContext`\[CapitalGamma]1$$] - $CellContext`\[Rho][$CellContext`n$$ + 
+               1, $CellContext`C2$$, 
+               1/$CellContext`T$$, $CellContext`duty$$, \
+$CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$] \
+$CellContext`g[$CellContext`t - ($CellContext`n$$ $CellContext`T$$ + \
+$CellContext`T$$ $CellContext`duty$$), $CellContext`\[CapitalGamma]2$$]]]]]}, \
+{$CellContext`t, ($CellContext`n$$ - 1) $CellContext`T$$, ($CellContext`n$$ + 
+          1) $CellContext`T$$}, PlotRange -> {-0.5, 1}, ImageSize -> 500], 
+      "Specifications" :> {{$CellContext`n$$, 1, 20, 
+         1}, {{$CellContext`T$$, 100}, 0, 300}, {{$CellContext`duty$$, 0.2}, 
+         0, 1}, {{$CellContext`\[Tau]1$$, 20}, 0.1, 
+         100}, {{$CellContext`\[CapitalGamma]1$$, 25}, 0.1, 
+         100}, {{$CellContext`C2$$, 0.8}, 0, 
+         1}, {{$CellContext`\[Tau]2$$, 20}, 0.1, 
+         100}, {{$CellContext`\[CapitalGamma]2$$, 85}, 0.1, 100}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{795., {182., 187.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.5298950000201225`*^9, 3.529895051437063*^9, 3.5298952160113664`*^9, 
+   3.5298953700601697`*^9, 3.5298954193416915`*^9, {3.5298954516064024`*^9, 
+   3.529895541642076*^9}, {3.5299065674234104`*^9, 3.5299066135513215`*^9}, {
+   3.5299066950877304`*^9, 3.5299067176405773`*^9}, {3.529906789864772*^9, 
+   3.5299068790904255`*^9}, 3.529906913091175*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"n", "-", "1"}], ")"}], 
+           RowBox[{"(", 
+            RowBox[{"td", "+", "tp"}], ")"}]}], "<", "t", "<", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"n", "-", "1"}], ")"}], 
+            RowBox[{"(", 
+             RowBox[{"td", "+", "tp"}], ")"}]}], "+", "tp"}]}], ",", 
+         RowBox[{
+          RowBox[{"\[Eta]", "[", 
+           RowBox[{
+            RowBox[{"n", "-", "1"}], ",", "1", ",", 
+            FractionBox["1", 
+             RowBox[{"td", "+", "tp"}]], ",", 
+            FractionBox["tp", 
+             RowBox[{"td", "+", "tp"}]], ",", "\[Tau]1", ",", 
+            "\[CapitalGamma]1"}], "]"}], "+", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"1", "-", 
+             RowBox[{"\[Eta]", "[", 
+              RowBox[{
+               RowBox[{"n", "-", "1"}], ",", "1", ",", 
+               FractionBox["1", 
+                RowBox[{"td", "+", "tp"}]], ",", 
+               FractionBox["tp", 
+                RowBox[{"td", "+", "tp"}]], ",", "\[Tau]1", ",", 
+               "\[CapitalGamma]1"}], "]"}]}], ")"}], 
+           RowBox[{"f", "[", 
+            RowBox[{
+             RowBox[{"t", "-", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"n", "-", "1"}], ")"}], 
+               RowBox[{"(", 
+                RowBox[{"td", "+", "tp"}], ")"}]}]}], ",", "\[Tau]1"}], 
+            "]"}]}]}], "\[IndentingNewLine]", ",", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}], 
+              RowBox[{"(", 
+               RowBox[{"td", "+", "tp"}], ")"}]}], "+", "tp"}], "<", "t", "<", 
+            RowBox[{"n", " ", 
+             RowBox[{"(", 
+              RowBox[{"td", "+", "tp"}], ")"}]}]}], ",", 
+           RowBox[{
+            RowBox[{"\[Rho]", "[", 
+             RowBox[{"n", ",", "1", ",", 
+              FractionBox["1", 
+               RowBox[{"td", "+", "tp"}]], ",", 
+              FractionBox["tp", 
+               RowBox[{"td", "+", "tp"}]], ",", "\[Tau]1", ",", 
+              "\[CapitalGamma]1"}], "]"}], 
+            RowBox[{"g", "[", 
+             RowBox[{
+              RowBox[{"t", "-", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"n", "-", "1"}], ")"}], 
+                  RowBox[{"(", 
+                   RowBox[{"td", "+", "tp"}], ")"}]}], "+", "tp"}], ")"}]}], 
+              ",", "\[CapitalGamma]1"}], "]"}]}]}], "]"}]}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"n", "-", "1"}], ")"}], 
+           RowBox[{"(", 
+            RowBox[{"td", "+", "tp"}], ")"}]}], "<", "t", "<", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"n", "-", "1"}], ")"}], 
+            RowBox[{"(", 
+             RowBox[{"td", "+", "tp"}], ")"}]}], "+", "tp"}]}], ",", 
+         RowBox[{
+          RowBox[{"\[Eta]", "[", 
+           RowBox[{
+            RowBox[{"n", "-", "1"}], ",", "C2", ",", 
+            FractionBox["1", 
+             RowBox[{"td", "+", "tp"}]], ",", 
+            FractionBox["tp", 
+             RowBox[{"td", "+", "tp"}]], ",", "\[Tau]2", ",", 
+            "\[CapitalGamma]2"}], "]"}], "+", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"C2", "-", 
+             RowBox[{"\[Eta]", "[", 
+              RowBox[{
+               RowBox[{"n", "-", "1"}], ",", "C2", ",", 
+               FractionBox["1", 
+                RowBox[{"td", "+", "tp"}]], ",", 
+               FractionBox["tp", 
+                RowBox[{"td", "+", "tp"}]], ",", "\[Tau]2", ",", 
+               "\[CapitalGamma]2"}], "]"}]}], ")"}], 
+           RowBox[{"f", "[", 
+            RowBox[{
+             RowBox[{"t", "-", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"n", "-", "1"}], ")"}], 
+               RowBox[{"(", 
+                RowBox[{"td", "+", "tp"}], ")"}]}]}], ",", "\[Tau]2"}], 
+            "]"}]}]}], "\[IndentingNewLine]", ",", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}], 
+              RowBox[{"(", 
+               RowBox[{"td", "+", "tp"}], ")"}]}], "+", "tp"}], "<", "t", "<", 
+            RowBox[{"n", " ", 
+             RowBox[{"(", 
+              RowBox[{"td", "+", "tp"}], ")"}]}]}], ",", 
+           RowBox[{
+            RowBox[{"\[Rho]", "[", 
+             RowBox[{"n", ",", "C2", ",", 
+              FractionBox["1", 
+               RowBox[{"td", "+", "tp"}]], ",", 
+              FractionBox["tp", 
+               RowBox[{"td", "+", "tp"}]], ",", "\[Tau]2", ",", 
+              "\[CapitalGamma]2"}], "]"}], 
+            RowBox[{"g", "[", 
+             RowBox[{
+              RowBox[{"t", "-", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"n", "-", "1"}], ")"}], 
+                  RowBox[{"(", 
+                   RowBox[{"td", "+", "tp"}], ")"}]}], "+", "tp"}], ")"}]}], 
+              ",", "\[CapitalGamma]2"}], "]"}]}]}], "]"}]}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"n", "-", "1"}], ")"}], 
+           RowBox[{"(", 
+            RowBox[{"td", "+", "tp"}], ")"}]}], "<", "t", "<", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"n", "-", "1"}], ")"}], 
+            RowBox[{"(", 
+             RowBox[{"td", "+", "tp"}], ")"}]}], "+", "tp"}]}], ",", 
+         RowBox[{
+          RowBox[{"\[Eta]", "[", 
+           RowBox[{
+            RowBox[{"n", "-", "1"}], ",", "1", ",", 
+            FractionBox["1", 
+             RowBox[{"td", "+", "tp"}]], ",", 
+            FractionBox["tp", 
+             RowBox[{"td", "+", "tp"}]], ",", "\[Tau]1", ",", 
+            "\[CapitalGamma]1"}], "]"}], "+", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"1", "-", 
+             RowBox[{"\[Eta]", "[", 
+              RowBox[{
+               RowBox[{"n", "-", "1"}], ",", "1", ",", 
+               FractionBox["1", 
+                RowBox[{"td", "+", "tp"}]], ",", 
+               FractionBox["tp", 
+                RowBox[{"td", "+", "tp"}]], ",", "\[Tau]1", ",", 
+               "\[CapitalGamma]1"}], "]"}]}], ")"}], 
+           RowBox[{"f", "[", 
+            RowBox[{
+             RowBox[{"t", "-", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"n", "-", "1"}], ")"}], 
+               RowBox[{"(", 
+                RowBox[{"td", "+", "tp"}], ")"}]}]}], ",", "\[Tau]1"}], 
+            "]"}]}], "-", 
+          RowBox[{"\[Eta]", "[", 
+           RowBox[{
+            RowBox[{"n", "-", "1"}], ",", "C2", ",", 
+            FractionBox["1", 
+             RowBox[{"td", "+", "tp"}]], ",", 
+            FractionBox["tp", 
+             RowBox[{"td", "+", "tp"}]], ",", "\[Tau]2", ",", 
+            "\[CapitalGamma]2"}], "]"}], "-", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"C2", "-", 
+             RowBox[{"\[Eta]", "[", 
+              RowBox[{
+               RowBox[{"n", "-", "1"}], ",", "C2", ",", 
+               FractionBox["1", 
+                RowBox[{"td", "+", "tp"}]], ",", 
+               FractionBox["tp", 
+                RowBox[{"td", "+", "tp"}]], ",", "\[Tau]2", ",", 
+               "\[CapitalGamma]2"}], "]"}]}], ")"}], 
+           RowBox[{"f", "[", 
+            RowBox[{
+             RowBox[{"t", "-", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"n", "-", "1"}], ")"}], 
+               RowBox[{"(", 
+                RowBox[{"td", "+", "tp"}], ")"}]}]}], ",", "\[Tau]2"}], 
+            "]"}]}]}], "\[IndentingNewLine]", ",", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}], 
+              RowBox[{"(", 
+               RowBox[{"td", "+", "tp"}], ")"}]}], "+", "tp"}], "<", "t", "<", 
+            RowBox[{"n", " ", 
+             RowBox[{"(", 
+              RowBox[{"td", "+", "tp"}], ")"}]}]}], ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"\[Rho]", "[", 
+              RowBox[{"n", ",", "1", ",", 
+               FractionBox["1", 
+                RowBox[{"td", "+", "tp"}]], ",", 
+               FractionBox["tp", 
+                RowBox[{"td", "+", "tp"}]], ",", "\[Tau]1", ",", 
+               "\[CapitalGamma]1"}], "]"}], 
+             RowBox[{"g", "[", 
+              RowBox[{
+               RowBox[{"t", "-", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"n", "-", "1"}], ")"}], 
+                   RowBox[{"(", 
+                    RowBox[{"td", "+", "tp"}], ")"}]}], "+", "tp"}], ")"}]}], 
+               ",", "\[CapitalGamma]1"}], "]"}]}], "-", 
+            RowBox[{
+             RowBox[{"\[Rho]", "[", 
+              RowBox[{"n", ",", "C2", ",", 
+               FractionBox["1", 
+                RowBox[{"td", "+", "tp"}]], ",", 
+               FractionBox["tp", 
+                RowBox[{"td", "+", "tp"}]], ",", "\[Tau]2", ",", 
+               "\[CapitalGamma]2"}], "]"}], 
+             RowBox[{"g", "[", 
+              RowBox[{
+               RowBox[{"t", "-", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"n", "-", "1"}], ")"}], 
+                   RowBox[{"(", 
+                    RowBox[{"td", "+", "tp"}], ")"}]}], "+", "tp"}], ")"}]}], 
+               ",", "\[CapitalGamma]2"}], "]"}]}]}]}], "]"}]}], "]"}]}], 
+      "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"n", "-", "1"}], ")"}], 
+        RowBox[{"(", 
+         RowBox[{"td", "+", "tp"}], ")"}]}], ",", 
+       RowBox[{"n", " ", 
+        RowBox[{"(", 
+         RowBox[{"td", "+", "tp"}], ")"}]}]}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "0.5"}], ",", "1"}], "}"}]}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "500"}], ",", 
+     RowBox[{"AxesOrigin", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"n", "-", "1"}], ")"}], 
+         RowBox[{"(", 
+          RowBox[{"td", "+", "tp"}], ")"}]}], ",", "0"}], "}"}]}]}], "]"}], 
+   "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "1", ",", "20", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"tp", ",", "20"}], "}"}], ",", "0", ",", "100"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"td", ",", "100"}], "}"}], ",", "0", ",", "300"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Tau]1", ",", "20"}], "}"}], ",", "0.1", ",", "100"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[CapitalGamma]1", ",", "25"}], "}"}], ",", "0.1", ",", 
+     "100"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"C2", ",", "0.8"}], "}"}], ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Tau]2", ",", "20"}], "}"}], ",", "0.1", ",", "100"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[CapitalGamma]2", ",", "85"}], "}"}], ",", "0.1", ",", 
+     "100"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.529907054758274*^9, 3.5299070729945345`*^9}, {
+  3.529907196318305*^9, 3.529907411125741*^9}, {3.5299074681304417`*^9, 
+  3.529907475758855*^9}, {3.529908686204261*^9, 3.529908689090266*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`C2$$ = 0.426, $CellContext`n$$ = 
+    20, $CellContext`td$$ = 99., $CellContext`tp$$ = 
+    46.2, $CellContext`\[CapitalGamma]1$$ = 
+    25, $CellContext`\[CapitalGamma]2$$ = 85, $CellContext`\[Tau]1$$ = 
+    20, $CellContext`\[Tau]2$$ = 20, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`n$$], 1, 20, 1}, {{
+       Hold[$CellContext`tp$$], 20}, 0, 100}, {{
+       Hold[$CellContext`td$$], 100}, 0, 300}, {{
+       Hold[$CellContext`\[Tau]1$$], 20}, 0.1, 100}, {{
+       Hold[$CellContext`\[CapitalGamma]1$$], 25}, 0.1, 100}, {{
+       Hold[$CellContext`C2$$], 0.8}, 0, 1}, {{
+       Hold[$CellContext`\[Tau]2$$], 20}, 0.1, 100}, {{
+       Hold[$CellContext`\[CapitalGamma]2$$], 85}, 0.1, 100}}, 
+    Typeset`size$$ = {500., {152., 155.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`n$17996$$ = 0, $CellContext`tp$17997$$ = 
+    0, $CellContext`td$17998$$ = 0, $CellContext`\[Tau]1$17999$$ = 
+    0, $CellContext`\[CapitalGamma]1$18000$$ = 0, $CellContext`C2$18001$$ = 
+    0, $CellContext`\[Tau]2$18002$$ = 
+    0, $CellContext`\[CapitalGamma]2$18003$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`C2$$ = 0.8, $CellContext`n$$ = 
+        1, $CellContext`td$$ = 100, $CellContext`tp$$ = 
+        20, $CellContext`\[CapitalGamma]1$$ = 
+        25, $CellContext`\[CapitalGamma]2$$ = 85, $CellContext`\[Tau]1$$ = 
+        20, $CellContext`\[Tau]2$$ = 20}, "ControllerVariables" :> {
+        Hold[$CellContext`n$$, $CellContext`n$17996$$, 0], 
+        Hold[$CellContext`tp$$, $CellContext`tp$17997$$, 0], 
+        Hold[$CellContext`td$$, $CellContext`td$17998$$, 0], 
+        Hold[$CellContext`\[Tau]1$$, $CellContext`\[Tau]1$17999$$, 0], 
+        Hold[$CellContext`\[CapitalGamma]1$$, \
+$CellContext`\[CapitalGamma]1$18000$$, 0], 
+        Hold[$CellContext`C2$$, $CellContext`C2$18001$$, 0], 
+        Hold[$CellContext`\[Tau]2$$, $CellContext`\[Tau]2$18002$$, 0], 
+        Hold[$CellContext`\[CapitalGamma]2$$, \
+$CellContext`\[CapitalGamma]2$18003$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Plot[{
+         If[($CellContext`n$$ - 
+            1) ($CellContext`td$$ + $CellContext`tp$$) < $CellContext`t < \
+($CellContext`n$$ - 
+             1) ($CellContext`td$$ + $CellContext`tp$$) + $CellContext`tp$$, \
+$CellContext`\[Eta][$CellContext`n$$ - 1, 1, 
+            1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$] + (
+            1 - $CellContext`\[Eta][$CellContext`n$$ - 1, 1, 
+             1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$]) \
+$CellContext`f[$CellContext`t - ($CellContext`n$$ - 
+              1) ($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]1$$], 
+          
+          If[($CellContext`n$$ - 
+              1) ($CellContext`td$$ + $CellContext`tp$$) + $CellContext`tp$$ < \
+$CellContext`t < $CellContext`n$$ ($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Rho][$CellContext`n$$, 1, 
+             1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$] \
+$CellContext`g[$CellContext`t - (($CellContext`n$$ - 
+               1) ($CellContext`td$$ + $CellContext`tp$$) + \
+$CellContext`tp$$), $CellContext`\[CapitalGamma]1$$]]], 
+         If[($CellContext`n$$ - 
+            1) ($CellContext`td$$ + $CellContext`tp$$) < $CellContext`t < \
+($CellContext`n$$ - 
+             1) ($CellContext`td$$ + $CellContext`tp$$) + $CellContext`tp$$, \
+$CellContext`\[Eta][$CellContext`n$$ - 1, $CellContext`C2$$, 
+            1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$] + ($CellContext`C2$$ - \
+$CellContext`\[Eta][$CellContext`n$$ - 1, $CellContext`C2$$, 
+             1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$]) \
+$CellContext`f[$CellContext`t - ($CellContext`n$$ - 
+              1) ($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]2$$], 
+          
+          If[($CellContext`n$$ - 
+              1) ($CellContext`td$$ + $CellContext`tp$$) + $CellContext`tp$$ < \
+$CellContext`t < $CellContext`n$$ ($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Rho][$CellContext`n$$, $CellContext`C2$$, 
+             1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$] \
+$CellContext`g[$CellContext`t - (($CellContext`n$$ - 
+               1) ($CellContext`td$$ + $CellContext`tp$$) + \
+$CellContext`tp$$), $CellContext`\[CapitalGamma]2$$]]], 
+         If[($CellContext`n$$ - 
+            1) ($CellContext`td$$ + $CellContext`tp$$) < $CellContext`t < \
+($CellContext`n$$ - 
+             1) ($CellContext`td$$ + $CellContext`tp$$) + $CellContext`tp$$, \
+$CellContext`\[Eta][$CellContext`n$$ - 1, 1, 
+            1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$] + (
+            1 - $CellContext`\[Eta][$CellContext`n$$ - 1, 1, 
+             1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$]) \
+$CellContext`f[$CellContext`t - ($CellContext`n$$ - 
+              1) ($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]1$$] - $CellContext`\[Eta][$CellContext`n$$ - 
+           1, $CellContext`C2$$, 
+           1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$] - ($CellContext`C2$$ - \
+$CellContext`\[Eta][$CellContext`n$$ - 1, $CellContext`C2$$, 
+            1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$]) \
+$CellContext`f[$CellContext`t - ($CellContext`n$$ - 
+             1) ($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]2$$], 
+          
+          If[($CellContext`n$$ - 
+              1) ($CellContext`td$$ + $CellContext`tp$$) + $CellContext`tp$$ < \
+$CellContext`t < $CellContext`n$$ ($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Rho][$CellContext`n$$, 1, 
+              1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$] \
+$CellContext`g[$CellContext`t - (($CellContext`n$$ - 
+                1) ($CellContext`td$$ + $CellContext`tp$$) + \
+$CellContext`tp$$), $CellContext`\[CapitalGamma]1$$] - \
+$CellContext`\[Rho][$CellContext`n$$, $CellContext`C2$$, 
+             1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$] \
+$CellContext`g[$CellContext`t - (($CellContext`n$$ - 
+               1) ($CellContext`td$$ + $CellContext`tp$$) + \
+$CellContext`tp$$), $CellContext`\[CapitalGamma]2$$]]]}, {$CellContext`t, \
+($CellContext`n$$ - 
+          1) ($CellContext`td$$ + $CellContext`tp$$), $CellContext`n$$ \
+($CellContext`td$$ + $CellContext`tp$$)}, PlotRange -> {-0.5, 1}, ImageSize -> 
+        500, AxesOrigin -> {($CellContext`n$$ - 
+           1) ($CellContext`td$$ + $CellContext`tp$$), 0}], 
+      "Specifications" :> {{$CellContext`n$$, 1, 20, 
+         1}, {{$CellContext`tp$$, 20}, 0, 100}, {{$CellContext`td$$, 100}, 0, 
+         300}, {{$CellContext`\[Tau]1$$, 20}, 0.1, 
+         100}, {{$CellContext`\[CapitalGamma]1$$, 25}, 0.1, 
+         100}, {{$CellContext`C2$$, 0.8}, 0, 
+         1}, {{$CellContext`\[Tau]2$$, 20}, 0.1, 
+         100}, {{$CellContext`\[CapitalGamma]2$$, 85}, 0.1, 100}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{785., {182., 187.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.529907075572561*^9, {3.5299073921395082`*^9, 3.5299074123893433`*^9}, 
+   3.529907476866457*^9, 3.5299086901615124`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Which", "[", 
+        RowBox[{
+         RowBox[{"0", "<", "t", "<", "tp"}], ",", 
+         RowBox[{
+          RowBox[{"\[Eta]", "[", 
+           RowBox[{
+            RowBox[{"n", "-", "1"}], ",", "1", ",", 
+            FractionBox["1", 
+             RowBox[{"td", "+", "tp"}]], ",", 
+            FractionBox["tp", 
+             RowBox[{"td", "+", "tp"}]], ",", "\[Tau]1", ",", 
+            "\[CapitalGamma]1"}], "]"}], "+", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"1", "-", 
+             RowBox[{"\[Eta]", "[", 
+              RowBox[{
+               RowBox[{"n", "-", "1"}], ",", "1", ",", 
+               FractionBox["1", 
+                RowBox[{"td", "+", "tp"}]], ",", 
+               FractionBox["tp", 
+                RowBox[{"td", "+", "tp"}]], ",", "\[Tau]1", ",", 
+               "\[CapitalGamma]1"}], "]"}]}], ")"}], 
+           RowBox[{"f", "[", 
+            RowBox[{"t", ",", "\[Tau]1"}], "]"}]}]}], "\[IndentingNewLine]", 
+         ",", 
+         RowBox[{"tp", "<", "t", "<", 
+          RowBox[{"td", "+", "tp"}]}], ",", 
+         RowBox[{
+          RowBox[{"\[Rho]", "[", 
+           RowBox[{"n", ",", "1", ",", 
+            FractionBox["1", 
+             RowBox[{"td", "+", "tp"}]], ",", 
+            FractionBox["tp", 
+             RowBox[{"td", "+", "tp"}]], ",", "\[Tau]1", ",", 
+            "\[CapitalGamma]1"}], "]"}], 
+          RowBox[{"g", "[", 
+           RowBox[{
+            RowBox[{"t", "-", "tp"}], ",", "\[CapitalGamma]1"}], "]"}]}]}], 
+        "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"Which", "[", 
+        RowBox[{
+         RowBox[{"0", "<", "t", "<", "tp"}], ",", 
+         RowBox[{
+          RowBox[{"\[Eta]", "[", 
+           RowBox[{
+            RowBox[{"n", "-", "1"}], ",", "C2", ",", 
+            FractionBox["1", 
+             RowBox[{"td", "+", "tp"}]], ",", 
+            FractionBox["tp", 
+             RowBox[{"td", "+", "tp"}]], ",", "\[Tau]2", ",", 
+            "\[CapitalGamma]2"}], "]"}], "+", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"C2", "-", 
+             RowBox[{"\[Eta]", "[", 
+              RowBox[{
+               RowBox[{"n", "-", "1"}], ",", "C2", ",", 
+               FractionBox["1", 
+                RowBox[{"td", "+", "tp"}]], ",", 
+               FractionBox["tp", 
+                RowBox[{"td", "+", "tp"}]], ",", "\[Tau]2", ",", 
+               "\[CapitalGamma]2"}], "]"}]}], ")"}], 
+           RowBox[{"f", "[", 
+            RowBox[{"t", ",", "\[Tau]2"}], "]"}]}]}], "\[IndentingNewLine]", 
+         ",", 
+         RowBox[{"tp", "<", "t", "<", 
+          RowBox[{"td", "+", "tp"}]}], ",", 
+         RowBox[{
+          RowBox[{"\[Rho]", "[", 
+           RowBox[{"n", ",", "C2", ",", 
+            FractionBox["1", 
+             RowBox[{"td", "+", "tp"}]], ",", 
+            FractionBox["tp", 
+             RowBox[{"td", "+", "tp"}]], ",", "\[Tau]2", ",", 
+            "\[CapitalGamma]2"}], "]"}], 
+          RowBox[{"g", "[", 
+           RowBox[{
+            RowBox[{"t", "-", "tp"}], ",", "\[CapitalGamma]2"}], "]"}]}]}], 
+        "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"Which", "[", 
+        RowBox[{
+         RowBox[{"0", "<", "t", "<", "tp"}], ",", 
+         RowBox[{
+          RowBox[{"\[Eta]", "[", 
+           RowBox[{
+            RowBox[{"n", "-", "1"}], ",", "1", ",", 
+            FractionBox["1", 
+             RowBox[{"td", "+", "tp"}]], ",", 
+            FractionBox["tp", 
+             RowBox[{"td", "+", "tp"}]], ",", "\[Tau]1", ",", 
+            "\[CapitalGamma]1"}], "]"}], "+", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"1", "-", 
+             RowBox[{"\[Eta]", "[", 
+              RowBox[{
+               RowBox[{"n", "-", "1"}], ",", "1", ",", 
+               FractionBox["1", 
+                RowBox[{"td", "+", "tp"}]], ",", 
+               FractionBox["tp", 
+                RowBox[{"td", "+", "tp"}]], ",", "\[Tau]1", ",", 
+               "\[CapitalGamma]1"}], "]"}]}], ")"}], 
+           RowBox[{"f", "[", 
+            RowBox[{"t", ",", "\[Tau]1"}], "]"}]}], "-", 
+          RowBox[{"\[Eta]", "[", 
+           RowBox[{
+            RowBox[{"n", "-", "1"}], ",", "C2", ",", 
+            FractionBox["1", 
+             RowBox[{"td", "+", "tp"}]], ",", 
+            FractionBox["tp", 
+             RowBox[{"td", "+", "tp"}]], ",", "\[Tau]2", ",", 
+            "\[CapitalGamma]2"}], "]"}], "-", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"C2", "-", 
+             RowBox[{"\[Eta]", "[", 
+              RowBox[{
+               RowBox[{"n", "-", "1"}], ",", "C2", ",", 
+               FractionBox["1", 
+                RowBox[{"td", "+", "tp"}]], ",", 
+               FractionBox["tp", 
+                RowBox[{"td", "+", "tp"}]], ",", "\[Tau]2", ",", 
+               "\[CapitalGamma]2"}], "]"}]}], ")"}], 
+           RowBox[{"f", "[", 
+            RowBox[{"t", ",", "\[Tau]2"}], "]"}]}]}], "\[IndentingNewLine]", 
+         ",", 
+         RowBox[{"tp", "<", "t", "<", 
+          RowBox[{"td", "+", "tp"}]}], ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"\[Rho]", "[", 
+            RowBox[{"n", ",", "1", ",", 
+             FractionBox["1", 
+              RowBox[{"td", "+", "tp"}]], ",", 
+             FractionBox["tp", 
+              RowBox[{"td", "+", "tp"}]], ",", "\[Tau]1", ",", 
+             "\[CapitalGamma]1"}], "]"}], 
+           RowBox[{"g", "[", 
+            RowBox[{
+             RowBox[{"t", "-", "tp"}], ",", "\[CapitalGamma]1"}], "]"}]}], 
+          "-", 
+          RowBox[{
+           RowBox[{"\[Rho]", "[", 
+            RowBox[{"n", ",", "C2", ",", 
+             FractionBox["1", 
+              RowBox[{"td", "+", "tp"}]], ",", 
+             FractionBox["tp", 
+              RowBox[{"td", "+", "tp"}]], ",", "\[Tau]2", ",", 
+             "\[CapitalGamma]2"}], "]"}], 
+           RowBox[{"g", "[", 
+            RowBox[{
+             RowBox[{"t", "-", "tp"}], ",", "\[CapitalGamma]2"}], "]"}]}]}]}],
+         "]"}]}], "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "tp", ",", 
+       RowBox[{"td", "+", "tp"}]}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "0.5"}], ",", "1"}], "}"}]}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "500"}], ",", 
+     RowBox[{"AxesOrigin", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"tp", ",", "0"}], "}"}]}]}], "]"}], "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "1", ",", "20", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"tp", ",", "20"}], "}"}], ",", "0", ",", "100"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"td", ",", "100"}], "}"}], ",", "0", ",", "300"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Tau]1", ",", "20"}], "}"}], ",", "0.1", ",", "100"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[CapitalGamma]1", ",", "25"}], "}"}], ",", "0.1", ",", 
+     "100"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"C2", ",", "0.8"}], "}"}], ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Tau]2", ",", "20"}], "}"}], ",", "0.1", ",", "100"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[CapitalGamma]2", ",", "85"}], "}"}], ",", "0.1", ",", 
+     "100"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.529907054758274*^9, 3.5299070729945345`*^9}, {
+  3.529907196318305*^9, 3.529907411125741*^9}, {3.5299074681304417`*^9, 
+  3.5299075033038745`*^9}, {3.529907541077195*^9, 3.5299075619535413`*^9}, {
+  3.529908818973109*^9, 3.529908850233819*^9}, {3.5299089823528905`*^9, 
+  3.52990904815444*^9}, {3.529909093490573*^9, 3.52990915106959*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`C2$$ = 0.8, $CellContext`n$$ = 
+    9, $CellContext`td$$ = 100, $CellContext`tp$$ = 
+    53.6, $CellContext`\[CapitalGamma]1$$ = 
+    25, $CellContext`\[CapitalGamma]2$$ = 85, $CellContext`\[Tau]1$$ = 
+    20, $CellContext`\[Tau]2$$ = 20, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`n$$], 1, 20, 1}, {{
+       Hold[$CellContext`tp$$], 20}, 0, 100}, {{
+       Hold[$CellContext`td$$], 100}, 0, 300}, {{
+       Hold[$CellContext`\[Tau]1$$], 20}, 0.1, 100}, {{
+       Hold[$CellContext`\[CapitalGamma]1$$], 25}, 0.1, 100}, {{
+       Hold[$CellContext`C2$$], 0.8}, 0, 1}, {{
+       Hold[$CellContext`\[Tau]2$$], 20}, 0.1, 100}, {{
+       Hold[$CellContext`\[CapitalGamma]2$$], 85}, 0.1, 100}}, 
+    Typeset`size$$ = {500., {152., 155.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`n$19293$$ = 0, $CellContext`tp$19294$$ = 
+    0, $CellContext`td$19295$$ = 0, $CellContext`\[Tau]1$19296$$ = 
+    0, $CellContext`\[CapitalGamma]1$19297$$ = 0, $CellContext`C2$19298$$ = 
+    0, $CellContext`\[Tau]2$19299$$ = 
+    0, $CellContext`\[CapitalGamma]2$19300$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`C2$$ = 0.8, $CellContext`n$$ = 
+        1, $CellContext`td$$ = 100, $CellContext`tp$$ = 
+        20, $CellContext`\[CapitalGamma]1$$ = 
+        25, $CellContext`\[CapitalGamma]2$$ = 85, $CellContext`\[Tau]1$$ = 
+        20, $CellContext`\[Tau]2$$ = 20}, "ControllerVariables" :> {
+        Hold[$CellContext`n$$, $CellContext`n$19293$$, 0], 
+        Hold[$CellContext`tp$$, $CellContext`tp$19294$$, 0], 
+        Hold[$CellContext`td$$, $CellContext`td$19295$$, 0], 
+        Hold[$CellContext`\[Tau]1$$, $CellContext`\[Tau]1$19296$$, 0], 
+        Hold[$CellContext`\[CapitalGamma]1$$, \
+$CellContext`\[CapitalGamma]1$19297$$, 0], 
+        Hold[$CellContext`C2$$, $CellContext`C2$19298$$, 0], 
+        Hold[$CellContext`\[Tau]2$$, $CellContext`\[Tau]2$19299$$, 0], 
+        Hold[$CellContext`\[CapitalGamma]2$$, \
+$CellContext`\[CapitalGamma]2$19300$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Plot[{
+         Which[
+         0 < $CellContext`t < $CellContext`tp$$, \
+$CellContext`\[Eta][$CellContext`n$$ - 1, 1, 
+            1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$] + (
+            1 - $CellContext`\[Eta][$CellContext`n$$ - 1, 1, 
+             1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$]) \
+$CellContext`f[$CellContext`t, $CellContext`\[Tau]1$$], $CellContext`tp$$ < \
+$CellContext`t < $CellContext`td$$ + $CellContext`tp$$, \
+$CellContext`\[Rho][$CellContext`n$$, 1, 
+            1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$] \
+$CellContext`g[$CellContext`t - $CellContext`tp$$, $CellContext`\
+\[CapitalGamma]1$$]], 
+         Which[
+         0 < $CellContext`t < $CellContext`tp$$, \
+$CellContext`\[Eta][$CellContext`n$$ - 1, $CellContext`C2$$, 
+            1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$] + ($CellContext`C2$$ - \
+$CellContext`\[Eta][$CellContext`n$$ - 1, $CellContext`C2$$, 
+             1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$]) \
+$CellContext`f[$CellContext`t, $CellContext`\[Tau]2$$], $CellContext`tp$$ < \
+$CellContext`t < $CellContext`td$$ + $CellContext`tp$$, \
+$CellContext`\[Rho][$CellContext`n$$, $CellContext`C2$$, 
+            1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$] \
+$CellContext`g[$CellContext`t - $CellContext`tp$$, $CellContext`\
+\[CapitalGamma]2$$]], 
+         Which[
+         0 < $CellContext`t < $CellContext`tp$$, \
+$CellContext`\[Eta][$CellContext`n$$ - 1, 1, 
+            1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$] + (
+            1 - $CellContext`\[Eta][$CellContext`n$$ - 1, 1, 
+             1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$]) \
+$CellContext`f[$CellContext`t, $CellContext`\[Tau]1$$] - \
+$CellContext`\[Eta][$CellContext`n$$ - 1, $CellContext`C2$$, 
+           1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$] - ($CellContext`C2$$ - \
+$CellContext`\[Eta][$CellContext`n$$ - 1, $CellContext`C2$$, 
+            1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$]) \
+$CellContext`f[$CellContext`t, $CellContext`\[Tau]2$$], $CellContext`tp$$ < \
+$CellContext`t < $CellContext`td$$ + $CellContext`tp$$, \
+$CellContext`\[Rho][$CellContext`n$$, 1, 
+             1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$] \
+$CellContext`g[$CellContext`t - $CellContext`tp$$, $CellContext`\
+\[CapitalGamma]1$$] - $CellContext`\[Rho][$CellContext`n$$, $CellContext`C2$$,
+             1/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`tp$$/($CellContext`td$$ + $CellContext`tp$$), \
+$CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$] \
+$CellContext`g[$CellContext`t - $CellContext`tp$$, $CellContext`\
+\[CapitalGamma]2$$]]}, {$CellContext`t, $CellContext`tp$$, $CellContext`td$$ + \
+$CellContext`tp$$}, PlotRange -> {-0.5, 1}, ImageSize -> 500, 
+        AxesOrigin -> {$CellContext`tp$$, 0}], 
+      "Specifications" :> {{$CellContext`n$$, 1, 20, 
+         1}, {{$CellContext`tp$$, 20}, 0, 100}, {{$CellContext`td$$, 100}, 0, 
+         300}, {{$CellContext`\[Tau]1$$, 20}, 0.1, 
+         100}, {{$CellContext`\[CapitalGamma]1$$, 25}, 0.1, 
+         100}, {{$CellContext`C2$$, 0.8}, 0, 
+         1}, {{$CellContext`\[Tau]2$$, 20}, 0.1, 
+         100}, {{$CellContext`\[CapitalGamma]2$$, 85}, 0.1, 100}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{785., {182., 187.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.5299075052561717`*^9, 3.529907563685144*^9, 3.529908851388221*^9, {
+   3.5299090397396193`*^9, 3.5299090489364843`*^9}, 3.5299091098263454`*^9, 
+   3.529909151521991*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"\[Rho]", "[", 
+           RowBox[{"n", ",", "1", ",", 
+            FractionBox["1", 
+             RowBox[{"td", "+", "10"}]], ",", 
+            FractionBox["10", 
+             RowBox[{"td", "+", "10"}]], ",", "\[Tau]1", ",", 
+            "\[CapitalGamma]1"}], "]"}], 
+          RowBox[{"g", "[", 
+           RowBox[{"t", ",", "\[CapitalGamma]1"}], "]"}]}], "-", 
+         RowBox[{
+          RowBox[{"\[Rho]", "[", 
+           RowBox[{"n", ",", "C2", ",", 
+            FractionBox["1", 
+             RowBox[{"td", "+", "10"}]], ",", 
+            FractionBox["10", 
+             RowBox[{"td", "+", "10"}]], ",", "\[Tau]2", ",", 
+            "\[CapitalGamma]2"}], "]"}], 
+          RowBox[{"g", "[", 
+           RowBox[{"t", ",", "\[CapitalGamma]2"}], "]"}]}]}], ","}], "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"\[Rho]", "[", 
+          RowBox[{"n", ",", "1", ",", 
+           FractionBox["1", 
+            RowBox[{"td", "+", "20"}]], ",", 
+           FractionBox["20", 
+            RowBox[{"td", "+", "20"}]], ",", "\[Tau]1", ",", 
+           "\[CapitalGamma]1"}], "]"}], 
+         RowBox[{"g", "[", 
+          RowBox[{"t", ",", "\[CapitalGamma]1"}], "]"}]}], "-", 
+        RowBox[{
+         RowBox[{"\[Rho]", "[", 
+          RowBox[{"n", ",", "C2", ",", 
+           FractionBox["1", 
+            RowBox[{"td", "+", "20"}]], ",", 
+           FractionBox["20", 
+            RowBox[{"td", "+", "20"}]], ",", "\[Tau]2", ",", 
+           "\[CapitalGamma]2"}], "]"}], 
+         RowBox[{"g", "[", 
+          RowBox[{"t", ",", "\[CapitalGamma]2"}], "]"}]}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"\[Rho]", "[", 
+          RowBox[{"n", ",", "1", ",", 
+           FractionBox["1", 
+            RowBox[{"td", "+", "40"}]], ",", 
+           FractionBox["40", 
+            RowBox[{"td", "+", "40"}]], ",", "\[Tau]1", ",", 
+           "\[CapitalGamma]1"}], "]"}], 
+         RowBox[{"g", "[", 
+          RowBox[{"t", ",", "\[CapitalGamma]1"}], "]"}]}], "-", 
+        RowBox[{
+         RowBox[{"\[Rho]", "[", 
+          RowBox[{"n", ",", "C2", ",", 
+           FractionBox["1", 
+            RowBox[{"td", "+", "40"}]], ",", 
+           FractionBox["40", 
+            RowBox[{"td", "+", "40"}]], ",", "\[Tau]2", ",", 
+           "\[CapitalGamma]2"}], "]"}], 
+         RowBox[{"g", "[", 
+          RowBox[{"t", ",", "\[CapitalGamma]2"}], "]"}]}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"\[Rho]", "[", 
+          RowBox[{"n", ",", "1", ",", 
+           FractionBox["1", 
+            RowBox[{"td", "+", "60"}]], ",", 
+           FractionBox["60", 
+            RowBox[{"td", "+", "60"}]], ",", "\[Tau]1", ",", 
+           "\[CapitalGamma]1"}], "]"}], 
+         RowBox[{"g", "[", 
+          RowBox[{"t", ",", "\[CapitalGamma]1"}], "]"}]}], "-", 
+        RowBox[{
+         RowBox[{"\[Rho]", "[", 
+          RowBox[{"n", ",", "C2", ",", 
+           FractionBox["1", 
+            RowBox[{"td", "+", "60"}]], ",", 
+           FractionBox["60", 
+            RowBox[{"td", "+", "60"}]], ",", "\[Tau]2", ",", 
+           "\[CapitalGamma]2"}], "]"}], 
+         RowBox[{"g", "[", 
+          RowBox[{"t", ",", "\[CapitalGamma]2"}], "]"}]}]}]}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"\[Rho]", "[", 
+           RowBox[{"n", ",", "1", ",", 
+            FractionBox["1", 
+             RowBox[{"td", "+", "80"}]], ",", 
+            FractionBox["80", 
+             RowBox[{"td", "+", "80"}]], ",", "\[Tau]1", ",", 
+            "\[CapitalGamma]1"}], "]"}], 
+          RowBox[{"g", "[", 
+           RowBox[{"t", ",", "\[CapitalGamma]1"}], "]"}]}], "-", 
+         RowBox[{
+          RowBox[{"\[Rho]", "[", 
+           RowBox[{"n", ",", "C2", ",", 
+            FractionBox["1", 
+             RowBox[{"td", "+", "80"}]], ",", 
+            FractionBox["80", 
+             RowBox[{"td", "+", "80"}]], ",", "\[Tau]2", ",", 
+            "\[CapitalGamma]2"}], "]"}], 
+          RowBox[{"g", "[", 
+           RowBox[{"t", ",", "\[CapitalGamma]2"}], "]"}]}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"\[Rho]", "[", 
+           RowBox[{"n", ",", "1", ",", 
+            FractionBox["1", 
+             RowBox[{"td", "+", "100"}]], ",", 
+            FractionBox["100", 
+             RowBox[{"td", "+", "100"}]], ",", "\[Tau]1", ",", 
+            "\[CapitalGamma]1"}], "]"}], 
+          RowBox[{"g", "[", 
+           RowBox[{"t", ",", "\[CapitalGamma]1"}], "]"}]}], "-", 
+         RowBox[{
+          RowBox[{"\[Rho]", "[", 
+           RowBox[{"n", ",", "C2", ",", 
+            FractionBox["1", 
+             RowBox[{"td", "+", "100"}]], ",", 
+            FractionBox["100", 
+             RowBox[{"td", "+", "100"}]], ",", "\[Tau]2", ",", 
+            "\[CapitalGamma]2"}], "]"}], 
+          RowBox[{"g", "[", 
+           RowBox[{"t", ",", "\[CapitalGamma]2"}], "]"}]}]}]}], "*)"}], 
+      "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", "td"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "500"}], ",", 
+     RowBox[{"AxesOrigin", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}]}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "Red", ",", "Orange", ",", "Green", ",", "Cyan", ",", " ", "Blue", ",",
+         " ", "Purple"}], "}"}]}]}], "]"}], "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "1", ",", "20", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"td", ",", "260"}], "}"}], ",", "0", ",", "300"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Tau]1", ",", "10"}], "}"}], ",", "0.1", ",", "100"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[CapitalGamma]1", ",", "25"}], "}"}], ",", "0.1", ",", 
+     "100"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"C2", ",", "0.5"}], "}"}], ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Tau]2", ",", "20"}], "}"}], ",", "0.1", ",", "100"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[CapitalGamma]2", ",", "85"}], "}"}], ",", "0.1", ",", 
+     "100"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.529907054758274*^9, 3.5299070729945345`*^9}, {
+  3.529907196318305*^9, 3.529907411125741*^9}, {3.5299074681304417`*^9, 
+  3.5299075033038745`*^9}, {3.529907541077195*^9, 3.5299075619535413`*^9}, {
+  3.529908818973109*^9, 3.529908850233819*^9}, {3.5299089823528905`*^9, 
+  3.52990904815444*^9}, {3.529909093490573*^9, 3.52990915106959*^9}, {
+  3.52990982669055*^9, 3.5299102525998297`*^9}, {3.5299103911128016`*^9, 
+  3.529910452796405*^9}, {3.529910507368305*^9, 3.5299106201627135`*^9}, {
+  3.5299106628264923`*^9, 3.5299107268453665`*^9}, {3.529910811937153*^9, 
+  3.5299108189275303`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`C2$$ = 0.746, $CellContext`n$$ = 
+    1, $CellContext`td$$ = 261.5, $CellContext`\[CapitalGamma]1$$ = 
+    25, $CellContext`\[CapitalGamma]2$$ = 85, $CellContext`\[Tau]1$$ = 
+    1.6, $CellContext`\[Tau]2$$ = 43.900000000000006`, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`n$$], 1, 20, 1}, {{
+       Hold[$CellContext`td$$], 260}, 0, 300}, {{
+       Hold[$CellContext`\[Tau]1$$], 10}, 0.1, 100}, {{
+       Hold[$CellContext`\[CapitalGamma]1$$], 25}, 0.1, 100}, {{
+       Hold[$CellContext`C2$$], 0.5}, 0, 1}, {{
+       Hold[$CellContext`\[Tau]2$$], 20}, 0.1, 100}, {{
+       Hold[$CellContext`\[CapitalGamma]2$$], 85}, 0.1, 100}}, 
+    Typeset`size$$ = {500., {149., 154.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`n$21881$$ = 0, $CellContext`td$21882$$ = 
+    0, $CellContext`\[Tau]1$21883$$ = 
+    0, $CellContext`\[CapitalGamma]1$21884$$ = 0, $CellContext`C2$21885$$ = 
+    0, $CellContext`\[Tau]2$21886$$ = 
+    0, $CellContext`\[CapitalGamma]2$21887$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`C2$$ = 0.5, $CellContext`n$$ = 
+        1, $CellContext`td$$ = 260, $CellContext`\[CapitalGamma]1$$ = 
+        25, $CellContext`\[CapitalGamma]2$$ = 85, $CellContext`\[Tau]1$$ = 
+        10, $CellContext`\[Tau]2$$ = 20}, "ControllerVariables" :> {
+        Hold[$CellContext`n$$, $CellContext`n$21881$$, 0], 
+        Hold[$CellContext`td$$, $CellContext`td$21882$$, 0], 
+        Hold[$CellContext`\[Tau]1$$, $CellContext`\[Tau]1$21883$$, 0], 
+        Hold[$CellContext`\[CapitalGamma]1$$, \
+$CellContext`\[CapitalGamma]1$21884$$, 0], 
+        Hold[$CellContext`C2$$, $CellContext`C2$21885$$, 0], 
+        Hold[$CellContext`\[Tau]2$$, $CellContext`\[Tau]2$21886$$, 0], 
+        Hold[$CellContext`\[CapitalGamma]2$$, \
+$CellContext`\[CapitalGamma]2$21887$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Plot[{$CellContext`\[Rho][$CellContext`n$$, 1, 1/($CellContext`td$$ + 
+            20), 20/($CellContext`td$$ + 
+            20), $CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$] \
+$CellContext`g[$CellContext`t, $CellContext`\[CapitalGamma]1$$] - \
+$CellContext`\[Rho][$CellContext`n$$, $CellContext`C2$$, 1/($CellContext`td$$ + 
+           20), 20/($CellContext`td$$ + 
+           20), $CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$] \
+$CellContext`g[$CellContext`t, $CellContext`\[CapitalGamma]2$$], \
+$CellContext`\[Rho][$CellContext`n$$, 1, 1/($CellContext`td$$ + 40), 
+            40/($CellContext`td$$ + 
+            40), $CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$] \
+$CellContext`g[$CellContext`t, $CellContext`\[CapitalGamma]1$$] - \
+$CellContext`\[Rho][$CellContext`n$$, $CellContext`C2$$, 1/($CellContext`td$$ + 
+           40), 40/($CellContext`td$$ + 
+           40), $CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$] \
+$CellContext`g[$CellContext`t, $CellContext`\[CapitalGamma]2$$], \
+$CellContext`\[Rho][$CellContext`n$$, 1, 1/($CellContext`td$$ + 60), 
+            60/($CellContext`td$$ + 
+            60), $CellContext`\[Tau]1$$, $CellContext`\[CapitalGamma]1$$] \
+$CellContext`g[$CellContext`t, $CellContext`\[CapitalGamma]1$$] - \
+$CellContext`\[Rho][$CellContext`n$$, $CellContext`C2$$, 1/($CellContext`td$$ + 
+           60), 60/($CellContext`td$$ + 
+           60), $CellContext`\[Tau]2$$, $CellContext`\[CapitalGamma]2$$] \
+$CellContext`g[$CellContext`t, $CellContext`\[CapitalGamma]2$$]}, \
+{$CellContext`t, 0, $CellContext`td$$}, PlotRange -> All, ImageSize -> 500, 
+        AxesOrigin -> {0, 0}, 
+        PlotStyle -> {Red, Orange, Green, Cyan, Blue, Purple}], 
+      "Specifications" :> {{$CellContext`n$$, 1, 20, 
+         1}, {{$CellContext`td$$, 260}, 0, 
+         300}, {{$CellContext`\[Tau]1$$, 10}, 0.1, 
+         100}, {{$CellContext`\[CapitalGamma]1$$, 25}, 0.1, 
+         100}, {{$CellContext`C2$$, 0.5}, 0, 
+         1}, {{$CellContext`\[Tau]2$$, 20}, 0.1, 
+         100}, {{$CellContext`\[CapitalGamma]2$$, 85}, 0.1, 100}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{549., {276., 281.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.5299101031427917`*^9, 3.529910134653249*^9}, {
+   3.529910179811962*^9, 3.529910253223831*^9}, 3.5299104877101603`*^9, {
+   3.529910598545218*^9, 3.529910620755515*^9}, {3.5299106716423655`*^9, 
+   3.529910744367737*^9}, {3.529910817211527*^9, 3.5299108200963326`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"A", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "4"}], ",", "1"}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"B", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"3", ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", 
+       RowBox[{"-", "2"}]}], "}"}]}], "}"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.529911276497077*^9, 3.529911344196854*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"A", ".", "B"}], "\[IndentingNewLine]", 
+ RowBox[{"B", ".", "A"}]}], "Input",
+ CellChangeTimes->{{3.5299113155761456`*^9, 3.5299113399486465`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "13"}], ",", 
+     RowBox[{"-", "18"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.5299113232945585`*^9, 3.529911346554458*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "13"}], ",", "10"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", 
+     RowBox[{"-", "4"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.5299113232945585`*^9, 3.529911346570058*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"A", ".", "A"}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixPower", "[", 
+  RowBox[{"A", ",", "2"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.529911404303096*^9, 3.529911469785757*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "7"}], ",", "4"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "8"}], ",", 
+     RowBox[{"-", "7"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.529911411416709*^9, 3.529911470331758*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "7"}], ",", "4"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "8"}], ",", 
+     RowBox[{"-", "7"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.529911411416709*^9, 3.529911470331758*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"MatrixPower", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"MatrixExp", "[", "A", "]"}], ".", 
+     RowBox[{"MatrixExp", "[", "B", "]"}]}], ",", "2"}], "]"}], "//", 
+  "N"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MatrixExp", "[", "A", "]"}], ".", 
+   RowBox[{"MatrixExp", "[", "B", "]"}], ".", 
+   RowBox[{"MatrixExp", "[", "A", "]"}], ".", 
+   RowBox[{"MatrixExp", "[", "B", "]"}]}], "//", "N"}]}], "Input",
+ CellChangeTimes->{{3.529911351957068*^9, 3.529911398609086*^9}, {
+  3.5299114728397617`*^9, 3.529911486389922*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"843.5592716014205`", ",", "825.6074154997314`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"177.95908249721532`", ",", "174.65016616915824`"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.529911367908327*^9, 3.5299113990926867`*^9}, 
+   3.5299114869827237`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"843.5592716014206`", ",", "825.6074154997314`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"177.95908249721535`", ",", "174.6501661691582`"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.529911367908327*^9, 3.5299113990926867`*^9}, 
+   3.5299114870607233`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{968, 623},
+WindowMargins->{{190, Automatic}, {Automatic, -34}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 159, 2, 83, "Title"],
+Cell[CellGroupData[{
+Cell[763, 28, 94, 1, 71, "Section"],
+Cell[CellGroupData[{
+Cell[882, 33, 676, 20, 47, "Input"],
+Cell[1561, 55, 541, 16, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2139, 76, 505, 14, 31, "Input"],
+Cell[2647, 92, 386, 13, 48, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3070, 110, 1934, 51, 174, "Input"],
+Cell[5007, 163, 2257, 44, 376, "Output"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[7313, 213, 108, 1, 41, "Section"],
+Cell[7424, 216, 1779, 54, 107, "Input"],
+Cell[CellGroupData[{
+Cell[9228, 274, 1593, 43, 74, "Input"],
+Cell[10824, 319, 3009, 58, 430, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13870, 382, 1478, 40, 74, "Input"],
+Cell[15351, 424, 2858, 57, 352, "Output"]
+}, Open  ]],
+Cell[18224, 484, 561, 16, 84, "Input"],
+Cell[CellGroupData[{
+Cell[18810, 504, 17431, 445, 715, "Input"],
+Cell[36244, 951, 12378, 220, 386, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[48659, 1176, 12342, 340, 524, "Input"],
+Cell[61004, 1518, 9219, 169, 386, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[70260, 1692, 7998, 210, 405, "Input"],
+Cell[78261, 1904, 7655, 139, 386, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[85953, 2048, 7356, 193, 328, "Input"],
+Cell[93312, 2243, 5223, 92, 574, "Output"]
+}, Open  ]],
+Cell[98550, 2338, 585, 21, 52, "Input"],
+Cell[CellGroupData[{
+Cell[99160, 2363, 171, 3, 52, "Input"],
+Cell[99334, 2368, 283, 9, 30, "Output"],
+Cell[99620, 2379, 283, 9, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[99940, 2393, 205, 4, 52, "Input"],
+Cell[100148, 2399, 300, 10, 30, "Output"],
+Cell[100451, 2411, 300, 10, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[100788, 2426, 579, 15, 52, "Input"],
+Cell[101370, 2443, 340, 9, 30, "Output"],
+Cell[101713, 2454, 339, 9, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

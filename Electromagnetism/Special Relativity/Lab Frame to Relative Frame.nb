@@ -1,0 +1,362 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     13342,        353]
+NotebookOptionsPosition[     12823,        330]
+NotebookOutlinePosition[     13180,        346]
+CellTagsIndexPosition[     13137,        343]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Lab Frame to Relative Frame", "Title",
+ CellChangeTimes->{{3.5398134953249207`*^9, 3.5398135084726467`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"for", " ", "2", " ", "particles"}], ",", " ", 
+    RowBox[{"the", " ", "transformation", " ", "is"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Xcm", "[", 
+     RowBox[{"r1_", ",", "r2_", ",", "m1_", ",", "m2_"}], "]"}], ":=", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"m1", " ", "r1"}], "+", 
+      RowBox[{"m2", " ", "r2"}]}], 
+     RowBox[{"m1", "+", "m2"}]]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Xrel", "[", 
+     RowBox[{"r1_", ",", "r2_"}], "]"}], ":=", 
+    RowBox[{"r1", "-", "r2"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Pcm", "[", 
+     RowBox[{"p1_", ",", "p2_"}], "]"}], ":=", 
+    RowBox[{"p1", "+", "p2"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Prel", "[", 
+     RowBox[{"p1_", ",", "p2_", ",", "m1_", ",", "m2_"}], "]"}], ":=", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"m2", " ", "p1"}], "-", 
+      RowBox[{"m1", " ", "p2"}]}], 
+     RowBox[{"m1", "+", "m2"}]]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"M", "[", 
+     RowBox[{"m1_", ",", "m2_"}], "]"}], ":=", 
+    RowBox[{"m1", "+", "m2"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"m", "[", 
+     RowBox[{"m1_", ",", "m2_"}], "]"}], ":=", 
+    FractionBox[
+     RowBox[{"m1", " ", "m2"}], 
+     RowBox[{"m1", "+", "m2"}]]}]}]}]], "Input",
+ CellChangeTimes->{{3.5398137341064897`*^9, 3.5398139023899136`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"r1", "[", "\[Theta]_", "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Cos", "[", "\[Theta]", "]"}], ",", 
+    RowBox[{"Sin", "[", "\[Theta]", "]"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r2", "[", 
+   RowBox[{"a_", ",", "\[Theta]_"}], "]"}], ":=", 
+  RowBox[{"a", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Cos", "[", "\[Theta]", "]"}], ",", 
+     RowBox[{"Sin", "[", "\[Theta]", "]"}]}], "}"}]}]}]}], "Input",
+ CellChangeTimes->{{3.5398139105427265`*^9, 3.5398139626511555`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Show", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"ParametricPlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"r1", "[", "\[Theta]", "]"}], ",", 
+         RowBox[{"r2", "[", 
+          RowBox[{"a", ",", 
+           RowBox[{
+            RowBox[{"k", " ", "\[Theta]"}], "+", "\[Phi]"}]}], "]"}], ",", 
+         RowBox[{"Xcm", "[", 
+          RowBox[{
+           RowBox[{"r1", "[", "\[Theta]", "]"}], ",", 
+           RowBox[{"r2", "[", 
+            RowBox[{"a", ",", 
+             RowBox[{
+              RowBox[{"k", " ", "\[Theta]"}], "+", "\[Phi]"}]}], "]"}], ",", 
+           "1", ",", "m2"}], "]"}], ",", 
+         RowBox[{"Xrel", "[", 
+          RowBox[{
+           RowBox[{"r1", "[", "\[Theta]", "]"}], ",", 
+           RowBox[{"r2", "[", 
+            RowBox[{"a", ",", 
+             RowBox[{
+              RowBox[{"k", " ", "\[Theta]"}], "+", "\[Phi]"}]}], "]"}]}], 
+          "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[Theta]", ",", "0", ",", 
+         RowBox[{"10", "\[Pi]"}]}], "}"}], ",", 
+       RowBox[{"PlotStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+         "Blue", ",", " ", "Red", ",", " ", "Pink", ",", " ", "Green"}], 
+         "}"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Graphics", "[", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"Blue", ",", 
+          RowBox[{"Arrow", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "0"}], "}"}], ",", 
+             RowBox[{"r1", "[", "\[Alpha]", "]"}]}], "}"}], "]"}]}], "}"}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"Red", ",", 
+          RowBox[{"Arrow", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "0"}], "}"}], ",", 
+             RowBox[{"r2", "[", 
+              RowBox[{"a", ",", 
+               RowBox[{
+                RowBox[{"k", " ", "\[Alpha]"}], "+", "\[Phi]"}]}], "]"}]}], 
+            "}"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"Green", ",", 
+          RowBox[{"Arrow", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"r2", "[", 
+              RowBox[{"a", ",", 
+               RowBox[{
+                RowBox[{"k", " ", "\[Alpha]"}], "+", "\[Phi]"}]}], "]"}], ",", 
+             RowBox[{"r1", "[", "\[Alpha]", "]"}]}], "}"}], "]"}]}], "}"}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"Pink", ",", 
+          RowBox[{"Arrow", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "0"}], "}"}], ",", 
+             RowBox[{"Xcm", "[", 
+              RowBox[{
+               RowBox[{"r1", "[", "\[Alpha]", "]"}], ",", 
+               RowBox[{"r2", "[", 
+                RowBox[{"a", ",", 
+                 RowBox[{
+                  RowBox[{"k", " ", "\[Alpha]"}], "+", "\[Phi]"}]}], "]"}], 
+               ",", "1", ",", "m2"}], "]"}]}], "}"}], "]"}]}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"Green", ",", 
+          RowBox[{"Arrow", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "0"}], "}"}], ",", 
+             RowBox[{"Xrel", "[", 
+              RowBox[{
+               RowBox[{"r1", "[", "\[Alpha]", "]"}], ",", 
+               RowBox[{"r2", "[", 
+                RowBox[{"a", ",", 
+                 RowBox[{
+                  RowBox[{"k", " ", "\[Alpha]"}], "+", "\[Phi]"}]}], "]"}]}], 
+              "]"}]}], "}"}], "]"}]}], "}"}]}], "\[IndentingNewLine]", "}"}], 
+      "]"}]}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", ",", "2"}], "}"}], ",", "0.5", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Alpha]", ",", "0", ",", 
+     RowBox[{"6", "\[Pi]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Phi]", ",", "\[Pi]"}], "}"}], ",", "0", ",", 
+     RowBox[{"2", "\[Pi]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1"}], "}"}], ",", "0.5", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"m2", ",", "1"}], "}"}], ",", "0.1", ",", "2"}], "}"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.539813967822598*^9, 3.539814158910187*^9}, {
+  3.5398142338683577`*^9, 3.539814368440963*^9}, {3.5398144363106203`*^9, 
+  3.539814609067953*^9}, {3.5398147211048965`*^9, 3.5398147349815435`*^9}, {
+  3.539815029022051*^9, 3.5398150295122766`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 2, $CellContext`k$$ = 
+    1, $CellContext`m2$$ = 1, $CellContext`\[Alpha]$$ = 
+    0, $CellContext`\[Phi]$$ = Pi, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], 2}, 0.5, 2}, {
+      Hold[$CellContext`\[Alpha]$$], 0, 6 Pi}, {{
+       Hold[$CellContext`\[Phi]$$], Pi}, 0, 2 Pi}, {{
+       Hold[$CellContext`k$$], 1}, 0.5, 2}, {{
+       Hold[$CellContext`m2$$], 1}, 0.1, 2}}, Typeset`size$$ = {
+    360., {178., 182.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`a$130967$$ = 
+    0, $CellContext`\[Alpha]$130968$$ = 0, $CellContext`\[Phi]$130969$$ = 
+    0, $CellContext`k$130970$$ = 0, $CellContext`m2$130971$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 2, $CellContext`k$$ = 
+        1, $CellContext`m2$$ = 1, $CellContext`\[Alpha]$$ = 
+        0, $CellContext`\[Phi]$$ = Pi}, "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$130967$$, 0], 
+        Hold[$CellContext`\[Alpha]$$, $CellContext`\[Alpha]$130968$$, 0], 
+        Hold[$CellContext`\[Phi]$$, $CellContext`\[Phi]$130969$$, 0], 
+        Hold[$CellContext`k$$, $CellContext`k$130970$$, 0], 
+        Hold[$CellContext`m2$$, $CellContext`m2$130971$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        ParametricPlot[{
+          $CellContext`r1[$CellContext`\[Theta]], 
+          $CellContext`r2[$CellContext`a$$, $CellContext`k$$ $CellContext`\
+\[Theta] + $CellContext`\[Phi]$$], 
+          $CellContext`Xcm[
+           $CellContext`r1[$CellContext`\[Theta]], 
+           $CellContext`r2[$CellContext`a$$, $CellContext`k$$ $CellContext`\
+\[Theta] + $CellContext`\[Phi]$$], 1, $CellContext`m2$$], 
+          $CellContext`Xrel[
+           $CellContext`r1[$CellContext`\[Theta]], 
+           $CellContext`r2[$CellContext`a$$, $CellContext`k$$ $CellContext`\
+\[Theta] + $CellContext`\[Phi]$$]]}, {$CellContext`\[Theta], 0, 10 Pi}, 
+         PlotStyle -> {Blue, Red, Pink, Green}], 
+        Graphics[{{Blue, 
+           Arrow[{{0, 0}, 
+             $CellContext`r1[$CellContext`\[Alpha]$$]}]}, {Red, 
+           Arrow[{{0, 0}, 
+             $CellContext`r2[$CellContext`a$$, $CellContext`k$$ $CellContext`\
+\[Alpha]$$ + $CellContext`\[Phi]$$]}]}, {Green, 
+           Arrow[{
+             $CellContext`r2[$CellContext`a$$, $CellContext`k$$ $CellContext`\
+\[Alpha]$$ + $CellContext`\[Phi]$$], 
+             $CellContext`r1[$CellContext`\[Alpha]$$]}]}, {Pink, 
+           Arrow[{{0, 0}, 
+             $CellContext`Xcm[
+              $CellContext`r1[$CellContext`\[Alpha]$$], 
+              $CellContext`r2[$CellContext`a$$, $CellContext`k$$ \
+$CellContext`\[Alpha]$$ + $CellContext`\[Phi]$$], 1, $CellContext`m2$$]}]}, {
+          Green, 
+           Arrow[{{0, 0}, 
+             $CellContext`Xrel[
+              $CellContext`r1[$CellContext`\[Alpha]$$], 
+              $CellContext`r2[$CellContext`a$$, $CellContext`k$$ \
+$CellContext`\[Alpha]$$ + $CellContext`\[Phi]$$]]}]}}]], 
+      "Specifications" :> {{{$CellContext`a$$, 2}, 0.5, 
+         2}, {$CellContext`\[Alpha]$$, 0, 6 Pi}, {{$CellContext`\[Phi]$$, Pi},
+          0, 2 Pi}, {{$CellContext`k$$, 1}, 0.5, 2}, {{$CellContext`m2$$, 1}, 
+         0.1, 2}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{403., {276., 282.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.539814016350292*^9, {3.539814121424384*^9, 3.5398141597902374`*^9}, {
+   3.5398142998703833`*^9, 3.5398143693120084`*^9}, 3.5398144506255937`*^9, 
+   3.539814486591586*^9, {3.539814538947759*^9, 3.539814609817996*^9}, {
+   3.5398147221629133`*^9, 3.5398147354035683`*^9}, 3.539815030400924*^9, 
+   3.540098661962932*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"In", " ", "most", " ", "cases"}], ",", " ", 
+    RowBox[{
+    "we", " ", "actually", " ", "solved", " ", "the", " ", "relativty", " ", 
+     "frame", " ", "solution"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "the", " ", "solution", " ", "is", " ", "often", " ", "in", " ", 
+    "spherical", " ", 
+    RowBox[{"symmetry", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "and", " ", "assume", " ", "the", " ", "center", " ", "of", " ", "mass", 
+    " ", 
+    RowBox[{"don", "'"}], "t", " ", "move"}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.5398147915715547`*^9, 3.5398148212075777`*^9}, {
+  3.5398148941620226`*^9, 3.5398149531885557`*^9}}]
+}, Open  ]]
+},
+WindowSize->{892, 544},
+WindowMargins->{{Automatic, 55}, {Automatic, 40}},
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (February 23, \
+2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 114, 1, 76, "Title"],
+Cell[696, 25, 1451, 42, 179, "Input"],
+Cell[2150, 69, 544, 15, 43, "Input"],
+Cell[CellGroupData[{
+Cell[2719, 88, 4815, 129, 208, "Input"],
+Cell[7537, 219, 4466, 86, 575, "Output"]
+}, Open  ]],
+Cell[12018, 308, 789, 19, 58, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

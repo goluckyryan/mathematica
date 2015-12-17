@@ -1,0 +1,219 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      7371,        210]
+NotebookOptionsPosition[      6896,        190]
+NotebookOutlinePosition[      7238,        205]
+CellTagsIndexPosition[      7195,        202]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Coin Tossing", "Title",
+ CellChangeTimes->{{3.444900026586125*^9, 3.444900031961125*^9}, 
+   3.44490205228925*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"m", "=", "30"}], ";"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"#", " ", "of", " ", "round"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n", "=", "5"}], ";", " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"#", " ", "of", " ", "toss"}], " ", "*)"}], "\[IndentingNewLine]", 
+  
+  RowBox[{"A", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Random", "[", 
+        RowBox[{"Integer", ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1"}], "}"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "1", ",", "m"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N0", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Count", "[", 
+      RowBox[{
+       RowBox[{"A", "[", 
+        RowBox[{"[", "j", "]"}], "]"}], ",", "0"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "1", ",", "m"}], "}"}]}], "]"}]}], ";", " ", 
+  RowBox[{"(*", 
+   RowBox[{"number", " ", "of", " ", "\"\<0\>\"", " ", "in", " ", "A"}], 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"N1", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Count", "[", 
+      RowBox[{
+       RowBox[{"A", "[", 
+        RowBox[{"[", "j", "]"}], "]"}], ",", "1"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "1", ",", "m"}], "}"}]}], "]"}]}], " ", 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"B", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"Count", "[", 
+        RowBox[{"N0", ",", "i"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "0", ",", "n"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"MB", "=", 
+   RowBox[{"Max", "[", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Count", "[", 
+       RowBox[{"N0", ",", "i"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "0", ",", 
+        RowBox[{"n", "+", "1"}]}], "}"}]}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"P", "=", 
+  RowBox[{"N", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"B", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "[", 
+        RowBox[{"[", "2", "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"n", "+", "1"}]}], "}"}]}], "]"}], "/", "m"}], ",", "2"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"ListPlot", "[", 
+  RowBox[{"B", ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "1"}], ",", 
+        RowBox[{"n", "+", "1"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "MB"}], "}"}]}], "}"}]}], ",", 
+   RowBox[{"Filling", "\[Rule]", "Axis"}], ",", 
+   RowBox[{"Axes", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"True", ",", "False"}], "}"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.444900690023625*^9, 3.444900808008*^9}, {
+  3.444900838148625*^9, 3.444901063148625*^9}, {3.444901196398625*^9, 
+  3.44490145128925*^9}, {3.444901488742375*^9, 3.44490181228925*^9}, {
+  3.4449018501955*^9, 3.44490186003925*^9}, {3.444901948883*^9, 
+  3.444901967008*^9}, {3.4449019978205*^9, 3.44490205228925*^9}, {
+  3.444902109367375*^9, 3.44490216928925*^9}, {3.44490220128925*^9, 
+  3.44490261666425*^9}, {3.444902655867375*^9, 3.44490274928925*^9}, {
+  3.444902783898625*^9, 3.444902858133*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0", ",", "0.1333333333333333333`1.999999999999999", ",", 
+   "0.2666666666666666667`1.999999999999999", ",", 
+   "0.3333333333333333333`1.9999999999999991", ",", 
+   "0.2333333333333333333`2.000000000000001", ",", 
+   "0.0333333333333333334`1.999999999999999"}], "}"}]], "Output",
+ CellChangeTimes->{{3.444902073086125*^9, 3.44490217003925*^9}, {
+  3.4449022151955*^9, 3.444902371148625*^9}, {3.444902403461125*^9, 
+  3.4449024096955*^9}, {3.44490244853925*^9, 3.444902472273625*^9}, {
+  3.44490250585175*^9, 3.444902617117375*^9}, {3.44490265635175*^9, 
+  3.444902749867375*^9}, {3.444902784523625*^9, 3.444902867883*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  GraphicsComplexBox[{{0., 0.}, {1., 4.}, {2., 8.}, {3., 10.}, {4., 7.}, {5., 
+   1.}, {1., 0.}, {2., 0.}, {3., 0.}, {4., 0.}, {5., 0.}, {0., 0.}, {1., 
+   4.}, {2., 8.}, {3., 10.}, {4., 7.}, {5., 1.}}, {{{}, {}, {}, {}, 
+     {Hue[0.67, 0.6, 0.6], Opacity[0.2], LineBox[{7, 2}], LineBox[{8, 3}], 
+      LineBox[{9, 4}], LineBox[{10, 5}], LineBox[{11, 6}]}}, {{}, 
+     {Hue[0.67, 0.6, 0.6], PointBox[{12, 13, 14, 15, 16, 17}]}, {}}}],
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, False},
+  AxesOrigin->{0, 0},
+  PlotRange->{{-1, 6}, {0, 10}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.444902073086125*^9, 3.44490217003925*^9}, {
+  3.4449022151955*^9, 3.444902371148625*^9}, {3.444902403461125*^9, 
+  3.4449024096955*^9}, {3.44490244853925*^9, 3.444902472273625*^9}, {
+  3.44490250585175*^9, 3.444902617117375*^9}, {3.44490265635175*^9, 
+  3.444902749867375*^9}, {3.444902784523625*^9, 3.444902867898625*^9}},
+ ImageCache->GraphicsData["CompressedBitmap", "\<\
+eJztmksvA1EUx2+nUjZWdlZdWYh2EFuxEI+NpdhqhLQSj2DhA3j7AIgmEsEX
+kLD0WLHA1kYkLESQIGkIkdF7Z+bqve4trZmm+DftzMk5Z37/+5x0TqYjNhbv
+HYiNJXpi4baR2HA80TMabh0aSbuCAUICcULIdZhQ20qbzsFKf60EPVDP13Yp
+PQXppTXUMqhVy31RapVwi/nq2IXMZBb9RcQoowRtgTJFejU7lgg+V1dKjUo+
+XQvkPPpT8SJqacMxglzE9nJX3h0wv9mwGj7U2gHWNvuHY6wdJ9Z/uQP0U18M
+TVRNeVRcxNJy9mZJajqqnTZDB1L5jIxtyS6M6Hr0MTnabWnyvI9t6Qjkep8I
+0RPraHfGPgnZolamaKnHPkej/fDggslvb526M+iHbuj19c2XfmT4ylOpF781
+Kh4env+CRuXtTcpvDe4LFG5ZF9iHZV1cGljWv29Zm4ol8oWPT7Op0MgyLap0
+U9Fts3DN7LdDkbOzO1m+6vLiXpYPX109ylKffQZVboAABCAAAQj8YwHncX58
+fe3EampcWp2c2CH+Sp13dW5QqeeW5qTPUvTpdWdocJM9vfok1QsssMACCyyw
+wAILLLDAAgsssMACCyywwAJbtFj7XSNeAl6an9t3X5LyAOuWe59oudc7rFDa
+9QCbBAIIIIAAAggggAACCCCAAAIIIID4MUJ6025lemqX9OWFEEoq+SGE8kmO
+iAWkIx3p3qYvi3eH5OzMnlvWzJKuKq5mSVcVTVXpxwghhBBCOYaO7JDwF2dR
+CAk3LCdEAu9q9FYB\
+\>"]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{615, 659},
+WindowMargins->{{Automatic, 158}, {Automatic, 2}},
+FrontEndVersion->"6.0 for Microsoft Windows (32-bit) (April 28, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[590, 23, 120, 2, 83, "Title"],
+Cell[CellGroupData[{
+Cell[735, 29, 3562, 107, 212, "Input"],
+Cell[4300, 138, 666, 12, 30, "Output"],
+Cell[4969, 152, 1899, 34, 248, 685, 13, "CachedBoxData", "BoxData", "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,402 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     12109,        393]
+NotebookOptionsPosition[     10852,        345]
+NotebookOutlinePosition[     11198,        360]
+CellTagsIndexPosition[     11155,        357]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Binomial Distribution
+HyperGeometric Distribution
+Poisson Distribution\
+\>", "Title",
+ CellChangeTimes->{{3.465461122393402*^9, 3.465461153690277*^9}, 
+   3.465461478752777*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Binomial Distribution", "Section",
+ CellChangeTimes->{{3.465461173612152*^9, 3.465461179846527*^9}}],
+
+Cell["When there is replacable random draw", "Text",
+ CellChangeTimes->{{3.465461415768402*^9, 3.465461431159027*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Bi", "[", 
+   RowBox[{"NumberOfPick_", ",", "probability_", ",", "x_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Binomial", "[", 
+    RowBox[{"NumberOfPick", ",", "x"}], "]"}], 
+   SuperscriptBox["probability", "x"], 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"1", "-", "probability"}], ")"}], 
+    RowBox[{"NumberOfPick", "-", "x"}]]}]}]], "Input",
+ CellChangeTimes->{{3.465461191674652*^9, 3.465461209877777*^9}, {
+  3.465461245205902*^9, 3.465461266518402*^9}, {3.465461529768402*^9, 
+  3.465461577018402*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"Bi", "[", 
+      RowBox[{"10", ",", "p", ",", "x"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", "10"}], "}"}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"p", ",", "0.1", ",", "1", ",", "0.1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.465461271502777*^9, 3.465461336737152*^9}, {
+  3.465461583971527*^9, 3.465461584362152*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`p$$ = 0.2, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`p$$], 0.1, 1, 0.1}}, Typeset`size$$ = {
+    360., {110., 115.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`p$1699$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`p$$ = 0.1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`p$$, $CellContext`p$1699$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Plot[
+        $CellContext`Bi[
+        10, $CellContext`p$$, $CellContext`x], {$CellContext`x, 0, 10}], 
+      "Specifications" :> {{$CellContext`p$$, 0.1, 1, 0.1}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{407., {155., 160.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.465461280752777*^9, 3.465461337409027*^9}, {
+  3.465461580049652*^9, 3.465461585190277*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["HyperGeometric Distribution", "Section",
+ CellChangeTimes->{{3.465461402909027*^9, 3.465461409440277*^9}}],
+
+Cell["When there is NON replacable random draw", "Text",
+ CellChangeTimes->{{3.465461465424652*^9, 3.465461466330902*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"H", "[", 
+   RowBox[{
+   "TotalNumberOfSample_", ",", "NumberOfPick_", ",", "NumberOfTarget_", ",", 
+    "x_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"Binomial", "[", 
+        RowBox[{"NumberOfPick", ",", "x"}], "]"}], 
+       RowBox[{"(", 
+        FractionBox["NumberOfTarget", "TotalNumberOfSample"], ")"}], 
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"NumberOfTarget", "-", "1"}], 
+         RowBox[{"TotalNumberOfSample", "-", "1"}]], ")"}]}], "..."}], 
+     RowBox[{"(", 
+      FractionBox[
+       RowBox[{"NumberOfTarget", "-", 
+        RowBox[{"(", 
+         RowBox[{"x", "-", "1"}], ")"}]}], 
+       RowBox[{"TotalNumberOfSample", "-", 
+        RowBox[{"(", 
+         RowBox[{"x", "-", "1"}], ")"}]}]], ")"}], 
+     RowBox[{"(", 
+      FractionBox[
+       RowBox[{"TotalNumberOfSample", "-", "NumberOfTarget"}], 
+       RowBox[{"TotalNumberOfSample", "-", "x"}]], ")"}], 
+     RowBox[{"(", 
+      FractionBox[
+       RowBox[{"TotalNumberOfSample", "-", "NumberOfTarget", "-", "1"}], 
+       RowBox[{"TotalNumberOfSample", "-", "x", "-", "1"}]], ")"}]}], "..."}], 
+   RowBox[{"(", 
+    FractionBox[
+     RowBox[{"TotalNumberOfSample", "-", "NumberOfTarget", "-", 
+      RowBox[{"(", 
+       RowBox[{"NumberOfPick", "-", "x", "-", "1"}], ")"}]}], 
+     RowBox[{"TotalNumberOfSample", "-", 
+      RowBox[{"(", 
+       RowBox[{"NumberOfPick", "-", "1"}], ")"}]}]], ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.465461475080902*^9, 3.465461503893402*^9}, {
+   3.465461602518402*^9, 3.465461627549652*^9}, {3.465461666299652*^9, 
+   3.465461720143402*^9}, {3.465461810737152*^9, 3.465461984409027*^9}, {
+   3.465462213096527*^9, 3.465462304346527*^9}, 3.465462632096527*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Example", "\[IndentingNewLine]", "52", " ", "Card"}], ",", " ", 
+    RowBox[{"drawn", " ", "5"}], ",", " ", 
+    RowBox[{"2", " ", "are", " ", "hearts"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Binomial", "[", 
+     RowBox[{"5", ",", "2"}], "]"}], 
+    RowBox[{"(", 
+     FractionBox["13", "52"], ")"}], 
+    RowBox[{"(", 
+     FractionBox[
+      RowBox[{"13", "-", "1"}], 
+      RowBox[{"52", "-", "1"}]], ")"}], 
+    RowBox[{"(", 
+     FractionBox[
+      RowBox[{"52", "-", "13"}], 
+      RowBox[{"52", "-", "2"}]], ")"}], 
+    RowBox[{"(", 
+     FractionBox[
+      RowBox[{"52", "-", "13", "-", "1"}], 
+      RowBox[{"52", "-", "3"}]], ")"}], 
+    RowBox[{"(", 
+     FractionBox[
+      RowBox[{"52", "-", "13", "-", "2"}], 
+      RowBox[{"52", "-", "4"}]], ")"}]}], "//", "N"}]}]], "Input",
+ CellChangeTimes->{{3.465461494080902*^9, 3.465461494643402*^9}, {
+  3.465462049768402*^9, 3.465462182518402*^9}}],
+
+Cell[BoxData["0.2742797118847539`"], "Output",
+ CellChangeTimes->{{3.465462180034027*^9, 3.465462182955902*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"HG", "[", 
+    RowBox[{"NN_", ",", "n_", ",", "T_", ",", "x_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"Binomial", "[", 
+     RowBox[{"n", ",", "x"}], "]"}], " ", 
+    FractionBox[
+     RowBox[{
+      FractionBox[
+       RowBox[{"T", "!"}], 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"T", "-", "x"}], ")"}], "!"}]], 
+      FractionBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"NN", "-", "T"}], ")"}], "!"}], 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"NN", "-", "T", "-", 
+          RowBox[{"(", 
+           RowBox[{"n", "-", "x"}], ")"}]}], ")"}], "!"}]]}], 
+     FractionBox[
+      RowBox[{"NN", "!"}], 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"NN", "-", "n"}], ")"}], "!"}]]]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.465462331846527*^9, 3.465462587596527*^9}, {
+  3.465462627409027*^9, 3.465462637440277*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"HG", "[", 
+   RowBox[{"52", ",", "5", ",", "13", ",", "2"}], "]"}], "//", "N"}]], "Input",
+ CellChangeTimes->{{3.465462596596527*^9, 3.465462629377777*^9}}],
+
+Cell[BoxData["0.2742797118847539`"], "Output",
+ CellChangeTimes->{{3.465462609143402*^9, 3.465462613643402*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"H", "[", 
+   RowBox[{"NN_", ",", "n_", ",", "T_", ",", "x_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Binomial", "[", 
+    RowBox[{"T", ",", "x"}], "]"}], 
+   FractionBox[
+    RowBox[{"Binomial", "[", 
+     RowBox[{
+      RowBox[{"NN", "-", "T"}], ",", 
+      RowBox[{"n", "-", "x"}]}], "]"}], 
+    RowBox[{"Binomial", "[", 
+     RowBox[{"NN", ",", "n"}], "]"}]]}]}]], "Input",
+ CellChangeTimes->{{3.465462677174652*^9, 3.465462722987152*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"H", "[", 
+   RowBox[{"52", ",", "5", ",", "13", ",", "2"}], "]"}], "//", "N"}]], "Input",
+ CellChangeTimes->{{3.465462726830902*^9, 3.465462735315277*^9}}],
+
+Cell[BoxData["0.2742797118847539`"], "Output",
+ CellChangeTimes->{3.465462735690277*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"HE", "[", 
+   RowBox[{"NN_", ",", "n_", ",", "T_", ",", "x_"}], "]"}], ":=", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"n", "!"}], 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"n", "-", "x"}], ")"}], "!"}], 
+     RowBox[{"x", "!"}]}]], " ", 
+   FractionBox[
+    RowBox[{"T", "!"}], 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"T", "-", "x"}], ")"}], "!"}]], 
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"NN", "-", "T"}], ")"}], "!"}], 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"NN", "-", "T", "-", 
+       RowBox[{"(", 
+        RowBox[{"n", "-", "x"}], ")"}]}], ")"}], "!"}]], 
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"NN", "-", "n"}], ")"}], "!"}], 
+    RowBox[{"NN", "!"}]]}]}]], "Input",
+ CellChangeTimes->{{3.465462751034027*^9, 3.465462773502777*^9}, 
+   3.465462877799652*^9, {3.465462926377777*^9, 3.465462953705902*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"HE", "[", 
+  RowBox[{"n", ",", "n", ",", "a", ",", "b"}], "]"}]], "Input",
+ CellChangeTimes->{{3.465462957362152*^9, 3.465462968752777*^9}, {
+  3.465463162409027*^9, 3.465463167502777*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   RowBox[{"a", "!"}], " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "a"}], "+", "n"}], ")"}], "!"}]}], 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"a", "-", "b"}], ")"}], "!"}], " ", 
+   RowBox[{"b", "!"}], " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "a"}], "+", "b"}], ")"}], "!"}], " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "b"}], "+", "n"}], ")"}], "!"}]}]]], "Output",
+ CellChangeTimes->{
+  3.465462969205902*^9, {3.465463163877777*^9, 3.465463167987152*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{615, 659},
+WindowMargins->{{Automatic, 171}, {48, Automatic}},
+FrontEndVersion->"7.0 for Microsoft Windows (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 187, 6, 191, "Title"],
+Cell[CellGroupData[{
+Cell[779, 32, 106, 1, 71, "Section"],
+Cell[888, 35, 118, 1, 29, "Text"],
+Cell[1009, 38, 553, 14, 52, "Input"],
+Cell[CellGroupData[{
+Cell[1587, 56, 515, 13, 72, "Input"],
+Cell[2105, 71, 1650, 34, 332, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3804, 111, 112, 1, 71, "Section"],
+Cell[3919, 114, 122, 1, 29, "Text"],
+Cell[4044, 117, 1780, 46, 221, "Input"],
+Cell[CellGroupData[{
+Cell[5849, 167, 1018, 31, 108, "Input"],
+Cell[6870, 200, 112, 1, 30, "Output"]
+}, Open  ]],
+Cell[6997, 204, 915, 30, 68, "Input"],
+Cell[CellGroupData[{
+Cell[7937, 238, 191, 4, 31, "Input"],
+Cell[8131, 244, 112, 1, 30, "Output"]
+}, Open  ]],
+Cell[8258, 248, 476, 14, 49, "Input"],
+Cell[CellGroupData[{
+Cell[8759, 266, 190, 4, 31, "Input"],
+Cell[8952, 272, 88, 1, 30, "Output"]
+}, Open  ]],
+Cell[9055, 276, 927, 32, 49, "Input"],
+Cell[CellGroupData[{
+Cell[10007, 312, 213, 4, 31, "Input"],
+Cell[10223, 318, 589, 22, 49, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

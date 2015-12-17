@@ -1,0 +1,625 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     24551,        616]
+NotebookOptionsPosition[     24041,        594]
+NotebookOutlinePosition[     24382,        609]
+CellTagsIndexPosition[     24339,        606]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"hitp", "[", 
+   RowBox[{"dt_", ",", "shift_"}], "]"}], ":=", 
+  RowBox[{"dt", "+", "shift"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"hitm", "[", 
+   RowBox[{"dt_", ",", "shift_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"-", "dt"}], "+", "shift"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"hitp2", "[", 
+   RowBox[{"dt_", ",", "shift_"}], "]"}], ":=", 
+  RowBox[{"dt", "-", "shift"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"hitm2", "[", 
+   RowBox[{"dt_", ",", "shift_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"-", "dt"}], "-", "shift"}]}]}], "Input",
+ CellChangeTimes->{{3.56570814631759*^9, 3.5657081520789194`*^9}, {
+  3.5657081878579664`*^9, 3.565708192774247*^9}, {3.5657082248950844`*^9, 
+  3.5657082313244524`*^9}, {3.5657082934350047`*^9, 3.565708301335457*^9}, {
+  3.565708419670225*^9, 3.5657084399243836`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Remove", "[", 
+  RowBox[{"hitp", ",", "hitm", ",", "hitp2", ",", "hitm2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.565708537485964*^9, 3.5657085477945533`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"GraphicsGrid", "[", 
+    RowBox[{"{", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Graphics", "[", 
+        RowBox[{"{", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Arrow", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Text", "[", 
+           RowBox[{"\"\<Wire\>\"", ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", 
+              RowBox[{"-", "0.3"}]}], "}"}]}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Line", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", 
+               RowBox[{"-", "0.2"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"0", ",", "0.2"}], "}"}]}], "}"}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Arrow", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "0.22"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"dt", ",", "0.22"}], "}"}]}], "}"}], "]"}], ",", 
+          RowBox[{"Text", "[", 
+           RowBox[{"\"\<Drift Time\>\"", ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"dt", "/", "2"}], ",", "0.26"}], "}"}]}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Circle", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "dt"}], ",", "0"}], "}"}], ",", "0.01"}], "]"}], 
+          ",", "\[IndentingNewLine]", 
+          RowBox[{"Circle", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"dt", ",", "0"}], "}"}], ",", "0.01"}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Text", "[", 
+           RowBox[{"\"\<Colored Bar = Est. Pos.\>\"", ",", " ", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "0.6"}], ",", "0.3"}], "}"}]}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Arrow", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", 
+               RowBox[{"-", "0.22"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"hitp", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], ",", 
+               RowBox[{"-", "0.22"}]}], "}"}]}], "}"}], "]"}], ",", 
+          RowBox[{"Text", "[", 
+           RowBox[{"\"\<Est.Pos.\>\"", ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"hitp", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], "/", "2"}], ",", 
+              RowBox[{"-", "0.26"}]}], "}"}]}], "]"}], ",", 
+          "\[IndentingNewLine]", "Blue", ",", 
+          RowBox[{"Line", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"hitp", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], ",", 
+               RowBox[{"-", "0.1"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"hitp", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], ",", "0.1"}], "}"}]}], 
+            "}"}], "]"}], ",", "\[IndentingNewLine]", "Cyan", ",", 
+          RowBox[{"Line", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"hitp2", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], ",", 
+               RowBox[{"-", "0.1"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"hitp2", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], ",", "0.1"}], "}"}]}], 
+            "}"}], "]"}], ",", "\[IndentingNewLine]", "Red", ",", 
+          RowBox[{"Line", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"hitm", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], ",", 
+               RowBox[{"-", "0.1"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"hitm", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], ",", "0.1"}], "}"}]}], 
+            "}"}], "]"}], ",", "\[IndentingNewLine]", "Pink", ",", 
+          RowBox[{"Line", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"hitm2", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], ",", 
+               RowBox[{"-", "0.1"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"hitm2", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], ",", "0.1"}], "}"}]}], 
+            "}"}], "]"}]}], "\[IndentingNewLine]", "}"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Plot", "[", 
+        RowBox[{
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"hitp", "[", 
+            RowBox[{"dT", ",", "shift"}], "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"hitm", "[", 
+            RowBox[{"dT", ",", "shift"}], "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"hitp2", "[", 
+            RowBox[{"dT", ",", "shift"}], "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"hitm2", "[", 
+            RowBox[{"dT", ",", "shift"}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"dT", ",", "0", ",", "1"}], "}"}], ",", 
+         RowBox[{"PlotStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"Blue", ",", "Red", ",", "Cyan", ",", "Pink"}], "}"}]}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+         RowBox[{"FrameLabel", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<Drift Time\>\"", ",", "\"\<Est. Pos. - Wire Pos.\>\""}], 
+           "}"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Epilog", "\[Rule]", " ", 
+          RowBox[{"{", 
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"dt", ",", 
+                RowBox[{"-", "1"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"dt", ",", "1"}], "}"}]}], "}"}], "]"}], "}"}]}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}]}], 
+      "\[IndentingNewLine]", "}"}], "}"}], "]"}], "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"dt", ",", "0.3", ",", "\"\<Drift Time\>\""}], "}"}], ",", "0", 
+     ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"shift", ",", "0", ",", "0.2"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.565707497160125*^9, 3.565707592996942*^9}, {
+  3.5657076257678165`*^9, 3.565707674751618*^9}, {3.5657077190631523`*^9, 
+  3.56570773423102*^9}, {3.5657077671579037`*^9, 3.56570791448533*^9}, {
+  3.565707956256719*^9, 3.56570801833927*^9}, {3.565708052858245*^9, 
+  3.565708057469508*^9}, {3.565708098391849*^9, 3.5657081788054485`*^9}, {
+  3.565708234499634*^9, 3.5657082684515758`*^9}, {3.5657083100429544`*^9, 
+  3.5657083836671658`*^9}, {3.5657084429595575`*^9, 3.5657085301295433`*^9}, {
+  3.5657086445870895`*^9, 3.5657086541736383`*^9}, {3.565708853769054*^9, 
+  3.565709289084953*^9}, {3.565709351017495*^9, 3.565709389878718*^9}, {
+  3.566808940005109*^9, 3.566809011093397*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`dt$$ = 0.368, $CellContext`shift$$ = 0, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`dt$$], 0.3, "Drift Time"}, 0, 1}, {
+      Hold[$CellContext`shift$$], 0, 0.2}}, Typeset`size$$ = {
+    865., {134., 138.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`dt$3367$$ = 
+    0, $CellContext`shift$3368$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`dt$$ = 0.3, $CellContext`shift$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`dt$$, $CellContext`dt$3367$$, 0], 
+        Hold[$CellContext`shift$$, $CellContext`shift$3368$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> GraphicsGrid[{{
+          Graphics[{
+            Arrow[{{-1, 0}, {1, 0}}], 
+            Text["Wire", {0, -0.3}], 
+            Line[{{0, -0.2}, {0, 0.2}}], 
+            Arrow[{{0, 0.22}, {$CellContext`dt$$, 0.22}}], 
+            Text["Drift Time", {$CellContext`dt$$/2, 0.26}], 
+            Circle[{-$CellContext`dt$$, 0}, 0.01], 
+            Circle[{$CellContext`dt$$, 0}, 0.01], 
+            Text["Colored Bar = Est. Pos.", {-0.6, 0.3}], 
+            Arrow[{{0, -0.22}, {
+               $CellContext`hitp[$CellContext`dt$$, $CellContext`shift$$], \
+-0.22}}], 
+            Text[
+            "Est.Pos.", {$CellContext`hitp[$CellContext`dt$$, \
+$CellContext`shift$$]/2, -0.26}], Blue, 
+            Line[{{
+               $CellContext`hitp[$CellContext`dt$$, $CellContext`shift$$], \
+-0.1}, {
+               $CellContext`hitp[$CellContext`dt$$, $CellContext`shift$$], 
+               0.1}}], Cyan, 
+            Line[{{
+               $CellContext`hitp2[$CellContext`dt$$, $CellContext`shift$$], \
+-0.1}, {
+               $CellContext`hitp2[$CellContext`dt$$, $CellContext`shift$$], 
+               0.1}}], Red, 
+            Line[{{
+               $CellContext`hitm[$CellContext`dt$$, $CellContext`shift$$], \
+-0.1}, {
+               $CellContext`hitm[$CellContext`dt$$, $CellContext`shift$$], 
+               0.1}}], Pink, 
+            Line[{{
+               $CellContext`hitm2[$CellContext`dt$$, $CellContext`shift$$], \
+-0.1}, {
+               $CellContext`hitm2[$CellContext`dt$$, $CellContext`shift$$], 
+               0.1}}]}], 
+          Plot[{
+            $CellContext`hitp[$CellContext`dT, $CellContext`shift$$], 
+            $CellContext`hitm[$CellContext`dT, $CellContext`shift$$], 
+            $CellContext`hitp2[$CellContext`dT, $CellContext`shift$$], 
+            $CellContext`hitm2[$CellContext`dT, $CellContext`shift$$]}, \
+{$CellContext`dT, 0, 1}, PlotStyle -> {Blue, Red, Cyan, Pink}, Frame -> True, 
+           FrameLabel -> {"Drift Time", "Est. Pos. - Wire Pos."}, Epilog -> {
+             Line[{{$CellContext`dt$$, -1}, {$CellContext`dt$$, 1}}]}, 
+           ImageSize -> 400]}}], 
+      "Specifications" :> {{{$CellContext`dt$$, 0.3, "Drift Time"}, 0, 
+         1}, {$CellContext`shift$$, 0, 0.2}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{910., {190., 195.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.5668090116383543`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"GraphicsGrid", "[", 
+    RowBox[{"{", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Graphics", "[", 
+        RowBox[{"{", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Arrow", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Text", "[", 
+           RowBox[{"\"\<Wire\>\"", ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", 
+              RowBox[{"-", "0.3"}]}], "}"}]}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Line", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", 
+               RowBox[{"-", "0.2"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"0", ",", "0.2"}], "}"}]}], "}"}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Arrow", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "0.22"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"dt", ",", "0.22"}], "}"}]}], "}"}], "]"}], ",", 
+          RowBox[{"Text", "[", 
+           RowBox[{"\"\<Drift Time\>\"", ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"dt", "/", "2"}], ",", "0.26"}], "}"}]}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Circle", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "dt"}], ",", "0"}], "}"}], ",", "0.01"}], "]"}], 
+          ",", "\[IndentingNewLine]", 
+          RowBox[{"Circle", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"dt", ",", "0"}], "}"}], ",", "0.01"}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Text", "[", 
+           RowBox[{"\"\<Colored Bar = Est. Pos.\>\"", ",", " ", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "0.6"}], ",", "0.3"}], "}"}]}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Arrow", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", 
+               RowBox[{"-", "0.22"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"hitp", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], ",", 
+               RowBox[{"-", "0.22"}]}], "}"}]}], "}"}], "]"}], ",", 
+          RowBox[{"Text", "[", 
+           RowBox[{"\"\<Est.Pos.\>\"", ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"hitp", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], "/", "2"}], ",", 
+              RowBox[{"-", "0.26"}]}], "}"}]}], "]"}], ",", 
+          "\[IndentingNewLine]", "Blue", ",", 
+          RowBox[{"Line", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"hitp", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], ",", 
+               RowBox[{"-", "0.1"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"hitp", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], ",", "0.1"}], "}"}]}], 
+            "}"}], "]"}], ",", "\[IndentingNewLine]", "Cyan", ",", 
+          RowBox[{"Line", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"hitp2", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], ",", 
+               RowBox[{"-", "0.1"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"hitp2", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], ",", "0.1"}], "}"}]}], 
+            "}"}], "]"}], ",", "\[IndentingNewLine]", "Red", ",", 
+          RowBox[{"Line", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"hitm", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], ",", 
+               RowBox[{"-", "0.1"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"hitm", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], ",", "0.1"}], "}"}]}], 
+            "}"}], "]"}], ",", "\[IndentingNewLine]", "Pink", ",", 
+          RowBox[{"Line", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"hitm2", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], ",", 
+               RowBox[{"-", "0.1"}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"hitm2", "[", 
+                RowBox[{"dt", ",", "shift"}], "]"}], ",", "0.1"}], "}"}]}], 
+            "}"}], "]"}]}], "\[IndentingNewLine]", "}"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Plot", "[", 
+        RowBox[{
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"hitp", "[", 
+             RowBox[{"dT", ",", "shift"}], "]"}], "-", "dT"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"hitp", "[", 
+             RowBox[{"dT", ",", "shift"}], "]"}], "+", "dT"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"dT", ",", "0", ",", "1"}], "}"}], ",", 
+         RowBox[{"PlotStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"Blue", ",", "Red", ",", "Cyan", ",", "Pink"}], "}"}]}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+         RowBox[{"FrameLabel", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<Drift Time\>\"", ",", "\"\<Est. Pos. - Wire Pos.\>\""}], 
+           "}"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Epilog", "\[Rule]", " ", 
+          RowBox[{"{", 
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"dt", ",", 
+                RowBox[{"-", "1"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"dt", ",", "1"}], "}"}]}], "}"}], "]"}], "}"}]}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}]}], 
+      "\[IndentingNewLine]", "}"}], "}"}], "]"}], "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"dt", ",", "0.3", ",", "\"\<Drift Time\>\""}], "}"}], ",", "0", 
+     ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"shift", ",", "0", ",", "0.2"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.566809049215269*^9, 3.5668090624519377`*^9}, {
+  3.566809188837771*^9, 3.566809227003091*^9}, {3.566809350920727*^9, 
+  3.5668093658493147`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`dt$$ = 0.458, $CellContext`shift$$ = 0.035, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`dt$$], 0.3, "Drift Time"}, 0, 1}, {
+      Hold[$CellContext`shift$$], 0, 0.2}}, Typeset`size$$ = {
+    865., {134., 138.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`dt$10562$$ = 
+    0, $CellContext`shift$10563$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`dt$$ = 0.3, $CellContext`shift$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`dt$$, $CellContext`dt$10562$$, 0], 
+        Hold[$CellContext`shift$$, $CellContext`shift$10563$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> GraphicsGrid[{{
+          Graphics[{
+            Arrow[{{-1, 0}, {1, 0}}], 
+            Text["Wire", {0, -0.3}], 
+            Line[{{0, -0.2}, {0, 0.2}}], 
+            Arrow[{{0, 0.22}, {$CellContext`dt$$, 0.22}}], 
+            Text["Drift Time", {$CellContext`dt$$/2, 0.26}], 
+            Circle[{-$CellContext`dt$$, 0}, 0.01], 
+            Circle[{$CellContext`dt$$, 0}, 0.01], 
+            Text["Colored Bar = Est. Pos.", {-0.6, 0.3}], 
+            Arrow[{{0, -0.22}, {
+               $CellContext`hitp[$CellContext`dt$$, $CellContext`shift$$], \
+-0.22}}], 
+            Text[
+            "Est.Pos.", {$CellContext`hitp[$CellContext`dt$$, \
+$CellContext`shift$$]/2, -0.26}], Blue, 
+            Line[{{
+               $CellContext`hitp[$CellContext`dt$$, $CellContext`shift$$], \
+-0.1}, {
+               $CellContext`hitp[$CellContext`dt$$, $CellContext`shift$$], 
+               0.1}}], Cyan, 
+            Line[{{
+               $CellContext`hitp2[$CellContext`dt$$, $CellContext`shift$$], \
+-0.1}, {
+               $CellContext`hitp2[$CellContext`dt$$, $CellContext`shift$$], 
+               0.1}}], Red, 
+            Line[{{
+               $CellContext`hitm[$CellContext`dt$$, $CellContext`shift$$], \
+-0.1}, {
+               $CellContext`hitm[$CellContext`dt$$, $CellContext`shift$$], 
+               0.1}}], Pink, 
+            Line[{{
+               $CellContext`hitm2[$CellContext`dt$$, $CellContext`shift$$], \
+-0.1}, {
+               $CellContext`hitm2[$CellContext`dt$$, $CellContext`shift$$], 
+               0.1}}]}], 
+          
+          Plot[{$CellContext`hitp[$CellContext`dT, $CellContext`shift$$] - \
+$CellContext`dT, $CellContext`hitp[$CellContext`dT, $CellContext`shift$$] + \
+$CellContext`dT}, {$CellContext`dT, 0, 1}, 
+           PlotStyle -> {Blue, Red, Cyan, Pink}, Frame -> True, 
+           FrameLabel -> {"Drift Time", "Est. Pos. - Wire Pos."}, Epilog -> {
+             Line[{{$CellContext`dt$$, -1}, {$CellContext`dt$$, 1}}]}, 
+           ImageSize -> 400]}}], 
+      "Specifications" :> {{{$CellContext`dt$$, 0.3, "Drift Time"}, 0, 
+         1}, {$CellContext`shift$$, 0, 0.2}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{910., {190., 195.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.5668090632605352`*^9, {3.566809190662787*^9, 3.566809227620504*^9}, {
+   3.566809358052642*^9, 3.566809366768188*^9}}]
+}, Open  ]]
+},
+WindowSize->{1121, 867},
+WindowMargins->{{Automatic, -1150}, {28, Automatic}},
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 875, 22, 88, "Input"],
+Cell[1435, 44, 184, 3, 30, "Input"],
+Cell[CellGroupData[{
+Cell[1644, 51, 7652, 189, 468, "Input"],
+Cell[9299, 242, 3860, 80, 402, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13196, 327, 6968, 181, 430, "Input"],
+Cell[20167, 510, 3858, 81, 402, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

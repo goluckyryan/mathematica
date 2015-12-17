@@ -1,0 +1,271 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      9731,        262]
+NotebookOptionsPosition[      8963,        231]
+NotebookOutlinePosition[      9308,        246]
+CellTagsIndexPosition[      9265,        243]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Frequency Modulation", "Title",
+ CellChangeTimes->{{3.50650390125532*^9, 3.5065039084017286`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "The", " ", "Carrier", " ", "frequency", " ", "is", " ", "\[Omega]c"}], 
+    ",", " ", 
+    RowBox[{"the", " ", "Carrier", " ", "signal", " ", "is"}]}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"CS", "[", "t", "]"}], " ", "=", " ", 
+   RowBox[{"Cos", "[", 
+    RowBox[{"\[Omega]c", " ", "t"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.506504151599639*^9, 3.5065041700346932`*^9}, {
+  3.506504445286437*^9, 3.5065044670376806`*^9}, {3.5065045223368435`*^9, 
+  3.5065045289532223`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "modulation", " ", "signal", " ", "amplutide", " ", "is", " ", 
+    "normalized", " ", "to", " ", "1"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"MS", "[", "t_", "]"}], ":=", " ", 
+    RowBox[{"Sin", "[", 
+     RowBox[{"\[Omega]m", " ", "t"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"MF", "[", "t", "]"}], "=", 
+    RowBox[{"Integrate", "[", 
+     RowBox[{
+      RowBox[{"MS", "[", "\[Tau]", "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\[Tau]", ",", "0", ",", "t"}], "}"}]}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.506504176918087*^9, 3.506504212430118*^9}, {
+   3.506504413818637*^9, 3.506504438603054*^9}, 3.5065048905179024`*^9, {
+   3.506505017009137*^9, 3.506505089450281*^9}, {3.506505149364708*^9, 
+   3.506505150226757*^9}, {3.5065055546288877`*^9, 3.5065055606792336`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"1", "-", 
+   RowBox[{"Cos", "[", 
+    RowBox[{"t", " ", "\[Omega]m"}], "]"}]}], "\[Omega]m"]], "Output",
+ CellChangeTimes->{3.5065051521988697`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"SquareWave", "[", "x", "]"}], ","}]}]], "Input",
+ CellChangeTimes->{{3.5065067487681885`*^9, 3.5065067637640457`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"y", "[", 
+  RowBox[{"1", ",", "f", ",", "1", ",", "MF"}], "]"}]], "Input",
+ CellChangeTimes->{{3.506505189685014*^9, 3.5065052001346116`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Cos", "[", 
+  RowBox[{"f", "+", 
+   FractionBox[
+    RowBox[{"1", "-", 
+     RowBox[{"Cos", "[", "\[Omega]m", "]"}]}], "\[Omega]m"]}], 
+  "]"}]], "Output",
+ CellChangeTimes->{3.5065052009616585`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"the", " ", "modulation", " ", "is", " ", "a", " ", "process"}], 
+   " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"y", "[", 
+     RowBox[{"t_", ",", "\[Omega]c_", ",", "d\[Omega]_", ",", "MF_"}], "]"}], 
+    ":=", " ", 
+    RowBox[{"Cos", "[", " ", 
+     RowBox[{
+      RowBox[{"\[Omega]c", " ", "t"}], " ", "+", " ", 
+      RowBox[{"d\[Omega]", " ", 
+       RowBox[{
+        RowBox[{"Composition", "[", "MF", "]"}], "[", "t", "]"}]}]}], "]"}]}],
+    "\[IndentingNewLine]", 
+   RowBox[{"y", "[", 
+    RowBox[{"t", ",", "\[Omega]c", ",", "m", ",", "MF"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.506504671126354*^9, 3.506504686113211*^9}, {
+  3.50650472070819*^9, 3.5065047776804485`*^9}, {3.5065048763590927`*^9, 
+  3.5065050000511675`*^9}, {3.506505098565802*^9, 3.506505118165923*^9}, {
+  3.5065052976691904`*^9, 3.506505312211022*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Cos", "[", 
+  RowBox[{
+   RowBox[{"t", " ", "\[Omega]c"}], "+", 
+   RowBox[{"m", " ", 
+    RowBox[{"(", 
+     RowBox[{"1", "-", 
+      RowBox[{"Cos", "[", 
+       RowBox[{"t", " ", "\[Omega]m"}], "]"}]}], ")"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5065056184875402`*^9, 3.506505619113576*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", " ", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Cos", "[", 
+       RowBox[{
+        RowBox[{"t", " ", "\[Omega]c"}], "+", 
+        RowBox[{"m", " ", 
+         SuperscriptBox["t", "2"]}]}], "]"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", "10"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "1"}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Omega]c", ",", "3", ",", "\"\<Carrier frequrncy\>\""}], 
+      "}"}], ",", "2", ",", "60"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"m", ",", "1", ",", "\"\<frequancy variation range\>\""}], 
+      "}"}], ",", "0", ",", "4"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Omega]m", ",", "1", ",", "\"\<modulation frequency\>\""}], 
+      "}"}], ",", "0", ",", "10"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5065025881112127`*^9, 3.506502625764366*^9}, {
+   3.5065026618224287`*^9, 3.506502670102902*^9}, {3.5065027067229967`*^9, 
+   3.5065029431355186`*^9}, {3.5065030246591816`*^9, 3.506503068005661*^9}, {
+   3.506503163207106*^9, 3.506503217631219*^9}, {3.506503489408764*^9, 
+   3.5065034956751223`*^9}, {3.5065035624669423`*^9, 
+   3.5065035988390226`*^9}, {3.506503864273205*^9, 3.5065038939529023`*^9}, {
+   3.5065048715228157`*^9, 3.506504884864579*^9}, 3.5065049653761845`*^9, {
+   3.5065050071985765`*^9, 3.5065050343681307`*^9}, {3.5065051259023657`*^9, 
+   3.506505126309389*^9}, 3.5065051696408677`*^9, {3.506505211958288*^9, 
+   3.506505213168357*^9}, {3.506505292800912*^9, 3.5065053474320364`*^9}, {
+   3.5065054893211517`*^9, 3.5065055297354636`*^9}, {3.5065056208286743`*^9, 
+   3.5065056224507666`*^9}, {3.506506787281391*^9, 3.506506819382227*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`m$$ = 1.92, $CellContext`\[Omega]c$$ = 
+    3.2, $CellContext`\[Omega]m$$ = 1.16, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`\[Omega]c$$], 3, "Carrier frequrncy"}, 2, 60}, {{
+       Hold[$CellContext`m$$], 1, "frequancy variation range"}, 0, 4}, {{
+       Hold[$CellContext`\[Omega]m$$], 1, "modulation frequency"}, 0, 10}}, 
+    Typeset`size$$ = {360., {110., 115.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`\[Omega]c$726$$ = 0, $CellContext`m$727$$ = 
+    0, $CellContext`\[Omega]m$728$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`m$$ = 1, $CellContext`\[Omega]c$$ = 
+        3, $CellContext`\[Omega]m$$ = 1}, "ControllerVariables" :> {
+        Hold[$CellContext`\[Omega]c$$, $CellContext`\[Omega]c$726$$, 0], 
+        Hold[$CellContext`m$$, $CellContext`m$727$$, 0], 
+        Hold[$CellContext`\[Omega]m$$, $CellContext`\[Omega]m$728$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Plot[{
+         Cos[$CellContext`t $CellContext`\[Omega]c$$ + $CellContext`m$$ \
+$CellContext`t^2]}, {$CellContext`t, 0, 10}, PlotRange -> 1], 
+      "Specifications" :> {{{$CellContext`\[Omega]c$$, 3, 
+          "Carrier frequrncy"}, 2, 
+         60}, {{$CellContext`m$$, 1, "frequancy variation range"}, 0, 
+         4}, {{$CellContext`\[Omega]m$$, 1, "modulation frequency"}, 0, 10}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{409., {183., 188.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.5065029236744056`*^9, 3.506502943897562*^9}, 
+   3.506503069203729*^9, {3.506503177353915*^9, 3.5065032183612604`*^9}, {
+   3.5065038763178935`*^9, 3.5065038952099743`*^9}, 3.5065050350881715`*^9, 
+   3.5065051268214183`*^9, 3.506505214818452*^9, {3.5065053198034563`*^9, 
+   3.5065053488541183`*^9}, 3.5065054939224153`*^9, 3.5065055305185084`*^9, 
+   3.5065056234568243`*^9, {3.506506810839739*^9, 3.5065068198962564`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{607, 487},
+WindowMargins->{{Automatic, 69}, {92, Automatic}},
+FrontEndVersion->"7.0 for Microsoft Windows (64-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 104, 1, 83, "Title"],
+Cell[674, 25, 577, 15, 52, "Input"],
+Cell[CellGroupData[{
+Cell[1276, 44, 904, 21, 72, "Input"],
+Cell[2183, 67, 187, 5, 47, "Output"]
+}, Open  ]],
+Cell[2385, 75, 178, 4, 31, "Input"],
+Cell[CellGroupData[{
+Cell[2588, 83, 166, 3, 31, "Input"],
+Cell[2757, 88, 223, 7, 47, "Output"]
+}, Open  ]],
+Cell[2995, 98, 925, 22, 72, "Input"],
+Cell[3923, 122, 324, 9, 31, "Input"],
+Cell[CellGroupData[{
+Cell[4272, 135, 1912, 41, 96, "Input"],
+Cell[6187, 178, 2748, 49, 388, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

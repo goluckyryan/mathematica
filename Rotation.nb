@@ -1,0 +1,3829 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[    162688,       3820]
+NotebookOptionsPosition[    160827,       3753]
+NotebookOutlinePosition[    161166,       3768]
+CellTagsIndexPosition[    161123,       3765]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Rotation", "Title",
+ CellChangeTimes->{{3.648896508049535*^9, 3.648896518689703*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Rz", "[", "\[Theta]_", "]"}], ":=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Cos", "[", "\[Theta]", "]"}], ",", 
+        RowBox[{"Sin", "[", "\[Theta]", "]"}], ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ",", 
+        RowBox[{"Cos", "[", "\[Theta]", "]"}], ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}]}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"row", " ", "vector", " ", "transfor"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Rx", "[", "\[Theta]_", "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"Cos", "[", "\[Theta]", "]"}], ",", 
+       RowBox[{"Sin", "[", "\[Theta]", "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"-", 
+        RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ",", 
+       RowBox[{"Cos", "[", "\[Theta]", "]"}]}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Ry", "[", "\[Theta]_", "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Cos", "[", "\[Theta]", "]"}], ",", "0", ",", 
+       RowBox[{"-", 
+        RowBox[{"Sin", "[", "\[Theta]", "]"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Sin", "[", "\[Theta]", "]"}], ",", "0", ",", 
+       RowBox[{"Cos", "[", "\[Theta]", "]"}]}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Drot", "[", 
+   RowBox[{"\[Alpha]_", ",", "\[Beta]_", ",", "\[Gamma]_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Rz", "[", "\[Gamma]", "]"}], ".", 
+   RowBox[{"Ry", "[", "\[Beta]", "]"}], ".", 
+   RowBox[{"Rz", "[", "\[Alpha]", "]"}]}]}]}], "Input",
+ CellChangeTimes->{{3.648896542552168*^9, 3.648896601099869*^9}, {
+  3.64889663257373*^9, 3.648896648036151*^9}, {3.648896782835766*^9, 
+  3.648896785201673*^9}, {3.648897055716668*^9, 3.6488970588144503`*^9}, {
+  3.648897112516354*^9, 3.6488971139042683`*^9}, {3.648897208711294*^9, 
+  3.6488972525986834`*^9}, {3.6488973629170313`*^9, 3.648897368605822*^9}, {
+  3.6488977038359747`*^9, 3.648897708397401*^9}, {3.648897895976685*^9, 
+  3.648897911622325*^9}, {3.648898535037733*^9, 3.648898566548147*^9}, {
+  3.6488997684337606`*^9, 3.648899789002263*^9}, {3.648899819178846*^9, 
+  3.648899828826538*^9}, {3.6489035974942417`*^9, 3.6489036316438227`*^9}, {
+  3.648904008223092*^9, 3.648904016013949*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"GraphicsGrid", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Graphics3D", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Arrow", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}], ",",
+             "\[IndentingNewLine]", 
+            RowBox[{"Arrow", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", 
+                 RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "}"}], "]"}], ",",
+             "\[IndentingNewLine]", 
+            RowBox[{"Arrow", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0", ",", 
+                 RowBox[{"-", "1"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}], "]"}], ",",
+             "\[IndentingNewLine]", "Red", ",", 
+            RowBox[{"Arrow", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"1", ",", "0", ",", "0"}], "}"}], ".", 
+                RowBox[{"Rz", "[", 
+                 RowBox[{"\[Gamma]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"Ry", "[", 
+                 RowBox[{"\[Beta]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"Rz", "[", 
+                 RowBox[{"\[Alpha]", " ", "\[Degree]"}], "]"}]}]}], "}"}], 
+             "]"}], ",", " ", 
+            RowBox[{"(*", " ", 
+             RowBox[{"row", " ", "vector"}], " ", "*)"}], 
+            "\[IndentingNewLine]", "Green", ",", 
+            RowBox[{"Arrow", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", 
+                RowBox[{"Rz", "[", 
+                 RowBox[{"\[Gamma]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"Ry", "[", 
+                 RowBox[{"\[Beta]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"Rz", "[", 
+                 RowBox[{"\[Alpha]", " ", "\[Degree]"}], "]"}]}]}], "}"}], 
+             "]"}], ",", "\[IndentingNewLine]", "Blue", ",", 
+            RowBox[{"Arrow", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "0", ",", "1"}], "}"}], ".", 
+                RowBox[{"Rz", "[", 
+                 RowBox[{"\[Gamma]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"Ry", "[", 
+                 RowBox[{"\[Beta]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"Rz", "[", 
+                 RowBox[{"\[Alpha]", " ", "\[Degree]"}], "]"}]}]}], "}"}], 
+             "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
+          RowBox[{
+          "PlotLabel", "\[Rule]", 
+           "\"\<Change of coordinate, u = (v.R).e\>\""}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Graphics3D", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Arrow", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Rz", "[", 
+                 RowBox[{"\[Gamma]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"Ry", "[", 
+                 RowBox[{"\[Beta]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"Rz", "[", 
+                 RowBox[{"\[Alpha]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}]}], ",", 
+               RowBox[{
+                RowBox[{"Rz", "[", 
+                 RowBox[{"\[Gamma]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"Ry", "[", 
+                 RowBox[{"\[Beta]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"Rz", "[", 
+                 RowBox[{"\[Alpha]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"{", 
+                 RowBox[{"1", ",", "0", ",", "0"}], "}"}]}]}], "}"}], "]"}], 
+            ",", "\[IndentingNewLine]", 
+            RowBox[{"Arrow", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Rz", "[", 
+                 RowBox[{"\[Gamma]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"Ry", "[", 
+                 RowBox[{"\[Beta]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"Rz", "[", 
+                 RowBox[{"\[Alpha]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"{", 
+                 RowBox[{"0", ",", 
+                  RowBox[{"-", "1"}], ",", "0"}], "}"}]}], ",", 
+               RowBox[{
+                RowBox[{"Rz", "[", 
+                 RowBox[{"\[Gamma]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"Ry", "[", 
+                 RowBox[{"\[Beta]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"Rz", "[", 
+                 RowBox[{"\[Alpha]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "1", ",", "0"}], "}"}]}]}], "}"}], "]"}], 
+            ",", "\[IndentingNewLine]", 
+            RowBox[{"Arrow", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Rz", "[", 
+                 RowBox[{"\[Gamma]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"Ry", "[", 
+                 RowBox[{"\[Beta]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"Rz", "[", 
+                 RowBox[{"\[Alpha]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "0", ",", 
+                  RowBox[{"-", "1"}]}], "}"}]}], ",", 
+               RowBox[{
+                RowBox[{"Rz", "[", 
+                 RowBox[{"\[Gamma]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"Ry", "[", 
+                 RowBox[{"\[Beta]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"Rz", "[", 
+                 RowBox[{"\[Alpha]", " ", "\[Degree]"}], "]"}], ".", 
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "0", ",", "1"}], "}"}]}]}], "}"}], "]"}], 
+            ",", "\[IndentingNewLine]", "Red", ",", 
+            RowBox[{"Arrow", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}], ",",
+             "\[IndentingNewLine]", "Green", ",", 
+            RowBox[{"Arrow", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "}"}], "]"}], ",",
+             "\[IndentingNewLine]", "Blue", ",", 
+            RowBox[{"Arrow", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}], "]"}]}], 
+           "\[IndentingNewLine]", "}"}], ",", 
+          RowBox[{
+          "PlotLabel", "\[Rule]", "\"\<Change of basis, u = v.(R.e)\>\""}]}], 
+         "]"}]}], "\[IndentingNewLine]", "}"}], "}"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "800"}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"\[Alpha]", ",", "0", ",", "360"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"\[Beta]", ",", "0", ",", "360"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"\[Gamma]", ",", "0", ",", "360"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJwdyFsoQwEAh/EZHbSMjkuIkFyytCcWD7Iajchl7aS2h1l2EWKEBytRXsXG
+ppSpPWySpTXNTtRobVmJtUwrrciTS0wL7YXzPw9fv/pq1NPDGi6HwylngkPH
+nxGv8FU8t6lMwNa3+DOUOPV/MKxSZZ8yTrSHcqGVLq2GKltlE0yfeEQwK9bS
+CU1UWgIna3N6oCtiXGb/QNAM6bB7D6bkIzb4okg6YaD+3gv9P/ILKBMOXsL8
+pPIabq3yovCcvxOHpEvxBRtDJM/H+FBI5kH7GVEG36n+Kthr/B6FCe2jGhLF
+Bh3kChcMMH77tAgtRRlLUEkdmGDmTdQMuwlREFp95BXcTYkraEZjQMbqljYL
+4LZU0wb52vkOqJkRdEH72mwf3Phdl0HbSokOjt19jLMe+Q+hfj/GanF46qKM
+BY6pBvgPALfSRQ==
+  "]],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`\[Alpha]$$ = 0., $CellContext`\[Beta]$$ = 
+    0., $CellContext`\[Gamma]$$ = 0., Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`\[Alpha]$$], 0, 360}, {
+      Hold[$CellContext`\[Beta]$$], 0, 360}, {
+      Hold[$CellContext`\[Gamma]$$], 0, 360}}, Typeset`size$$ = {
+    800., {207., 211.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`\[Alpha]$8287$$ = 
+    0, $CellContext`\[Beta]$8288$$ = 0, $CellContext`\[Gamma]$8289$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`\[Alpha]$$ = 0, $CellContext`\[Beta]$$ = 
+        0, $CellContext`\[Gamma]$$ = 0}, "ControllerVariables" :> {
+        Hold[$CellContext`\[Alpha]$$, $CellContext`\[Alpha]$8287$$, 0], 
+        Hold[$CellContext`\[Beta]$$, $CellContext`\[Beta]$8288$$, 0], 
+        Hold[$CellContext`\[Gamma]$$, $CellContext`\[Gamma]$8289$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> GraphicsGrid[{{
+          Graphics3D[{
+            Arrow[{{-1, 0, 0}, {1, 0, 0}}], 
+            Arrow[{{0, -1, 0}, {0, 1, 0}}], 
+            Arrow[{{0, 0, -1}, {0, 0, 1}}], Red, 
+            Arrow[{{0, 0, 0}, 
+              Dot[{1, 0, 0}, 
+               $CellContext`Rz[$CellContext`\[Gamma]$$ Degree], 
+               $CellContext`Ry[$CellContext`\[Beta]$$ Degree], 
+               $CellContext`Rz[$CellContext`\[Alpha]$$ Degree]]}], Green, 
+            Arrow[{{0, 0, 0}, 
+              Dot[{0, 1, 0}, 
+               $CellContext`Rz[$CellContext`\[Gamma]$$ Degree], 
+               $CellContext`Ry[$CellContext`\[Beta]$$ Degree], 
+               $CellContext`Rz[$CellContext`\[Alpha]$$ Degree]]}], Blue, 
+            Arrow[{{0, 0, 0}, 
+              Dot[{0, 0, 1}, 
+               $CellContext`Rz[$CellContext`\[Gamma]$$ Degree], 
+               $CellContext`Ry[$CellContext`\[Beta]$$ Degree], 
+               $CellContext`Rz[$CellContext`\[Alpha]$$ Degree]]}]}, PlotLabel -> 
+           "Change of coordinate, u = (v.R).e"], 
+          Graphics3D[{
+            Arrow[{
+              Dot[
+               $CellContext`Rz[$CellContext`\[Gamma]$$ Degree], 
+               $CellContext`Ry[$CellContext`\[Beta]$$ Degree], 
+               $CellContext`Rz[$CellContext`\[Alpha]$$ Degree], {-1, 0, 0}], 
+              Dot[
+               $CellContext`Rz[$CellContext`\[Gamma]$$ Degree], 
+               $CellContext`Ry[$CellContext`\[Beta]$$ Degree], 
+               $CellContext`Rz[$CellContext`\[Alpha]$$ Degree], {1, 0, 0}]}], 
+            
+            Arrow[{
+              Dot[
+               $CellContext`Rz[$CellContext`\[Gamma]$$ Degree], 
+               $CellContext`Ry[$CellContext`\[Beta]$$ Degree], 
+               $CellContext`Rz[$CellContext`\[Alpha]$$ Degree], {0, -1, 0}], 
+              Dot[
+               $CellContext`Rz[$CellContext`\[Gamma]$$ Degree], 
+               $CellContext`Ry[$CellContext`\[Beta]$$ Degree], 
+               $CellContext`Rz[$CellContext`\[Alpha]$$ Degree], {0, 1, 0}]}], 
+            
+            Arrow[{
+              Dot[
+               $CellContext`Rz[$CellContext`\[Gamma]$$ Degree], 
+               $CellContext`Ry[$CellContext`\[Beta]$$ Degree], 
+               $CellContext`Rz[$CellContext`\[Alpha]$$ Degree], {0, 0, -1}], 
+              Dot[
+               $CellContext`Rz[$CellContext`\[Gamma]$$ Degree], 
+               $CellContext`Ry[$CellContext`\[Beta]$$ Degree], 
+               $CellContext`Rz[$CellContext`\[Alpha]$$ Degree], {0, 0, 1}]}], 
+            Red, 
+            Arrow[{{0, 0, 0}, {1, 0, 0}}], Green, 
+            Arrow[{{0, 0, 0}, {0, 1, 0}}], Blue, 
+            Arrow[{{0, 0, 0}, {0, 0, 1}}]}, PlotLabel -> 
+           "Change of basis, u = v.(R.e)"]}}, ImageSize -> 800], 
+      "Specifications" :> {{$CellContext`\[Alpha]$$, 0, 
+         360}, {$CellContext`\[Beta]$$, 0, 360}, {$CellContext`\[Gamma]$$, 0, 
+         360}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{845., {276., 281.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.648899933703148*^9, 3.6488999803570538`*^9}, {
+   3.6489000424041*^9, 3.64890005657056*^9}, {3.6489006655734367`*^9, 
+   3.648900681084255*^9}, 3.648901580605839*^9, 3.64890167376598*^9, {
+   3.64890177662495*^9, 3.648901789278446*^9}, {3.648901950720798*^9, 
+   3.6489019680861273`*^9}, 3.6489526375500603`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Rz", "[", "\[Gamma]", "]"}], ".", 
+    RowBox[{"Ry", "[", "\[Beta]", "]"}], ".", 
+    RowBox[{"Rz", "[", "\[Alpha]", " ", "]"}]}], "//", "Simplify"}], "//", 
+  "MatrixForm"}]], "Input",
+ CellChangeTimes->{{3.648903504627185*^9, 3.648903523741008*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{
+       RowBox[{
+        RowBox[{"Cos", "[", "\[Alpha]", "]"}], " ", 
+        RowBox[{"Cos", "[", "\[Beta]", "]"}], " ", 
+        RowBox[{"Cos", "[", "\[Gamma]", "]"}]}], "-", 
+       RowBox[{
+        RowBox[{"Sin", "[", "\[Alpha]", "]"}], " ", 
+        RowBox[{"Sin", "[", "\[Gamma]", "]"}]}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Cos", "[", "\[Beta]", "]"}], " ", 
+        RowBox[{"Cos", "[", "\[Gamma]", "]"}], " ", 
+        RowBox[{"Sin", "[", "\[Alpha]", "]"}]}], "+", 
+       RowBox[{
+        RowBox[{"Cos", "[", "\[Alpha]", "]"}], " ", 
+        RowBox[{"Sin", "[", "\[Gamma]", "]"}]}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"Cos", "[", "\[Gamma]", "]"}]}], " ", 
+       RowBox[{"Sin", "[", "\[Beta]", "]"}]}]},
+     {
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"Cos", "[", "\[Gamma]", "]"}]}], " ", 
+        RowBox[{"Sin", "[", "\[Alpha]", "]"}]}], "-", 
+       RowBox[{
+        RowBox[{"Cos", "[", "\[Alpha]", "]"}], " ", 
+        RowBox[{"Cos", "[", "\[Beta]", "]"}], " ", 
+        RowBox[{"Sin", "[", "\[Gamma]", "]"}]}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Cos", "[", "\[Alpha]", "]"}], " ", 
+        RowBox[{"Cos", "[", "\[Gamma]", "]"}]}], "-", 
+       RowBox[{
+        RowBox[{"Cos", "[", "\[Beta]", "]"}], " ", 
+        RowBox[{"Sin", "[", "\[Alpha]", "]"}], " ", 
+        RowBox[{"Sin", "[", "\[Gamma]", "]"}]}]}], 
+      RowBox[{
+       RowBox[{"Sin", "[", "\[Beta]", "]"}], " ", 
+       RowBox[{"Sin", "[", "\[Gamma]", "]"}]}]},
+     {
+      RowBox[{
+       RowBox[{"Cos", "[", "\[Alpha]", "]"}], " ", 
+       RowBox[{"Sin", "[", "\[Beta]", "]"}]}], 
+      RowBox[{
+       RowBox[{"Sin", "[", "\[Alpha]", "]"}], " ", 
+       RowBox[{"Sin", "[", "\[Beta]", "]"}]}], 
+      RowBox[{"Cos", "[", "\[Beta]", "]"}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.64890350089332*^9, 3.648903524266697*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Eigensystem", "[", 
+   RowBox[{"Drot", "[", 
+    RowBox[{"0", ",", "0", ",", "\[Gamma]"}], "]"}], "]"}], "//", 
+  "Simplify"}]], "Input",
+ CellChangeTimes->{{3.648903638937554*^9, 3.648903671402954*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     RowBox[{
+      RowBox[{"Cos", "[", "\[Gamma]", "]"}], "-", 
+      RowBox[{"\[ImaginaryI]", " ", 
+       RowBox[{"Sin", "[", "\[Gamma]", "]"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"Cos", "[", "\[Gamma]", "]"}], "+", 
+      RowBox[{"\[ImaginaryI]", " ", 
+       RowBox[{"Sin", "[", "\[Gamma]", "]"}]}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[ImaginaryI]", ",", "1", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "\[ImaginaryI]"}], ",", "1", ",", "0"}], "}"}]}], "}"}]}],
+   "}"}]], "Output",
+ CellChangeTimes->{{3.648903650644299*^9, 3.648903672198989*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Show", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Graphics3D", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", 
+              RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", 
+              RowBox[{"-", "1"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", "Red", ",", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"1", ",", "0", ",", "0"}], "}"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"\[Gamma]", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Ry", "[", 
+              RowBox[{"\[Beta]", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"\[Alpha]", " ", "\[Degree]"}], "]"}]}]}], "}"}], "]"}],
+          ",", " ", 
+         RowBox[{"(*", " ", 
+          RowBox[{"row", " ", "vector"}], " ", "*)"}], "\[IndentingNewLine]", 
+         "Green", ",", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"\[Gamma]", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Ry", "[", 
+              RowBox[{"\[Beta]", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"\[Alpha]", " ", "\[Degree]"}], "]"}]}]}], "}"}], "]"}],
+          ",", "\[IndentingNewLine]", "Blue", ",", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "0", ",", "1"}], "}"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"\[Gamma]", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Ry", "[", 
+              RowBox[{"\[Beta]", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"\[Alpha]", " ", "\[Degree]"}], "]"}]}]}], "}"}], "]"}],
+          ",", "\[IndentingNewLine]", "Pink", ",", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Sin", "[", 
+                 RowBox[{"a", " ", "\[Gamma]", " ", "\[Degree]"}], "]"}], 
+                RowBox[{"Cos", "[", "b", " ", "]"}]}], ",", 
+               RowBox[{
+                RowBox[{"Sin", "[", 
+                 RowBox[{"a", " ", "\[Gamma]", " ", "\[Degree]"}], "]"}], 
+                RowBox[{"Sin", "[", "b", " ", "]"}]}], ",", 
+               RowBox[{"Cos", "[", 
+                RowBox[{"a", " ", "\[Gamma]", " ", "\[Degree]"}], "]"}]}], 
+              "}"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"\[Gamma]", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Ry", "[", 
+              RowBox[{"\[Beta]", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"\[Alpha]", " ", "\[Degree]"}], "]"}]}]}], "}"}], 
+          "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
+       RowBox[{
+       "PlotLabel", "\[Rule]", "\"\<Movement on a rotation body\>\""}]}], 
+      "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ParametricPlot3D", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Sin", "[", 
+             RowBox[{"t", " ", "\[Degree]"}], "]"}], ",", "0", ",", 
+            RowBox[{"Cos", "[", " ", 
+             RowBox[{"t", " ", "\[Degree]"}], "]"}]}], "}"}], ".", 
+          RowBox[{"Rz", "[", 
+           RowBox[{"\[Gamma]", " ", "\[Degree]"}], "]"}], ".", 
+          RowBox[{"Ry", "[", 
+           RowBox[{"\[Beta]", " ", "\[Degree]"}], "]"}], ".", 
+          RowBox[{"Rz", "[", 
+           RowBox[{"\[Alpha]", " ", "\[Degree]"}], "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Sin", "[", 
+             RowBox[{"t", " ", "\[Degree]"}], "]"}], ",", 
+            RowBox[{"Cos", "[", " ", 
+             RowBox[{"t", " ", "\[Degree]"}], "]"}], ",", "0"}], "}"}], ".", 
+          RowBox[{"Rz", "[", 
+           RowBox[{"\[Gamma]", " ", "\[Degree]"}], "]"}], ".", 
+          RowBox[{"Ry", "[", 
+           RowBox[{"\[Beta]", " ", "\[Degree]"}], "]"}], ".", 
+          RowBox[{"Rz", "[", 
+           RowBox[{"\[Alpha]", " ", "\[Degree]"}], "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"Sin", "[", 
+             RowBox[{"t", " ", "\[Degree]"}], "]"}], ",", 
+            RowBox[{"Cos", "[", " ", 
+             RowBox[{"t", " ", "\[Degree]"}], "]"}]}], "}"}], ".", 
+          RowBox[{"Rz", "[", 
+           RowBox[{"\[Gamma]", " ", "\[Degree]"}], "]"}], ".", 
+          RowBox[{"Ry", "[", 
+           RowBox[{"\[Beta]", " ", "\[Degree]"}], "]"}], ".", 
+          RowBox[{"Rz", "[", 
+           RowBox[{"\[Alpha]", " ", "\[Degree]"}], "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Sin", "[", 
+              RowBox[{"a", " ", "t", " ", "\[Degree]"}], "]"}], 
+             RowBox[{"Cos", "[", "b", " ", "]"}]}], ",", 
+            RowBox[{
+             RowBox[{"Sin", "[", 
+              RowBox[{"a", " ", "t", " ", "\[Degree]"}], "]"}], 
+             RowBox[{"Sin", "[", "b", " ", "]"}]}], ",", 
+            RowBox[{"Cos", "[", 
+             RowBox[{"a", " ", "t", " ", "\[Degree]"}], "]"}]}], "}"}], ".", 
+          RowBox[{"Rz", "[", 
+           RowBox[{"t", " ", "\[Degree]"}], "]"}], ".", 
+          RowBox[{"Ry", "[", 
+           RowBox[{"\[Beta]", " ", "\[Degree]"}], "]"}], ".", 
+          RowBox[{"Rz", "[", 
+           RowBox[{"\[Alpha]", " ", "\[Degree]"}], "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Sin", "[", 
+             RowBox[{"a", " ", "t", " ", "\[Degree]"}], "]"}], 
+            RowBox[{"Cos", "[", "b", " ", "]"}]}], ",", 
+           RowBox[{
+            RowBox[{"Sin", "[", 
+             RowBox[{"a", " ", "t", " ", "\[Degree]"}], "]"}], 
+            RowBox[{"Sin", "[", "b", " ", "]"}]}], ",", 
+           RowBox[{"Cos", "[", 
+            RowBox[{"a", " ", "t", " ", "\[Degree]"}], "]"}]}], "}"}]}], 
+        "\[IndentingNewLine]", "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "0", ",", "2000"}], "}"}], ",", 
+       RowBox[{"PlotStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Blue", ",", "Red", ",", "Green", ",", "Pink", ",", "Cyan"}],
+          "}"}]}]}], "]"}]}], "\[IndentingNewLine]", "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "0", ",", "2"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "0", ",", "2"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"\[Alpha]", ",", "0", ",", "360"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"\[Beta]", ",", "0", ",", "360"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"\[Gamma]", ",", "0", ",", "720"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6489059095600967`*^9, 3.64890592400819*^9}, {
+   3.648905982420817*^9, 3.64890608956218*^9}, 3.6489061331814127`*^9, {
+   3.6489061793039017`*^9, 3.648906182089683*^9}, {3.648906226959041*^9, 
+   3.648906302796929*^9}, {3.6489063437792892`*^9, 3.648906369062084*^9}, {
+   3.648906422855132*^9, 3.64890647496629*^9}, {3.6489065146822557`*^9, 
+   3.648906562699155*^9}, {3.648906621912394*^9, 3.6489067153817596`*^9}, 
+   3.648906776054306*^9, {3.648906980358178*^9, 3.6489070622373877`*^9}, 
+   3.6489071330363503`*^9, {3.648907203478117*^9, 3.648907210342477*^9}, 
+   3.6489072527857122`*^9, {3.6489073416583853`*^9, 3.648907493647251*^9}, {
+   3.6489075375704117`*^9, 3.6489076118651237`*^9}, {3.6489076692961607`*^9, 
+   3.6489076730246143`*^9}, {3.64890773377849*^9, 3.648907799913484*^9}, {
+   3.64890787191789*^9, 3.6489078889664497`*^9}, {3.6489126187290697`*^9, 
+   3.648912731481709*^9}, {3.648953224541911*^9, 3.648953235603286*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 0.085, $CellContext`b$$ = 
+    0, $CellContext`\[Alpha]$$ = 0, $CellContext`\[Beta]$$ = 
+    0, $CellContext`\[Gamma]$$ = 0, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`a$$], 0, 2}, {
+      Hold[$CellContext`b$$], 0, 2}, {
+      Hold[$CellContext`\[Alpha]$$], 0, 360}, {
+      Hold[$CellContext`\[Beta]$$], 0, 360}, {
+      Hold[$CellContext`\[Gamma]$$], 0, 720}}, Typeset`size$$ = {
+    360., {201., 206.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`a$31564$$ = 
+    0, $CellContext`b$31565$$ = 0, $CellContext`\[Alpha]$31566$$ = 
+    0, $CellContext`\[Beta]$31567$$ = 0, $CellContext`\[Gamma]$31568$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 0, $CellContext`b$$ = 
+        0, $CellContext`\[Alpha]$$ = 0, $CellContext`\[Beta]$$ = 
+        0, $CellContext`\[Gamma]$$ = 0}, "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$31564$$, 0], 
+        Hold[$CellContext`b$$, $CellContext`b$31565$$, 0], 
+        Hold[$CellContext`\[Alpha]$$, $CellContext`\[Alpha]$31566$$, 0], 
+        Hold[$CellContext`\[Beta]$$, $CellContext`\[Beta]$31567$$, 0], 
+        Hold[$CellContext`\[Gamma]$$, $CellContext`\[Gamma]$31568$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        Graphics3D[{
+          Arrow[{{-1, 0, 0}, {1, 0, 0}}], 
+          Arrow[{{0, -1, 0}, {0, 1, 0}}], 
+          Arrow[{{0, 0, -1}, {0, 0, 1}}], Red, 
+          Arrow[{{0, 0, 0}, 
+            Dot[{1, 0, 0}, 
+             $CellContext`Rz[$CellContext`\[Gamma]$$ Degree], 
+             $CellContext`Ry[$CellContext`\[Beta]$$ Degree], 
+             $CellContext`Rz[$CellContext`\[Alpha]$$ Degree]]}], Green, 
+          Arrow[{{0, 0, 0}, 
+            Dot[{0, 1, 0}, 
+             $CellContext`Rz[$CellContext`\[Gamma]$$ Degree], 
+             $CellContext`Ry[$CellContext`\[Beta]$$ Degree], 
+             $CellContext`Rz[$CellContext`\[Alpha]$$ Degree]]}], Blue, 
+          Arrow[{{0, 0, 0}, 
+            Dot[{0, 0, 1}, 
+             $CellContext`Rz[$CellContext`\[Gamma]$$ Degree], 
+             $CellContext`Ry[$CellContext`\[Beta]$$ Degree], 
+             $CellContext`Rz[$CellContext`\[Alpha]$$ Degree]]}], Pink, 
+          Arrow[{{0, 0, 0}, 
+            
+            Dot[{Sin[($CellContext`a$$ $CellContext`\[Gamma]$$) Degree] 
+              Cos[$CellContext`b$$], 
+              Sin[($CellContext`a$$ $CellContext`\[Gamma]$$) Degree] 
+              Sin[$CellContext`b$$], 
+              Cos[($CellContext`a$$ $CellContext`\[Gamma]$$) Degree]}, 
+             $CellContext`Rz[$CellContext`\[Gamma]$$ Degree], 
+             $CellContext`Ry[$CellContext`\[Beta]$$ Degree], 
+             $CellContext`Rz[$CellContext`\[Alpha]$$ Degree]]}]}, PlotLabel -> 
+         "Movement on a rotation body"], 
+        ParametricPlot3D[{
+          Dot[{
+            Sin[$CellContext`t Degree], 0, 
+            Cos[$CellContext`t Degree]}, 
+           $CellContext`Rz[$CellContext`\[Gamma]$$ Degree], 
+           $CellContext`Ry[$CellContext`\[Beta]$$ Degree], 
+           $CellContext`Rz[$CellContext`\[Alpha]$$ Degree]], 
+          Dot[{
+            Sin[$CellContext`t Degree], 
+            Cos[$CellContext`t Degree], 0}, 
+           $CellContext`Rz[$CellContext`\[Gamma]$$ Degree], 
+           $CellContext`Ry[$CellContext`\[Beta]$$ Degree], 
+           $CellContext`Rz[$CellContext`\[Alpha]$$ Degree]], 
+          Dot[{0, 
+            Sin[$CellContext`t Degree], 
+            Cos[$CellContext`t Degree]}, 
+           $CellContext`Rz[$CellContext`\[Gamma]$$ Degree], 
+           $CellContext`Ry[$CellContext`\[Beta]$$ Degree], 
+           $CellContext`Rz[$CellContext`\[Alpha]$$ Degree]], 
+          
+          Dot[{Sin[($CellContext`a$$ $CellContext`t) Degree] 
+            Cos[$CellContext`b$$], 
+            Sin[($CellContext`a$$ $CellContext`t) Degree] 
+            Sin[$CellContext`b$$], 
+            Cos[($CellContext`a$$ $CellContext`t) Degree]}, 
+           $CellContext`Rz[$CellContext`t Degree], 
+           $CellContext`Ry[$CellContext`\[Beta]$$ Degree], 
+           $CellContext`Rz[$CellContext`\[Alpha]$$ Degree]], {
+          Sin[($CellContext`a$$ $CellContext`t) Degree] Cos[$CellContext`b$$],
+            Sin[($CellContext`a$$ $CellContext`t) Degree] 
+           Sin[$CellContext`b$$], 
+           Cos[($CellContext`a$$ $CellContext`t) Degree]}}, {$CellContext`t, 
+          0, 2000}, PlotStyle -> {Blue, Red, Green, Pink, Cyan}]], 
+      "Specifications" :> {{$CellContext`a$$, 0, 2}, {$CellContext`b$$, 0, 
+         2}, {$CellContext`\[Alpha]$$, 0, 360}, {$CellContext`\[Beta]$$, 0, 
+         360}, {$CellContext`\[Gamma]$$, 0, 720}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{405., {296., 301.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.648905925026929*^9, {3.648906083511806*^9, 3.648906090105063*^9}, 
+   3.648906133843343*^9, 3.648906182609301*^9, {3.64890624680899*^9, 
+   3.648906303198855*^9}, {3.6489063506188097`*^9, 3.648906369521501*^9}, 
+   3.6489064250504093`*^9, 3.648906475510779*^9, 3.6489065260110826`*^9, 
+   3.6489065632486753`*^9, {3.648906624007855*^9, 3.6489066526103277`*^9}, 
+   3.648906716266045*^9, 3.648906776625285*^9, 3.648906997685801*^9, {
+   3.6489070438081913`*^9, 3.648907062807332*^9}, 3.648907133565662*^9, 
+   3.648907210801115*^9, 3.6489072554087543`*^9, 3.648907343572896*^9, {
+   3.6489073947022743`*^9, 3.648907423239167*^9}, 3.648907458221662*^9, 
+   3.6489074945995407`*^9, {3.648907583336814*^9, 3.648907614130356*^9}, 
+   3.6489078003034973`*^9, 3.648907889471015*^9, {3.6489126754880877`*^9, 
+   3.6489127320003977`*^9}, 3.6489532364908776`*^9}]
+}, Open  ]],
+
+Cell[BoxData["Circle"], "Input",
+ CellChangeTimes->{{3.648913549653359*^9, 3.6489135505688953`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Show", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Graphics3D", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", 
+              RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", 
+              RowBox[{"-", "1"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", "Red", ",", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"1", ",", "0", ",", "0"}], "}"}], ".", 
+             RowBox[{"Rx", "[", 
+              RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}]}], "}"}], 
+          "]"}], ",", " ", 
+         RowBox[{"(*", " ", 
+          RowBox[{"row", " ", "vector"}], " ", "*)"}], "\[IndentingNewLine]", 
+         "Green", ",", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", 
+             RowBox[{"Rx", "[", 
+              RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}]}], "}"}], 
+          "]"}], ",", "\[IndentingNewLine]", "Blue", ",", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "0", ",", "1"}], "}"}], ".", 
+             RowBox[{"Rx", "[", 
+              RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}]}], "}"}], 
+          "]"}], ",", "\[IndentingNewLine]", "Brown", ",", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", 
+             RowBox[{"Rx", "[", 
+              RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}], ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", 
+              RowBox[{"Rx", "[", 
+               RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+              RowBox[{"Rz", "[", 
+               RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}], "+", 
+             RowBox[{"50", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"-", "a"}], " ", "\[Degree]", " ", 
+                  RowBox[{"Cos", "[", 
+                   RowBox[{"a", " ", "\[Degree]", " ", "g"}], "]"}], " ", 
+                  RowBox[{"Cos", "[", 
+                   RowBox[{"b", " ", "\[Degree]", " ", "g"}], "]"}]}], "+", 
+                 RowBox[{"b", " ", "\[Degree]", " ", 
+                  RowBox[{"Sin", "[", 
+                   RowBox[{"a", " ", "\[Degree]", " ", "g"}], "]"}], " ", 
+                  RowBox[{"Sin", "[", 
+                   RowBox[{"b", " ", "\[Degree]", " ", "g"}], "]"}]}]}], ",", 
+                
+                RowBox[{
+                 RowBox[{"-", "\[Degree]"}], " ", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"a", " ", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{"b", " ", "\[Degree]", " ", "g"}], "]"}], " ", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{"a", " ", "\[Degree]", " ", "g"}], "]"}]}], "+", 
+                   RowBox[{"b", " ", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{"a", " ", "\[Degree]", " ", "g"}], "]"}], " ", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{"b", " ", "\[Degree]", " ", "g"}], "]"}]}]}], 
+                  ")"}]}], ",", 
+                RowBox[{"b", " ", "\[Degree]", " ", 
+                 RowBox[{"Cos", "[", 
+                  RowBox[{"b", " ", "\[Degree]", " ", "g"}], "]"}]}]}], 
+               "}"}]}]}]}], "}"}], "]"}], ",", "\[IndentingNewLine]", 
+         "Purple", ",", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", 
+             RowBox[{"Rx", "[", 
+              RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}], ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", 
+              RowBox[{"Rx", "[", 
+               RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+              RowBox[{"Rz", "[", 
+               RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}], "+", 
+             RowBox[{"5000", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{
+                 SuperscriptBox["\[Degree]", "2"], " ", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    SuperscriptBox["a", "2"], "+", 
+                    SuperscriptBox["b", "2"]}], ")"}], " ", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{"b", " ", "\[Degree]", " ", "g"}], "]"}], " ", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{"a", " ", "\[Degree]", " ", "g"}], "]"}]}], "+", 
+                   RowBox[{"2", " ", "a", " ", "b", " ", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{"a", " ", "\[Degree]", " ", "g"}], "]"}], " ", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{"b", " ", "\[Degree]", " ", "g"}], "]"}]}]}], 
+                  ")"}]}], ",", 
+                RowBox[{
+                 RowBox[{"-", 
+                  SuperscriptBox["\[Degree]", "2"]}], " ", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    SuperscriptBox["a", "2"], "+", 
+                    SuperscriptBox["b", "2"]}], ")"}], " ", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{"a", " ", "\[Degree]", " ", "g"}], "]"}], " ", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{"b", " ", "\[Degree]", " ", "g"}], "]"}]}], "-", 
+                   RowBox[{"2", " ", "a", " ", "b", " ", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{"a", " ", "\[Degree]", " ", "g"}], "]"}], " ", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{"b", " ", "\[Degree]", " ", "g"}], "]"}]}]}], 
+                  ")"}]}], ",", 
+                RowBox[{
+                 RowBox[{"-", 
+                  SuperscriptBox["b", "2"]}], " ", 
+                 SuperscriptBox["\[Degree]", "2"], " ", 
+                 RowBox[{"Sin", "[", 
+                  RowBox[{"b", " ", "\[Degree]", " ", "g"}], "]"}]}]}], 
+               "}"}]}]}]}], "}"}], "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
+       RowBox[{"PlotLabel", "\[Rule]", "\"\<ratation of 2 rings\>\""}]}], 
+      "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ParametricPlot3D", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"1.0", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Sin", "[", 
+              RowBox[{"t", " ", "\[Degree]"}], "]"}], ",", "0", ",", 
+             RowBox[{"Cos", "[", " ", 
+              RowBox[{"t", " ", "\[Degree]"}], "]"}]}], "}"}], ".", 
+           RowBox[{"Rz", "[", 
+            RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"0.8", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Sin", "[", 
+              RowBox[{"t", " ", "\[Degree]"}], "]"}], ",", 
+             RowBox[{"Cos", "[", " ", 
+              RowBox[{"t", " ", "\[Degree]"}], "]"}], ",", "0"}], "}"}], ".", 
+           
+           RowBox[{"Rx", "[", 
+            RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+           RowBox[{"Rz", "[", 
+            RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", 
+          RowBox[{"Rx", "[", 
+           RowBox[{"b", " ", "t", " ", "\[Degree]"}], "]"}], ".", 
+          RowBox[{"Rz", "[", 
+           RowBox[{"a", " ", "t", " ", "\[Degree]"}], "]"}]}]}], 
+        "\[IndentingNewLine]", "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "0", ",", "2000"}], "}"}], ",", 
+       RowBox[{"PlotStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Blue", ",", "Red", ",", "Pink"}], "}"}]}]}], "]"}]}], 
+    "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "0", ",", "1"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "0", ",", "1"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"g", ",", "0", ",", "4000"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.64891278300421*^9, 3.6489128093441143`*^9}, {
+   3.6489128552142477`*^9, 3.648912891277416*^9}, {3.648912936053637*^9, 
+   3.648912960807295*^9}, {3.648912992994647*^9, 3.648912995557465*^9}, {
+   3.6489130270730953`*^9, 3.648913114192195*^9}, {3.6489131501452627`*^9, 
+   3.648913153079718*^9}, {3.648913221782694*^9, 3.6489132697525873`*^9}, {
+   3.648913305031003*^9, 3.648913419710802*^9}, {3.6489134547328568`*^9, 
+   3.64891347146596*^9}, {3.6489135024954653`*^9, 3.648913509305677*^9}, {
+   3.648913784032386*^9, 3.648913785445045*^9}, {3.648913957026182*^9, 
+   3.648913983422165*^9}, {3.648914020705309*^9, 3.648914055731544*^9}, {
+   3.6489141048273153`*^9, 3.648914220955241*^9}, {3.6489142844691668`*^9, 
+   3.64891436705223*^9}, 3.648914408767967*^9, {3.648953253647315*^9, 
+   3.648953258912825*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 
+    0.23800000000000002`, $CellContext`b$$ = 
+    0.17400000000000002`, $CellContext`g$$ = 0., Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`a$$], 0, 1}, {
+      Hold[$CellContext`b$$], 0, 1}, {
+      Hold[$CellContext`g$$], 0, 4000}}, Typeset`size$$ = {
+    360., {201., 206.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`a$31683$$ = 
+    0, $CellContext`b$31684$$ = 0, $CellContext`g$31685$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 0, $CellContext`b$$ = 
+        0, $CellContext`g$$ = 0}, "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$31683$$, 0], 
+        Hold[$CellContext`b$$, $CellContext`b$31684$$, 0], 
+        Hold[$CellContext`g$$, $CellContext`g$31685$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        Graphics3D[{
+          Arrow[{{-1, 0, 0}, {1, 0, 0}}], 
+          Arrow[{{0, -1, 0}, {0, 1, 0}}], 
+          Arrow[{{0, 0, -1}, {0, 0, 1}}], Red, 
+          Arrow[{{0, 0, 0}, 
+            Dot[{1, 0, 0}, 
+             $CellContext`Rx[($CellContext`b$$ $CellContext`g$$) Degree], 
+             $CellContext`Rz[($CellContext`a$$ $CellContext`g$$) Degree]]}], 
+          Green, 
+          Arrow[{{0, 0, 0}, 
+            Dot[{0, 1, 0}, 
+             $CellContext`Rx[($CellContext`b$$ $CellContext`g$$) Degree], 
+             $CellContext`Rz[($CellContext`a$$ $CellContext`g$$) Degree]]}], 
+          Blue, 
+          Arrow[{{0, 0, 0}, 
+            Dot[{0, 0, 1}, 
+             $CellContext`Rx[($CellContext`b$$ $CellContext`g$$) Degree], 
+             $CellContext`Rz[($CellContext`a$$ $CellContext`g$$) Degree]]}], 
+          Brown, 
+          Arrow[{
+            Dot[{0, 1, 0}, 
+             $CellContext`Rx[($CellContext`b$$ $CellContext`g$$) Degree], 
+             $CellContext`Rz[($CellContext`a$$ $CellContext`g$$) Degree]], 
+            Dot[{0, 1, 0}, 
+              $CellContext`Rx[($CellContext`b$$ $CellContext`g$$) Degree], 
+              $CellContext`Rz[($CellContext`a$$ $CellContext`g$$) Degree]] + 
+            50 {(((-$CellContext`a$$) Degree) 
+                 Cos[($CellContext`a$$ Degree) $CellContext`g$$]) 
+                Cos[($CellContext`b$$ 
+                   Degree) $CellContext`g$$] + (($CellContext`b$$ Degree) 
+                 Sin[($CellContext`a$$ Degree) $CellContext`g$$]) 
+                Sin[($CellContext`b$$ Degree) $CellContext`g$$], (-
+                Degree) (($CellContext`a$$ 
+                  Cos[($CellContext`b$$ Degree) $CellContext`g$$]) 
+                 Sin[($CellContext`a$$ 
+                    Degree) $CellContext`g$$] + ($CellContext`b$$ 
+                  Cos[($CellContext`a$$ Degree) $CellContext`g$$]) 
+                 Sin[($CellContext`b$$ 
+                    Degree) $CellContext`g$$]), ($CellContext`b$$ Degree) 
+               Cos[($CellContext`b$$ Degree) $CellContext`g$$]}}], Purple, 
+          Arrow[{
+            Dot[{0, 1, 0}, 
+             $CellContext`Rx[($CellContext`b$$ $CellContext`g$$) Degree], 
+             $CellContext`Rz[($CellContext`a$$ $CellContext`g$$) Degree]], 
+            Dot[{0, 1, 0}, 
+              $CellContext`Rx[($CellContext`b$$ $CellContext`g$$) Degree], 
+              $CellContext`Rz[($CellContext`a$$ $CellContext`g$$) Degree]] + 
+            5000 {Degree^2 ((($CellContext`a$$^2 + $CellContext`b$$^2) 
+                  Cos[($CellContext`b$$ Degree) $CellContext`g$$]) 
+                 Sin[($CellContext`a$$ Degree) $CellContext`g$$] + (((
+                    2 $CellContext`a$$) $CellContext`b$$) 
+                  Cos[($CellContext`a$$ Degree) $CellContext`g$$]) 
+                 Sin[($CellContext`b$$ Degree) $CellContext`g$$]), (-
+                Degree^2) ((($CellContext`a$$^2 + $CellContext`b$$^2) 
+                  Cos[($CellContext`a$$ Degree) $CellContext`g$$]) 
+                 Cos[($CellContext`b$$ Degree) $CellContext`g$$] - (((
+                   2 $CellContext`a$$) $CellContext`b$$) 
+                 Sin[($CellContext`a$$ Degree) $CellContext`g$$]) 
+                Sin[($CellContext`b$$ 
+                   Degree) $CellContext`g$$]), ((-$CellContext`b$$^2) 
+                Degree^2) Sin[($CellContext`b$$ Degree) $CellContext`g$$]}}]},
+          PlotLabel -> "ratation of 2 rings"], 
+        ParametricPlot3D[{1. Dot[{
+             Sin[$CellContext`t Degree], 0, 
+             Cos[$CellContext`t Degree]}, 
+            $CellContext`Rz[($CellContext`a$$ $CellContext`g$$) Degree]], 0.8 
+          Dot[{
+             Sin[$CellContext`t Degree], 
+             Cos[$CellContext`t Degree], 0}, 
+            $CellContext`Rx[($CellContext`b$$ $CellContext`g$$) Degree], 
+            $CellContext`Rz[($CellContext`a$$ $CellContext`g$$) Degree]], 
+          Dot[{0, 1, 0}, 
+           $CellContext`Rx[($CellContext`b$$ $CellContext`t) Degree], 
+           $CellContext`Rz[($CellContext`a$$ $CellContext`t) 
+            Degree]]}, {$CellContext`t, 0, 2000}, 
+         PlotStyle -> {Blue, Red, Pink}]], 
+      "Specifications" :> {{$CellContext`a$$, 0, 1}, {$CellContext`b$$, 0, 
+         1}, {$CellContext`g$$, 0, 4000}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{405., {270., 275.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.648912795440127*^9, 3.648912810681772*^9}, {
+   3.6489128592481003`*^9, 3.648912891694867*^9}, {3.648912937641364*^9, 
+   3.648912961351869*^9}, 3.648912996046257*^9, 3.64891308207136*^9, 
+   3.64891311476413*^9, 3.6489132342429037`*^9, 3.648913270904237*^9, {
+   3.6489133153113327`*^9, 3.648913420151986*^9}, {3.648913455846635*^9, 
+   3.648913472250668*^9}, 3.648913515864435*^9, 3.648913785969778*^9, 
+   3.648913984794742*^9, {3.648914021641384*^9, 3.6489140562194033`*^9}, 
+   3.648914144799603*^9, 3.648914196694545*^9, {3.64891433113405*^9, 
+   3.64891436889049*^9}, 3.6489144093534517`*^9, 3.648953261267395*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"D", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", 
+     RowBox[{"Rx", "[", 
+      RowBox[{"b", " ", "t", " ", "\[Degree]"}], "]"}], ".", 
+     RowBox[{"Rz", "[", 
+      RowBox[{"a", " ", "t", " ", "\[Degree]"}], "]"}]}], ",", "t"}], "]"}], "//",
+   "Simplify"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"D", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", 
+     RowBox[{"Rx", "[", 
+      RowBox[{"b", " ", "t", " ", "\[Degree]"}], "]"}], ".", 
+     RowBox[{"Rz", "[", 
+      RowBox[{"a", " ", "t", " ", "\[Degree]"}], "]"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"t", ",", "2"}], "}"}]}], "]"}], "//", "Simplify"}]}], "Input",
+ CellChangeTimes->{{3.648913930288669*^9, 3.648913976057856*^9}, {
+  3.648914235058023*^9, 3.6489142396773453`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "a"}], " ", "\[Degree]", " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"a", " ", "\[Degree]", " ", "t"}], "]"}], " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"b", " ", "\[Degree]", " ", "t"}], "]"}]}], "+", 
+    RowBox[{"b", " ", "\[Degree]", " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"a", " ", "\[Degree]", " ", "t"}], "]"}], " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"b", " ", "\[Degree]", " ", "t"}], "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{"-", "\[Degree]"}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"a", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"b", " ", "\[Degree]", " ", "t"}], "]"}], " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"a", " ", "\[Degree]", " ", "t"}], "]"}]}], "+", 
+      RowBox[{"b", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"a", " ", "\[Degree]", " ", "t"}], "]"}], " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"b", " ", "\[Degree]", " ", "t"}], "]"}]}]}], ")"}]}], ",", 
+   RowBox[{"b", " ", "\[Degree]", " ", 
+    RowBox[{"Cos", "[", 
+     RowBox[{"b", " ", "\[Degree]", " ", "t"}], "]"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6489139190853453`*^9, 3.648913976585084*^9}, 
+   3.6489142402864723`*^9, 3.648914304936307*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["\[Degree]", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         SuperscriptBox["a", "2"], "+", 
+         SuperscriptBox["b", "2"]}], ")"}], " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"b", " ", "\[Degree]", " ", "t"}], "]"}], " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"a", " ", "\[Degree]", " ", "t"}], "]"}]}], "+", 
+      RowBox[{"2", " ", "a", " ", "b", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"a", " ", "\[Degree]", " ", "t"}], "]"}], " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"b", " ", "\[Degree]", " ", "t"}], "]"}]}]}], ")"}]}], ",", 
+   RowBox[{
+    RowBox[{"-", 
+     SuperscriptBox["\[Degree]", "2"]}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         SuperscriptBox["a", "2"], "+", 
+         SuperscriptBox["b", "2"]}], ")"}], " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"a", " ", "\[Degree]", " ", "t"}], "]"}], " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"b", " ", "\[Degree]", " ", "t"}], "]"}]}], "-", 
+      RowBox[{"2", " ", "a", " ", "b", " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"a", " ", "\[Degree]", " ", "t"}], "]"}], " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"b", " ", "\[Degree]", " ", "t"}], "]"}]}]}], ")"}]}], ",", 
+   RowBox[{
+    RowBox[{"-", 
+     SuperscriptBox["b", "2"]}], " ", 
+    SuperscriptBox["\[Degree]", "2"], " ", 
+    RowBox[{"Sin", "[", 
+     RowBox[{"b", " ", "\[Degree]", " ", "t"}], "]"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6489139190853453`*^9, 3.648913976585084*^9}, 
+   3.6489142402864723`*^9, 3.6489143049401484`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.648914301424569*^9, 3.6489143014316263`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Show", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Graphics3D", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", 
+              RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", 
+              RowBox[{"-", "1"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"Red", ",", 
+           RowBox[{"Arrow", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"1", ",", "0", ",", "0"}], "}"}], ".", 
+               RowBox[{"Rx", "[", 
+                RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+               RowBox[{"Rz", "[", 
+                RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}]}], "}"}], 
+            "]"}]}], "}"}], ",", " ", 
+         RowBox[{"(*", " ", 
+          RowBox[{"row", " ", "vector"}], " ", "*)"}], "\[IndentingNewLine]", 
+         
+         RowBox[{"{", 
+          RowBox[{"Green", ",", 
+           RowBox[{"Arrow", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", 
+               RowBox[{"Rx", "[", 
+                RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+               RowBox[{"Rz", "[", 
+                RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}]}], "}"}], 
+            "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"Blue", ",", 
+           RowBox[{"Arrow", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0", ",", "1"}], "}"}], ".", 
+               RowBox[{"Rx", "[", 
+                RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+               RowBox[{"Rz", "[", 
+                RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}]}], "}"}], 
+            "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Cylinder", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}], ".", 
+              RowBox[{"Rx", "[", 
+               RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+              RowBox[{"Rz", "[", 
+               RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}], ",", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"1", ",", "0", ",", "0"}], "}"}], ".", 
+              RowBox[{"Rx", "[", 
+               RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+              RowBox[{"Rz", "[", 
+               RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}]}], "}"}], 
+           ",", "0.2"}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Cylinder", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0", ",", "0"}], "}"}], ".", 
+              RowBox[{"Rx", "[", 
+               RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+              RowBox[{"Rz", "[", 
+               RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}], ",", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0.5", ",", "0"}], "}"}], ".", 
+              RowBox[{"Rx", "[", 
+               RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+              RowBox[{"Rz", "[", 
+               RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}]}], "}"}], 
+           ",", "0.1"}], "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
+       RowBox[{"PlotLabel", "\[Rule]", "\"\<ratation on 2 axis\>\""}]}], 
+      "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ParametricPlot3D", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"1.0", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Sin", "[", 
+              RowBox[{"t", " ", "\[Degree]"}], "]"}], ",", "0", ",", 
+             RowBox[{"Cos", "[", " ", 
+              RowBox[{"t", " ", "\[Degree]"}], "]"}]}], "}"}], ".", 
+           RowBox[{"Rz", "[", 
+            RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"0.8", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Sin", "[", 
+              RowBox[{"t", " ", "\[Degree]"}], "]"}], ",", 
+             RowBox[{"Cos", "[", " ", 
+              RowBox[{"t", " ", "\[Degree]"}], "]"}], ",", "0"}], "}"}], ".", 
+           
+           RowBox[{"Rx", "[", 
+            RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+           RowBox[{"Rz", "[", 
+            RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", 
+          RowBox[{"Rx", "[", 
+           RowBox[{"b", " ", "t", " ", "\[Degree]"}], "]"}], ".", 
+          RowBox[{"Rz", "[", 
+           RowBox[{"a", " ", "t", " ", "\[Degree]"}], "]"}]}]}], 
+        "\[IndentingNewLine]", "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "0", ",", "2000"}], "}"}], ",", 
+       RowBox[{"PlotStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Blue", ",", "Red", ",", "Pink"}], "}"}]}]}], "]"}]}], 
+    "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "0", ",", "1"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "0", ",", "1"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"g", ",", "0", ",", "4000"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6489535717425747`*^9, 3.648953572660187*^9}, {
+  3.648953642492441*^9, 3.6489537605030427`*^9}, {3.6489538178562765`*^9, 
+  3.648953821224072*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 0.106, $CellContext`b$$ = 
+    0.17400000000000002`, $CellContext`g$$ = 2830., Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`a$$], 0, 1}, {
+      Hold[$CellContext`b$$], 0, 1}, {
+      Hold[$CellContext`g$$], 0, 4000}}, Typeset`size$$ = {
+    360., {201., 206.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`a$39539$$ = 
+    0, $CellContext`b$39540$$ = 0, $CellContext`g$39541$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 0, $CellContext`b$$ = 
+        0, $CellContext`g$$ = 0}, "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$39539$$, 0], 
+        Hold[$CellContext`b$$, $CellContext`b$39540$$, 0], 
+        Hold[$CellContext`g$$, $CellContext`g$39541$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        Graphics3D[{
+          Arrow[{{-1, 0, 0}, {1, 0, 0}}], 
+          Arrow[{{0, -1, 0}, {0, 1, 0}}], 
+          Arrow[{{0, 0, -1}, {0, 0, 1}}], {Red, 
+           Arrow[{{0, 0, 0}, 
+             Dot[{1, 0, 0}, 
+              $CellContext`Rx[($CellContext`b$$ $CellContext`g$$) Degree], 
+              $CellContext`Rz[($CellContext`a$$ $CellContext`g$$) 
+               Degree]]}]}, {Green, 
+           Arrow[{{0, 0, 0}, 
+             Dot[{0, 1, 0}, 
+              $CellContext`Rx[($CellContext`b$$ $CellContext`g$$) Degree], 
+              $CellContext`Rz[($CellContext`a$$ $CellContext`g$$) 
+               Degree]]}]}, {Blue, 
+           Arrow[{{0, 0, 0}, 
+             Dot[{0, 0, 1}, 
+              $CellContext`Rx[($CellContext`b$$ $CellContext`g$$) Degree], 
+              $CellContext`Rz[($CellContext`a$$ $CellContext`g$$) Degree]]}]}, 
+          Cylinder[{
+            Dot[{-1, 0, 0}, 
+             $CellContext`Rx[($CellContext`b$$ $CellContext`g$$) Degree], 
+             $CellContext`Rz[($CellContext`a$$ $CellContext`g$$) Degree]], 
+            Dot[{1, 0, 0}, 
+             $CellContext`Rx[($CellContext`b$$ $CellContext`g$$) Degree], 
+             $CellContext`Rz[($CellContext`a$$ $CellContext`g$$) Degree]]}, 
+           0.2], 
+          Cylinder[{
+            Dot[{0, 0, 0}, 
+             $CellContext`Rx[($CellContext`b$$ $CellContext`g$$) Degree], 
+             $CellContext`Rz[($CellContext`a$$ $CellContext`g$$) Degree]], 
+            Dot[{0, 0.5, 0}, 
+             $CellContext`Rx[($CellContext`b$$ $CellContext`g$$) Degree], 
+             $CellContext`Rz[($CellContext`a$$ $CellContext`g$$) Degree]]}, 
+           0.1]}, PlotLabel -> "ratation on 2 axis"], 
+        ParametricPlot3D[{1. Dot[{
+             Sin[$CellContext`t Degree], 0, 
+             Cos[$CellContext`t Degree]}, 
+            $CellContext`Rz[($CellContext`a$$ $CellContext`g$$) Degree]], 0.8 
+          Dot[{
+             Sin[$CellContext`t Degree], 
+             Cos[$CellContext`t Degree], 0}, 
+            $CellContext`Rx[($CellContext`b$$ $CellContext`g$$) Degree], 
+            $CellContext`Rz[($CellContext`a$$ $CellContext`g$$) Degree]], 
+          Dot[{0, 1, 0}, 
+           $CellContext`Rx[($CellContext`b$$ $CellContext`t) Degree], 
+           $CellContext`Rz[($CellContext`a$$ $CellContext`t) 
+            Degree]]}, {$CellContext`t, 0, 2000}, 
+         PlotStyle -> {Blue, Red, Pink}]], 
+      "Specifications" :> {{$CellContext`a$$, 0, 1}, {$CellContext`b$$, 0, 
+         1}, {$CellContext`g$$, 0, 4000}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{405., {270., 275.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.6489537337240925`*^9, 3.6489537611694856`*^9}, 
+   3.6489538220716367`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"v", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0.2", ",", "0.2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0.2", ",", 
+       RowBox[{"-", "0.2"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"-", "0.2"}], ",", 
+       RowBox[{"-", "0.2"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"-", "0.2"}], ",", "0.2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "0.2", ",", "0.2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "0.2", ",", 
+       RowBox[{"-", "0.2"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", 
+       RowBox[{"-", "0.2"}], ",", 
+       RowBox[{"-", "0.2"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", 
+       RowBox[{"-", "0.2"}], ",", "0.2"}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"i", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "6", ",", "7", ",", "8"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2", ",", "6", ",", "5"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "4", ",", "8", ",", "5"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "3", ",", "7", ",", "6"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "4", ",", "8", ",", "7"}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Show", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Graphics3D", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", 
+              RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", 
+              RowBox[{"-", "1"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"Red", ",", 
+           RowBox[{"Arrow", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"1", ",", "0", ",", "0"}], "}"}], ".", 
+               RowBox[{"Rx", "[", 
+                RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+               RowBox[{"Rz", "[", 
+                RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}]}], "}"}], 
+            "]"}]}], "}"}], ",", " ", 
+         RowBox[{"(*", " ", 
+          RowBox[{"row", " ", "vector"}], " ", "*)"}], "\[IndentingNewLine]", 
+         
+         RowBox[{"{", 
+          RowBox[{"Green", ",", 
+           RowBox[{"Arrow", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", 
+               RowBox[{"Rx", "[", 
+                RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+               RowBox[{"Rz", "[", 
+                RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}]}], "}"}], 
+            "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"Blue", ",", 
+           RowBox[{"Arrow", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0", ",", "1"}], "}"}], ".", 
+               RowBox[{"Rx", "[", 
+                RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+               RowBox[{"Rz", "[", 
+                RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}]}], "}"}], 
+            "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"GraphicsComplex", "[", 
+          RowBox[{
+           RowBox[{"v", ".", 
+            RowBox[{"Rx", "[", 
+             RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+            RowBox[{"Rz", "[", 
+             RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}], ",", 
+           RowBox[{"Polygon", "[", "i", "]"}]}], "]"}]}], 
+        "\[IndentingNewLine]", "}"}], ",", 
+       RowBox[{"PlotLabel", "\[Rule]", "\"\<ratation on 2 axis\>\""}]}], 
+      "]"}], "\[IndentingNewLine]", ",", 
+     RowBox[{"ParametricPlot3D", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{"1.0", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Sin", "[", 
+               RowBox[{"t", " ", "\[Degree]"}], "]"}], ",", "0", ",", 
+              RowBox[{"Cos", "[", " ", 
+               RowBox[{"t", " ", "\[Degree]"}], "]"}]}], "}"}], ".", 
+            RowBox[{"Rz", "[", 
+             RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}]}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"0.8", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Sin", "[", 
+               RowBox[{"t", " ", "\[Degree]"}], "]"}], ",", 
+              RowBox[{"Cos", "[", " ", 
+               RowBox[{"t", " ", "\[Degree]"}], "]"}], ",", "0"}], "}"}], ".", 
+            RowBox[{"Rx", "[", 
+             RowBox[{"b", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+            RowBox[{"Rz", "[", 
+             RowBox[{"a", " ", "g", " ", "\[Degree]"}], "]"}]}]}], ","}], 
+         "*)"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", 
+         RowBox[{"Rx", "[", 
+          RowBox[{"b", " ", "t", " ", "\[Degree]"}], "]"}], ".", 
+         RowBox[{"Rz", "[", 
+          RowBox[{"a", " ", "t", " ", "\[Degree]"}], "]"}]}], 
+        "\[IndentingNewLine]", "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "0", ",", "2000"}], "}"}], ",", 
+       RowBox[{"PlotStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Blue", ",", "Red", ",", "Pink"}], "}"}]}]}], "]"}]}], 
+    "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "0", ",", "1"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "0", ",", "1"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"g", ",", "0", ",", "4000"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.648953875726407*^9, 3.6489539385880795`*^9}, {
+  3.6489540002717495`*^9, 3.6489540118194475`*^9}, {3.6489540577170467`*^9, 
+  3.6489540809907413`*^9}, {3.6489541258784513`*^9, 3.6489541959926405`*^9}, {
+  3.648954248845796*^9, 3.648954559818503*^9}, {3.648954609428587*^9, 
+  3.6489546567391233`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 0, $CellContext`b$$ = 
+    0, $CellContext`g$$ = 0, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`a$$], 0, 1}, {
+      Hold[$CellContext`b$$], 0, 1}, {
+      Hold[$CellContext`g$$], 0, 4000}}, Typeset`size$$ = {
+    360., {201., 206.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`a$1240$$ = 
+    0, $CellContext`b$1241$$ = 0, $CellContext`g$1242$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 0, $CellContext`b$$ = 
+        0, $CellContext`g$$ = 0}, "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$1240$$, 0], 
+        Hold[$CellContext`b$$, $CellContext`b$1241$$, 0], 
+        Hold[$CellContext`g$$, $CellContext`g$1242$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        Graphics3D[{
+          Arrow[{{-1, 0, 0}, {1, 0, 0}}], 
+          Arrow[{{0, -1, 0}, {0, 1, 0}}], 
+          Arrow[{{0, 0, -1}, {0, 0, 1}}], {Red, 
+           Arrow[{{0, 0, 0}, 
+             Dot[{1, 0, 0}, 
+              $CellContext`Rx[$CellContext`b$$ $CellContext`g$$ Degree], 
+              $CellContext`Rz[$CellContext`a$$ $CellContext`g$$ Degree]]}]}, {
+          Green, 
+           Arrow[{{0, 0, 0}, 
+             Dot[{0, 1, 0}, 
+              $CellContext`Rx[$CellContext`b$$ $CellContext`g$$ Degree], 
+              $CellContext`Rz[$CellContext`a$$ $CellContext`g$$ Degree]]}]}, {
+          Blue, 
+           Arrow[{{0, 0, 0}, 
+             Dot[{0, 0, 1}, 
+              $CellContext`Rx[$CellContext`b$$ $CellContext`g$$ Degree], 
+              $CellContext`Rz[$CellContext`a$$ $CellContext`g$$ Degree]]}]}, 
+          GraphicsComplex[
+           Dot[$CellContext`v, 
+            $CellContext`Rx[$CellContext`b$$ $CellContext`g$$ Degree], 
+            $CellContext`Rz[$CellContext`a$$ $CellContext`g$$ Degree]], 
+           Polygon[$CellContext`i]]}, PlotLabel -> "ratation on 2 axis"], 
+        ParametricPlot3D[{
+          Dot[{0, 1, 0}, 
+           $CellContext`Rx[$CellContext`b$$ $CellContext`t Degree], 
+           $CellContext`Rz[$CellContext`a$$ $CellContext`t 
+            Degree]]}, {$CellContext`t, 0, 2000}, 
+         PlotStyle -> {Blue, Red, Pink}]], 
+      "Specifications" :> {{$CellContext`a$$, 0, 1}, {$CellContext`b$$, 0, 
+         1}, {$CellContext`g$$, 0, 4000}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{405., {270., 275.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.6489538970073586`*^9, {3.6489539295780725`*^9, 3.648953939569733*^9}, {
+   3.648954062429366*^9, 3.6489540815461116`*^9}, {3.648954159639959*^9, 
+   3.6489541966811*^9}, 3.6489542623578024`*^9, 3.6489544041313167`*^9, {
+   3.648954434997657*^9, 3.648954510367182*^9}, {3.648954544065001*^9, 
+   3.648954560333847*^9}, {3.648954610156069*^9, 3.648954657349531*^9}, 
+   3.648971712506681*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Graphics3D", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Arrow", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Arrow", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Arrow", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0", ",", 
+            RowBox[{"-", "1"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"Orange", ",", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+            RowBox[{"V", "=", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Sin", "[", 
+                 RowBox[{"\[Theta]", " ", "\[Degree]"}], "]"}], 
+                RowBox[{"Cos", "[", 
+                 RowBox[{"\[Phi]", " ", "\[Degree]"}], "]"}]}], ",", 
+               RowBox[{
+                RowBox[{"Sin", "[", 
+                 RowBox[{"\[Theta]", " ", "\[Degree]"}], "]"}], 
+                RowBox[{"Sin", "[", 
+                 RowBox[{"\[Phi]", " ", "\[Degree]"}], "]"}]}], ",", 
+               RowBox[{"Cos", "[", 
+                RowBox[{"\[Theta]", " ", "\[Degree]"}], "]"}]}], "}"}]}]}], 
+           "}"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"Red", ",", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"1", ",", "0", ",", "0"}], "}"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"c", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Ry", "[", 
+              RowBox[{"b", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"a", " ", "\[Degree]"}], "]"}]}]}], "}"}], "]"}]}], 
+        "}"}], ",", " ", 
+       RowBox[{"(*", " ", 
+        RowBox[{"row", " ", "vector"}], " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"Green", ",", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"c", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Ry", "[", 
+              RowBox[{"b", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"a", " ", "\[Degree]"}], "]"}]}]}], "}"}], "]"}]}], 
+        "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"Blue", ",", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "0", ",", "1"}], "}"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"c", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Ry", "[", 
+              RowBox[{"b", " ", "\[Degree]"}], "]"}], ".", 
+             RowBox[{"Rz", "[", 
+              RowBox[{"a", " ", "\[Degree]"}], "]"}]}]}], "}"}], "]"}]}], 
+        "}"}]}], "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"PlotLabel", "\[Rule]", 
+      RowBox[{"\"\<\!\(\*SubscriptBox[\(V\), \(S\)]\)=\>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"V", "//", "N"}], "]"}], "<>", 
+       "\"\<\\n\!\(\*SubscriptBox[\(V\), \(r\)]\)=\>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"N", "[", 
+         RowBox[{
+          RowBox[{"Rz", "[", 
+           RowBox[{"c", " ", "\[Degree]"}], "]"}], ".", 
+          RowBox[{"Ry", "[", 
+           RowBox[{"b", " ", "\[Degree]"}], "]"}], ".", 
+          RowBox[{"Rz", "[", 
+           RowBox[{"a", " ", "\[Degree]"}], "]"}], ".", "V"}], "]"}], 
+        "]"}]}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Theta]", ",", "30"}], "}"}], ",", "0", ",", "180"}], "}"}], 
+   ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Phi]", ",", "30"}], "}"}], ",", "0", ",", "360"}], "}"}], 
+   ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "0", ",", "180"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "0", ",", "180"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "0", ",", "180"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6489718006874237`*^9, 3.6489719173198557`*^9}, {
+  3.648971949206687*^9, 3.6489720563261414`*^9}, {3.648972100892399*^9, 
+  3.64897216446449*^9}, {3.64897227968515*^9, 3.648972284705945*^9}, {
+  3.648972340169005*^9, 3.648972345027492*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 
+    29.400000000000002`, $CellContext`b$$ = 
+    29.400000000000002`, $CellContext`c$$ = 0, $CellContext`\[Theta]$$ = 
+    30, $CellContext`\[Phi]$$ = 30, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`\[Theta]$$], 30}, 0, 180}, {{
+       Hold[$CellContext`\[Phi]$$], 30}, 0, 360}, {
+      Hold[$CellContext`a$$], 0, 180}, {
+      Hold[$CellContext`b$$], 0, 180}, {
+      Hold[$CellContext`c$$], 0, 180}}, Typeset`size$$ = {360., {212., 216.}},
+     Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`\[Theta]$2499$$ = 0, $CellContext`\[Phi]$2500$$ = 
+    0, $CellContext`a$2501$$ = 0, $CellContext`b$2502$$ = 
+    0, $CellContext`c$2503$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 0, $CellContext`b$$ = 
+        0, $CellContext`c$$ = 0, $CellContext`\[Theta]$$ = 
+        30, $CellContext`\[Phi]$$ = 30}, "ControllerVariables" :> {
+        Hold[$CellContext`\[Theta]$$, $CellContext`\[Theta]$2499$$, 0], 
+        Hold[$CellContext`\[Phi]$$, $CellContext`\[Phi]$2500$$, 0], 
+        Hold[$CellContext`a$$, $CellContext`a$2501$$, 0], 
+        Hold[$CellContext`b$$, $CellContext`b$2502$$, 0], 
+        Hold[$CellContext`c$$, $CellContext`c$2503$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Graphics3D[{
+         Arrow[{{-1, 0, 0}, {1, 0, 0}}], 
+         Arrow[{{0, -1, 0}, {0, 1, 0}}], 
+         Arrow[{{0, 0, -1}, {0, 0, 1}}], {Orange, 
+          
+          Arrow[{{0, 0, 
+            0}, $CellContext`V = {
+             Sin[$CellContext`\[Theta]$$ Degree] 
+              Cos[$CellContext`\[Phi]$$ Degree], 
+              Sin[$CellContext`\[Theta]$$ Degree] 
+              Sin[$CellContext`\[Phi]$$ Degree], 
+              Cos[$CellContext`\[Theta]$$ Degree]}}]}, {Red, 
+          Arrow[{{0, 0, 0}, 
+            Dot[{1, 0, 0}, 
+             $CellContext`Rz[$CellContext`c$$ Degree], 
+             $CellContext`Ry[$CellContext`b$$ Degree], 
+             $CellContext`Rz[$CellContext`a$$ Degree]]}]}, {Green, 
+          Arrow[{{0, 0, 0}, 
+            Dot[{0, 1, 0}, 
+             $CellContext`Rz[$CellContext`c$$ Degree], 
+             $CellContext`Ry[$CellContext`b$$ Degree], 
+             $CellContext`Rz[$CellContext`a$$ Degree]]}]}, {Blue, 
+          Arrow[{{0, 0, 0}, 
+            Dot[{0, 0, 1}, 
+             $CellContext`Rz[$CellContext`c$$ Degree], 
+             $CellContext`Ry[$CellContext`b$$ Degree], 
+             $CellContext`Rz[$CellContext`a$$ Degree]]}]}}, PlotLabel -> 
+        StringJoin["\!\(\*SubscriptBox[\(V\), \(S\)]\)=", 
+          ToString[
+           N[$CellContext`V]], "\n\!\(\*SubscriptBox[\(V\), \(r\)]\)=", 
+          ToString[
+           N[
+            Dot[
+             $CellContext`Rz[$CellContext`c$$ Degree], 
+             $CellContext`Ry[$CellContext`b$$ Degree], 
+             $CellContext`Rz[$CellContext`a$$ Degree], $CellContext`V]]]]], 
+      "Specifications" :> {{{$CellContext`\[Theta]$$, 30}, 0, 
+         180}, {{$CellContext`\[Phi]$$, 30}, 0, 360}, {$CellContext`a$$, 0, 
+         180}, {$CellContext`b$$, 0, 180}, {$CellContext`c$$, 0, 180}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{405., {330., 335.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.6489721548362103`*^9, 3.648972165063472*^9}, 
+   3.648972285315386*^9, 3.648972345541082*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}], ".", 
+  RowBox[{"Rz", "[", 
+   RowBox[{"c", " ", "\[Degree]"}], "]"}], ".", 
+  RowBox[{"Ry", "[", 
+   RowBox[{"b", " ", "\[Degree]"}], "]"}], ".", 
+  RowBox[{"Rz", "[", 
+   RowBox[{"a", " ", "\[Degree]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6489775446166286`*^9, 3.648977550298664*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"a", " ", "\[Degree]"}], "]"}]}], " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"b", " ", "\[Degree]"}], "]"}], " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"c", " ", "\[Degree]"}], "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"Sin", "[", 
+        RowBox[{"a", " ", "\[Degree]"}], "]"}], " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"c", " ", "\[Degree]"}], "]"}]}]}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"b", " ", "\[Degree]"}], "]"}]}], " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"c", " ", "\[Degree]"}], "]"}], " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"a", " ", "\[Degree]"}], "]"}]}], "-", 
+      RowBox[{
+       RowBox[{"Cos", "[", 
+        RowBox[{"a", " ", "\[Degree]"}], "]"}], " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"c", " ", "\[Degree]"}], "]"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"Cos", "[", 
+       RowBox[{"c", " ", "\[Degree]"}], "]"}], " ", 
+      RowBox[{"Sin", "[", 
+       RowBox[{"b", " ", "\[Degree]"}], "]"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"Cos", "[", 
+        RowBox[{"a", " ", "\[Degree]"}], "]"}], " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"b", " ", "\[Degree]"}], "]"}], " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"c", " ", "\[Degree]"}], "]"}]}], "-", 
+      RowBox[{
+       RowBox[{"Sin", "[", 
+        RowBox[{"a", " ", "\[Degree]"}], "]"}], " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"c", " ", "\[Degree]"}], "]"}]}]}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Cos", "[", 
+        RowBox[{"b", " ", "\[Degree]"}], "]"}], " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"c", " ", "\[Degree]"}], "]"}], " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"a", " ", "\[Degree]"}], "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"Cos", "[", 
+        RowBox[{"a", " ", "\[Degree]"}], "]"}], " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"c", " ", "\[Degree]"}], "]"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"c", " ", "\[Degree]"}], "]"}]}], " ", 
+      RowBox[{"Sin", "[", 
+       RowBox[{"b", " ", "\[Degree]"}], "]"}]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.648977518358954*^9, 3.648977550847451*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"k", "=", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"Ip", "-", "I3"}], "I3"], "\[Omega]3"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Rot", "=", 
+     RowBox[{
+      RowBox[{"Rz", "[", 
+       RowBox[{"k", " ", "t", " ", "\[Degree]"}], "]"}], ".", 
+      RowBox[{"Ry", "[", 
+       RowBox[{"ArcTan", "[", 
+        RowBox[{"\[Omega]3", ",", "A"}], "]"}], " ", "]"}], ".", 
+      RowBox[{"Rz", "[", 
+       RowBox[{
+        SqrtBox[
+         RowBox[{
+          SuperscriptBox["A", "2"], "+", 
+          SuperscriptBox["\[Omega]3", "2"]}]], " ", "t", " ", "\[Degree]"}], 
+       "]"}]}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"RotL", "=", 
+     RowBox[{
+      RowBox[{"Rz", "[", 
+       RowBox[{"k", " ", "t", " ", "\[Degree]"}], "]"}], ".", 
+      RowBox[{"Ry", "[", 
+       RowBox[{"ArcTan", "[", 
+        RowBox[{
+         RowBox[{"I3", " ", "\[Omega]3"}], ",", 
+         RowBox[{"Ip", " ", "A"}]}], "]"}], " ", "]"}], ".", 
+      RowBox[{"Rz", "[", 
+       RowBox[{
+        SqrtBox[
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"Ip", " ", "A"}], ")"}], "2"], "+", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"I3", " ", "\[Omega]3"}], ")"}], "2"]}]], " ", "t", " ", 
+        "\[Degree]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"GraphicsGrid", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Show", "[", 
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Graphics3D", "[", 
+             RowBox[{
+              RowBox[{"{", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"Arrow", "[", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}], 
+                ",", "\[IndentingNewLine]", 
+                RowBox[{"Arrow", "[", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", 
+                    RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "}"}], "]"}], 
+                ",", "\[IndentingNewLine]", 
+                RowBox[{"Arrow", "[", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", 
+                    RowBox[{"-", "1"}]}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}], "]"}], 
+                ",", "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{"Orange", ",", 
+                  RowBox[{"Arrow", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"Normalize", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", "\[Omega]3"}], "}"}], "]"}], ".", "Rot"}]}], "}"}], 
+                   "]"}]}], "}"}], ",", 
+                RowBox[{"(*", " ", 
+                 RowBox[{"unit", " ", "\[Omega]", " ", "vector"}], " ", 
+                 "*)"}], "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{"Purple", ",", 
+                  RowBox[{"Arrow", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"Normalize", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", "Ip", "  ", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", "Ip", " ", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", 
+                    RowBox[{"I3", " ", "\[Omega]3"}]}], "}"}], "]"}], ".", 
+                    "Rot"}]}], "}"}], "]"}]}], "}"}], ",", 
+                RowBox[{"(*", " ", 
+                 RowBox[{"unit", " ", "L", " ", "vector"}], " ", "*)"}], 
+                "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{"Red", ",", 
+                  RowBox[{"Arrow", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", "0", ",", "0"}], "}"}], ".", "Rot"}]}], 
+                    "}"}], "]"}]}], "}"}], ",", " ", 
+                RowBox[{"(*", " ", 
+                 RowBox[{"row", " ", "vector"}], " ", "*)"}], 
+                "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{"Green", ",", 
+                  RowBox[{"Arrow", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", "Rot"}]}], 
+                    "}"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{"Blue", ",", 
+                  RowBox[{"Arrow", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "1"}], "}"}], ".", "Rot"}]}], 
+                    "}"}], "]"}]}], "}"}]}], "\[IndentingNewLine]", 
+               RowBox[{"(*", 
+                RowBox[{"Cylinder", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", 
+                    RowBox[{"-", "0.8"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0.8"}], "}"}]}], "}"}], ".", 
+                   "Rot"}], ",", "0.2"}], "]"}], "*)"}], 
+               "\[IndentingNewLine]", "}"}], ",", 
+              RowBox[{"PlotLabel", "\[Rule]", "\"\<\[Omega] frame\>\""}]}], 
+             "]"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"ParametricPlot3D", "[", 
+             RowBox[{
+              RowBox[{"{", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", "0", ",", "0"}], "}"}], ".", 
+                 RowBox[{"Rz", "[", 
+                  RowBox[{"k", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+                 RowBox[{"Ry", "[", 
+                  RowBox[{"ArcTan", "[", 
+                   RowBox[{"\[Omega]3", ",", "A"}], "]"}], " ", "]"}], ".", 
+                 RowBox[{"Rz", "[", 
+                  RowBox[{
+                   SqrtBox[
+                    RowBox[{
+                    SuperscriptBox["A", "2"], "+", 
+                    SuperscriptBox["\[Omega]3", "2"]}]], " ", "g", " ", 
+                   "\[Degree]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", 
+                 RowBox[{"Rz", "[", 
+                  RowBox[{"k", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+                 RowBox[{"Ry", "[", 
+                  RowBox[{"ArcTan", "[", 
+                   RowBox[{"\[Omega]3", ",", "A"}], "]"}], " ", "]"}], ".", 
+                 RowBox[{"Rz", "[", 
+                  RowBox[{
+                   SqrtBox[
+                    RowBox[{
+                    SuperscriptBox["A", "2"], "+", 
+                    SuperscriptBox["\[Omega]3", "2"]}]], " ", "g", " ", 
+                   "\[Degree]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "0", ",", "1"}], "}"}], ".", 
+                 RowBox[{"Rz", "[", 
+                  RowBox[{"k", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+                 RowBox[{"Ry", "[", 
+                  RowBox[{"ArcTan", "[", 
+                   RowBox[{"\[Omega]3", ",", "A"}], "]"}], " ", "]"}], ".", 
+                 RowBox[{"Rz", "[", 
+                  RowBox[{
+                   SqrtBox[
+                    RowBox[{
+                    SuperscriptBox["A", "2"], "+", 
+                    SuperscriptBox["\[Omega]3", "2"]}]], " ", "g", " ", 
+                   "\[Degree]"}], "]"}]}]}], "\[IndentingNewLine]", "}"}], 
+              ",", 
+              RowBox[{"{", 
+               RowBox[{"g", ",", "0", ",", "700"}], "}"}], ",", 
+              RowBox[{"PlotStyle", "\[Rule]", 
+               RowBox[{"{", 
+                RowBox[{"Red", ",", " ", "Green", ",", "Blue"}], "}"}]}]}], 
+             "]"}]}], "\[IndentingNewLine]", "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Show", "[", 
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Graphics3D", "[", 
+             RowBox[{
+              RowBox[{"{", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"Arrow", "[", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}], 
+                ",", "\[IndentingNewLine]", 
+                RowBox[{"Arrow", "[", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", 
+                    RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "}"}], "]"}], 
+                ",", "\[IndentingNewLine]", 
+                RowBox[{"Arrow", "[", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", 
+                    RowBox[{"-", "1"}]}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}], "]"}], 
+                ",", "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{"Orange", ",", 
+                  RowBox[{"Arrow", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"Normalize", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", "\[Omega]3"}], "}"}], "]"}], ".", "RotL"}]}], "}"}],
+                    "]"}]}], "}"}], ",", 
+                RowBox[{"(*", " ", 
+                 RowBox[{"unit", " ", "\[Omega]", " ", "vector"}], " ", 
+                 "*)"}], "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{"Purple", ",", 
+                  RowBox[{"Arrow", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"Normalize", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", "Ip", "  ", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", "Ip", " ", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", 
+                    RowBox[{"I3", " ", "\[Omega]3"}]}], "}"}], "]"}], ".", 
+                    "RotL"}]}], "}"}], "]"}]}], "}"}], ",", 
+                RowBox[{"(*", " ", 
+                 RowBox[{"unit", " ", "L", " ", "vector"}], " ", "*)"}], 
+                "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{"Red", ",", 
+                  RowBox[{"Arrow", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", "0", ",", "0"}], "}"}], ".", "RotL"}]}],
+                     "}"}], "]"}]}], "}"}], ",", " ", 
+                RowBox[{"(*", " ", 
+                 RowBox[{"row", " ", "vector"}], " ", "*)"}], 
+                "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{"Green", ",", 
+                  RowBox[{"Arrow", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", "RotL"}]}],
+                     "}"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{"Blue", ",", 
+                  RowBox[{"Arrow", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "1"}], "}"}], ".", "RotL"}]}],
+                     "}"}], "]"}]}], "}"}]}], "\[IndentingNewLine]", 
+               RowBox[{"(*", 
+                RowBox[{"Cylinder", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", 
+                    RowBox[{"-", "0.8"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0.8"}], "}"}]}], "}"}], ".", 
+                   "Rot"}], ",", "0.2"}], "]"}], "*)"}], 
+               "\[IndentingNewLine]", "}"}], ",", 
+              RowBox[{"PlotLabel", "\[Rule]", "\"\<L frame\>\""}]}], "]"}], 
+            ",", "\[IndentingNewLine]", 
+            RowBox[{"ParametricPlot3D", "[", 
+             RowBox[{
+              RowBox[{"{", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", "0", ",", "0"}], "}"}], ".", 
+                 RowBox[{"Rz", "[", 
+                  RowBox[{"k", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+                 RowBox[{"Ry", "[", 
+                  RowBox[{"ArcTan", "[", 
+                   RowBox[{
+                    RowBox[{"I3", " ", "\[Omega]3"}], ",", 
+                    RowBox[{"Ip", " ", "A"}]}], "]"}], " ", "]"}], ".", 
+                 RowBox[{"Rz", "[", 
+                  RowBox[{
+                   SqrtBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"Ip", " ", "A"}], ")"}], "2"], "+", 
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"I3", " ", "\[Omega]3"}], ")"}], "2"]}]], " ", 
+                   "g", " ", "\[Degree]"}], "]"}]}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", 
+                 RowBox[{"Rz", "[", 
+                  RowBox[{"k", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+                 RowBox[{"Ry", "[", 
+                  RowBox[{"ArcTan", "[", 
+                   RowBox[{
+                    RowBox[{"I3", " ", "\[Omega]3"}], ",", 
+                    RowBox[{"Ip", " ", "A"}]}], "]"}], " ", "]"}], ".", 
+                 RowBox[{"Rz", "[", 
+                  RowBox[{
+                   SqrtBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"Ip", " ", "A"}], ")"}], "2"], "+", 
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"I3", " ", "\[Omega]3"}], ")"}], "2"]}]], " ", 
+                   "g", " ", "\[Degree]"}], "]"}]}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "0", ",", "1"}], "}"}], ".", 
+                 RowBox[{"Rz", "[", 
+                  RowBox[{"k", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+                 RowBox[{"Ry", "[", 
+                  RowBox[{"ArcTan", "[", 
+                   RowBox[{
+                    RowBox[{"I3", " ", "\[Omega]3"}], ",", 
+                    RowBox[{"Ip", " ", "A"}]}], "]"}], " ", "]"}], ".", 
+                 RowBox[{"Rz", "[", 
+                  RowBox[{
+                   SqrtBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"Ip", " ", "A"}], ")"}], "2"], "+", 
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"I3", " ", "\[Omega]3"}], ")"}], "2"]}]], " ", 
+                   "g", " ", "\[Degree]"}], "]"}]}]}], "\[IndentingNewLine]", 
+               "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"g", ",", "0", ",", "700"}], "}"}], ",", 
+              RowBox[{"PlotStyle", "\[Rule]", 
+               RowBox[{"{", 
+                RowBox[{"Red", ",", " ", "Green", ",", "Blue"}], "}"}]}]}], 
+             "]"}]}], "\[IndentingNewLine]", "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Graphics3D", "[", 
+          RowBox[{
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Arrow", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Rot", ".", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}]}], ",", 
+                RowBox[{"Rot", ".", 
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", "0", ",", "0"}], "}"}]}]}], "}"}], "]"}], 
+             ",", "\[IndentingNewLine]", 
+             RowBox[{"Arrow", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Rot", ".", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", 
+                   RowBox[{"-", "1"}], ",", "0"}], "}"}]}], ",", 
+                RowBox[{"Rot", ".", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "1", ",", "0"}], "}"}]}]}], "}"}], "]"}], 
+             ",", "\[IndentingNewLine]", 
+             RowBox[{"Arrow", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Rot", ".", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "0", ",", 
+                   RowBox[{"-", "1"}]}], "}"}]}], ",", 
+                RowBox[{"Rot", ".", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "0", ",", "1"}], "}"}]}]}], "}"}], "]"}], 
+             ",", "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"Orange", ",", 
+               RowBox[{"Arrow", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                  RowBox[{"Normalize", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", "\[Omega]3"}], "}"}], "]"}]}], "}"}], "]"}]}], 
+              "}"}], ",", 
+             RowBox[{"(*", " ", 
+              RowBox[{"unit", " ", "\[Omega]", " ", "vector"}], " ", "*)"}], 
+             "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"Purple", ",", 
+               RowBox[{"Arrow", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                  RowBox[{"Normalize", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", "Ip", "  ", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", "Ip", " ", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", 
+                    RowBox[{"I3", " ", "\[Omega]3"}]}], "}"}], "]"}]}], "}"}],
+                 "]"}]}], "}"}], ",", 
+             RowBox[{"(*", " ", 
+              RowBox[{"unit", " ", "L", " ", "vector"}], " ", "*)"}], 
+             "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"Red", ",", 
+               RowBox[{"Arrow", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}]}],
+               "}"}], ",", " ", 
+             RowBox[{"(*", " ", 
+              RowBox[{"row", " ", "vector"}], " ", "*)"}], 
+             "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"Green", ",", 
+               RowBox[{"Arrow", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "}"}], "]"}]}],
+               "}"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"Blue", ",", 
+               RowBox[{"Arrow", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}], "]"}]}],
+               "}"}]}], "\[IndentingNewLine]", 
+            RowBox[{"(*", 
+             RowBox[{"Cylinder", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "0", ",", 
+                   RowBox[{"-", "0.8"}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "0", ",", "0.8"}], "}"}]}], "}"}], ",", 
+               "0.2"}], "]"}], "*)"}], "\[IndentingNewLine]", "}"}], ",", 
+           RowBox[{"PlotLabel", "\[Rule]", "\"\<Body frame\>\""}]}], "]"}]}], 
+        "\[IndentingNewLine]", "}"}], "}"}], ",", " ", 
+      RowBox[{"ImageSize", "\[Rule]", "1200"}], ",", 
+      RowBox[{"PlotLabel", "\[Rule]", 
+       RowBox[{"\"\<(Ip, I3, k, A,\[Omega]3,\[Omega])=\>\"", "<>", 
+        RowBox[{"ToString", "[", 
+         RowBox[{"N", "[", 
+          RowBox[{"{", 
+           RowBox[{
+           "Ip", ",", "I3", ",", " ", "k", ",", "A", " ", ",", "\[Omega]3", 
+            ",", 
+            SqrtBox[
+             RowBox[{
+              SuperscriptBox["A", "2"], "+", 
+              SuperscriptBox["\[Omega]3", "2"]}]]}], "}"}], "]"}], 
+         "]"}]}]}]}], "]"}]}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Ip", ",", "2"}], "}"}], ",", "0", ",", "4"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"I3", ",", "2"}], "}"}], ",", "0", ",", "4"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"A", ",", "1"}], "}"}], ",", "0", ",", "5"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Omega]3", ",", "1"}], "}"}], ",", "0", ",", "5"}], "}"}], 
+   ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "360"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.648977099889455*^9, 3.6489772049893847`*^9}, {
+   3.648977241429887*^9, 3.648977298076149*^9}, {3.648977463100718*^9, 
+   3.648977473980912*^9}, {3.648977575411515*^9, 3.648977747948349*^9}, {
+   3.648977839289452*^9, 3.648978014160899*^9}, {3.648978050656597*^9, 
+   3.648978148700924*^9}, {3.648978232950897*^9, 3.64897830705694*^9}, {
+   3.6489783799524937`*^9, 3.6489784902172537`*^9}, {3.6489785708764677`*^9, 
+   3.648978581334879*^9}, {3.648978639670603*^9, 3.6489787382533083`*^9}, {
+   3.648978887430256*^9, 3.648978976917615*^9}, {3.648979080478187*^9, 
+   3.648979171594252*^9}, {3.648979242066856*^9, 3.648979246652226*^9}, {
+   3.648979296482779*^9, 3.648979320177327*^9}, {3.648979431545363*^9, 
+   3.648979521043704*^9}, {3.6489795935539227`*^9, 3.648979631574164*^9}, {
+   3.648979664633007*^9, 3.64897966592201*^9}, {3.6489797555807877`*^9, 
+   3.6489797693314247`*^9}, {3.6489798159155483`*^9, 3.648979867671626*^9}, {
+   3.6489799088931828`*^9, 3.648979921741021*^9}, {3.648979993299643*^9, 
+   3.648980064790419*^9}, {3.648980531916692*^9, 3.648980558767487*^9}, {
+   3.648980594165362*^9, 3.648980637052308*^9}, 3.6489806928854923`*^9, {
+   3.648980929423809*^9, 3.6489809399471273`*^9}, {3.648981015742323*^9, 
+   3.6489810170543013`*^9}, {3.648981053702014*^9, 3.648981055321517*^9}, {
+   3.648981100821251*^9, 3.64898115312877*^9}, {3.64898118625604*^9, 
+   3.6489812923346443`*^9}, {3.648981490264865*^9, 3.648981565036339*^9}, {
+   3.648981603347168*^9, 3.648981720277831*^9}, {3.648981768594182*^9, 
+   3.6489817995566597`*^9}, {3.648981833517003*^9, 3.648981859492128*^9}, {
+   3.6489819177082863`*^9, 3.648981957479797*^9}, {3.648981993899884*^9, 
+   3.6489820749310923`*^9}, {3.648982105666422*^9, 3.6489825632423697`*^9}, {
+   3.648982677246624*^9, 3.648982680765153*^9}, {3.648982712813777*^9, 
+   3.648982723500107*^9}, {3.648983372431508*^9, 3.648983411164171*^9}, {
+   3.6489834518509207`*^9, 3.648983458003244*^9}, {3.648983748164523*^9, 
+   3.648983749880867*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`A$$ = 1, $CellContext`I3$$ = 
+    2, $CellContext`Ip$$ = 1.03, $CellContext`t$$ = 
+    0., $CellContext`\[Omega]3$$ = 1, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`Ip$$], 2}, 0, 4}, {{
+       Hold[$CellContext`I3$$], 2}, 0, 4}, {{
+       Hold[$CellContext`A$$], 1}, 0, 5}, {{
+       Hold[$CellContext`\[Omega]3$$], 1}, 0, 5}, {
+      Hold[$CellContext`t$$], 0, 360}}, Typeset`size$$ = {
+    1200., {212., 215.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`Ip$226176$$ = 
+    0, $CellContext`I3$226177$$ = 0, $CellContext`A$226178$$ = 
+    0, $CellContext`\[Omega]3$226179$$ = 0, $CellContext`t$226180$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`A$$ = 1, $CellContext`I3$$ = 
+        2, $CellContext`Ip$$ = 2, $CellContext`t$$ = 
+        0, $CellContext`\[Omega]3$$ = 1}, "ControllerVariables" :> {
+        Hold[$CellContext`Ip$$, $CellContext`Ip$226176$$, 0], 
+        Hold[$CellContext`I3$$, $CellContext`I3$226177$$, 0], 
+        Hold[$CellContext`A$$, $CellContext`A$226178$$, 0], 
+        Hold[$CellContext`\[Omega]3$$, $CellContext`\[Omega]3$226179$$, 0], 
+        Hold[$CellContext`t$$, $CellContext`t$226180$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`k = (($CellContext`Ip$$ - \
+$CellContext`I3$$)/$CellContext`I3$$) $CellContext`\[Omega]3$$; \
+$CellContext`Rot = Dot[
+          $CellContext`Rz[$CellContext`k $CellContext`t$$ Degree], 
+          $CellContext`Ry[
+           ArcTan[$CellContext`\[Omega]3$$, $CellContext`A$$]], 
+          $CellContext`Rz[($CellContext`A$$^2 + $CellContext`\[Omega]3$$^2)^
+            Rational[1, 2] $CellContext`t$$ Degree]]; $CellContext`RotL = 
+        Dot[
+          $CellContext`Rz[$CellContext`k $CellContext`t$$ Degree], 
+          $CellContext`Ry[
+           
+           ArcTan[$CellContext`I3$$ $CellContext`\[Omega]3$$, \
+$CellContext`Ip$$ $CellContext`A$$]], 
+          $CellContext`Rz[(($CellContext`Ip$$ $CellContext`A$$)^2 + \
+($CellContext`I3$$ $CellContext`\[Omega]3$$)^2)^
+            Rational[1, 2] $CellContext`t$$ Degree]]; GraphicsGrid[{{
+           Show[{
+             Graphics3D[{
+               Arrow[{{-1, 0, 0}, {1, 0, 0}}], 
+               Arrow[{{0, -1, 0}, {0, 1, 0}}], 
+               Arrow[{{0, 0, -1}, {0, 0, 1}}], {Orange, 
+                Arrow[{{0, 0, 0}, 
+                  Dot[
+                   
+                   Normalize[{(-$CellContext`A$$) 
+                    Cos[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], (-$CellContext`A$$) 
+                    Sin[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], $CellContext`\[Omega]3$$}], \
+$CellContext`Rot]}]}, {Purple, 
+                Arrow[{{0, 0, 0}, 
+                  Dot[
+                   
+                   Normalize[{(-$CellContext`A$$) $CellContext`Ip$$ 
+                    Cos[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], (-$CellContext`A$$) $CellContext`Ip$$ 
+                    Sin[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], $CellContext`I3$$ $CellContext`\[Omega]3$$}], \
+$CellContext`Rot]}]}, {Red, 
+                Arrow[{{0, 0, 0}, 
+                  Dot[{1, 0, 0}, $CellContext`Rot]}]}, {Green, 
+                Arrow[{{0, 0, 0}, 
+                  Dot[{0, 1, 0}, $CellContext`Rot]}]}, {Blue, 
+                Arrow[{{0, 0, 0}, 
+                  Dot[{0, 0, 1}, $CellContext`Rot]}]}}, PlotLabel -> 
+              "\[Omega] frame"], 
+             ParametricPlot3D[{
+               Dot[{1, 0, 0}, 
+                $CellContext`Rz[$CellContext`k $CellContext`g Degree], 
+                $CellContext`Ry[
+                 ArcTan[$CellContext`\[Omega]3$$, $CellContext`A$$]], 
+                $CellContext`Rz[($CellContext`A$$^2 + \
+$CellContext`\[Omega]3$$^2)^Rational[1, 2] $CellContext`g Degree]], 
+               Dot[{0, 1, 0}, 
+                $CellContext`Rz[$CellContext`k $CellContext`g Degree], 
+                $CellContext`Ry[
+                 ArcTan[$CellContext`\[Omega]3$$, $CellContext`A$$]], 
+                $CellContext`Rz[($CellContext`A$$^2 + \
+$CellContext`\[Omega]3$$^2)^Rational[1, 2] $CellContext`g Degree]], 
+               Dot[{0, 0, 1}, 
+                $CellContext`Rz[$CellContext`k $CellContext`g Degree], 
+                $CellContext`Ry[
+                 ArcTan[$CellContext`\[Omega]3$$, $CellContext`A$$]], 
+                $CellContext`Rz[($CellContext`A$$^2 + \
+$CellContext`\[Omega]3$$^2)^Rational[1, 2] $CellContext`g 
+                 Degree]]}, {$CellContext`g, 0, 700}, 
+              PlotStyle -> {Red, Green, Blue}]}], 
+           Show[{
+             Graphics3D[{
+               Arrow[{{-1, 0, 0}, {1, 0, 0}}], 
+               Arrow[{{0, -1, 0}, {0, 1, 0}}], 
+               Arrow[{{0, 0, -1}, {0, 0, 1}}], {Orange, 
+                Arrow[{{0, 0, 0}, 
+                  Dot[
+                   
+                   Normalize[{(-$CellContext`A$$) 
+                    Cos[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], (-$CellContext`A$$) 
+                    Sin[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], $CellContext`\[Omega]3$$}], \
+$CellContext`RotL]}]}, {Purple, 
+                Arrow[{{0, 0, 0}, 
+                  Dot[
+                   
+                   Normalize[{(-$CellContext`A$$) $CellContext`Ip$$ 
+                    Cos[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], (-$CellContext`A$$) $CellContext`Ip$$ 
+                    Sin[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], $CellContext`I3$$ $CellContext`\[Omega]3$$}], \
+$CellContext`RotL]}]}, {Red, 
+                Arrow[{{0, 0, 0}, 
+                  Dot[{1, 0, 0}, $CellContext`RotL]}]}, {Green, 
+                Arrow[{{0, 0, 0}, 
+                  Dot[{0, 1, 0}, $CellContext`RotL]}]}, {Blue, 
+                Arrow[{{0, 0, 0}, 
+                  Dot[{0, 0, 1}, $CellContext`RotL]}]}}, PlotLabel -> 
+              "L frame"], 
+             ParametricPlot3D[{
+               Dot[{1, 0, 0}, 
+                $CellContext`Rz[$CellContext`k $CellContext`g Degree], 
+                $CellContext`Ry[
+                 
+                 ArcTan[$CellContext`I3$$ $CellContext`\[Omega]3$$, \
+$CellContext`Ip$$ $CellContext`A$$]], 
+                $CellContext`Rz[(($CellContext`Ip$$ $CellContext`A$$)^2 + \
+($CellContext`I3$$ $CellContext`\[Omega]3$$)^2)^Rational[1, 2] $CellContext`g 
+                 Degree]], 
+               Dot[{0, 1, 0}, 
+                $CellContext`Rz[$CellContext`k $CellContext`g Degree], 
+                $CellContext`Ry[
+                 
+                 ArcTan[$CellContext`I3$$ $CellContext`\[Omega]3$$, \
+$CellContext`Ip$$ $CellContext`A$$]], 
+                $CellContext`Rz[(($CellContext`Ip$$ $CellContext`A$$)^2 + \
+($CellContext`I3$$ $CellContext`\[Omega]3$$)^2)^Rational[1, 2] $CellContext`g 
+                 Degree]], 
+               Dot[{0, 0, 1}, 
+                $CellContext`Rz[$CellContext`k $CellContext`g Degree], 
+                $CellContext`Ry[
+                 
+                 ArcTan[$CellContext`I3$$ $CellContext`\[Omega]3$$, \
+$CellContext`Ip$$ $CellContext`A$$]], 
+                $CellContext`Rz[(($CellContext`Ip$$ $CellContext`A$$)^2 + \
+($CellContext`I3$$ $CellContext`\[Omega]3$$)^2)^Rational[1, 2] $CellContext`g 
+                 Degree]]}, {$CellContext`g, 0, 700}, 
+              PlotStyle -> {Red, Green, Blue}]}], 
+           Graphics3D[{
+             Arrow[{
+               Dot[$CellContext`Rot, {-1, 0, 0}], 
+               Dot[$CellContext`Rot, {1, 0, 0}]}], 
+             Arrow[{
+               Dot[$CellContext`Rot, {0, -1, 0}], 
+               Dot[$CellContext`Rot, {0, 1, 0}]}], 
+             Arrow[{
+               Dot[$CellContext`Rot, {0, 0, -1}], 
+               Dot[$CellContext`Rot, {0, 0, 1}]}], {Orange, 
+              Arrow[{{0, 0, 0}, 
+                
+                Normalize[{(-$CellContext`A$$) 
+                  Cos[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], (-$CellContext`A$$) 
+                  Sin[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], $CellContext`\[Omega]3$$}]}]}, {Purple, 
+              Arrow[{{0, 0, 0}, 
+                
+                Normalize[{(-$CellContext`A$$) $CellContext`Ip$$ 
+                  Cos[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], (-$CellContext`A$$) $CellContext`Ip$$ 
+                  Sin[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], $CellContext`I3$$ $CellContext`\[Omega]3$$}]}]}, \
+{Red, 
+              Arrow[{{0, 0, 0}, {1, 0, 0}}]}, {Green, 
+              Arrow[{{0, 0, 0}, {0, 1, 0}}]}, {Blue, 
+              Arrow[{{0, 0, 0}, {0, 0, 1}}]}}, PlotLabel -> "Body frame"]}}, 
+         ImageSize -> 1200, PlotLabel -> 
+         StringJoin["(Ip, I3, k, A,\[Omega]3,\[Omega])=", 
+           ToString[
+            
+            N[{$CellContext`Ip$$, $CellContext`I3$$, $CellContext`k, \
+$CellContext`A$$, $CellContext`\[Omega]3$$, ($CellContext`A$$^2 + \
+$CellContext`\[Omega]3$$^2)^Rational[1, 2]}]]]]), 
+      "Specifications" :> {{{$CellContext`Ip$$, 2}, 0, 
+         4}, {{$CellContext`I3$$, 2}, 0, 4}, {{$CellContext`A$$, 1}, 0, 
+         5}, {{$CellContext`\[Omega]3$$, 1}, 0, 5}, {$CellContext`t$$, 0, 
+         360}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{1245., {306., 311.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.648979610372113*^9, 3.648979632062091*^9}, 
+   3.648979668052133*^9, 3.64897977013837*^9, {3.648979850954184*^9, 
+   3.648979868197382*^9}, 3.6489799230318403`*^9, 3.648979998499029*^9, 
+   3.648980032529429*^9, 3.6489800654455757`*^9, 3.648980638433507*^9, 
+   3.6489806935818043`*^9, 3.648980940445908*^9, 3.648981017690668*^9, 
+   3.648981056054544*^9, {3.648981135876549*^9, 3.648981153467412*^9}, 
+   3.6489811972022123`*^9, 3.648981565604905*^9, {3.6489816482395773`*^9, 
+   3.648981720856213*^9}, {3.648981775724131*^9, 3.648981800033292*^9}, {
+   3.6489818397993937`*^9, 3.648981862031542*^9}, 3.648981958060932*^9, {
+   3.648981996533437*^9, 3.648982021813162*^9}, {3.648982265831584*^9, 
+   3.648982286401524*^9}, 3.648982331047983*^9, {3.6489823610528*^9, 
+   3.6489823760078087`*^9}, 3.648982432083428*^9, 3.648982564197743*^9, {
+   3.648982686457736*^9, 3.648982724009262*^9}, 3.6489834116790524`*^9, {
+   3.6489834541801853`*^9, 3.6489834583957243`*^9}, 3.64898363698046*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"k", "=", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"Ip", "-", "I3"}], "I3"], "\[Omega]3"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"RotL", "=", 
+     RowBox[{
+      RowBox[{"Rz", "[", 
+       RowBox[{"k", " ", "t", " ", "\[Degree]"}], "]"}], ".", 
+      RowBox[{"Ry", "[", 
+       RowBox[{"ArcTan", "[", 
+        RowBox[{
+         RowBox[{"I3", " ", "\[Omega]3"}], ",", 
+         RowBox[{"Ip", " ", "A"}]}], "]"}], " ", "]"}], ".", 
+      RowBox[{"Rz", "[", 
+       RowBox[{
+        SqrtBox[
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"Ip", " ", "A"}], ")"}], "2"], "+", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"I3", " ", "\[Omega]3"}], ")"}], "2"]}]], " ", "t", " ", 
+        "\[Degree]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"GraphicsGrid", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Show", "[", 
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Graphics3D", "[", 
+             RowBox[{
+              RowBox[{"{", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"Arrow", "[", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}], 
+                ",", "\[IndentingNewLine]", 
+                RowBox[{"Arrow", "[", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", 
+                    RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "}"}], "]"}], 
+                ",", "\[IndentingNewLine]", 
+                RowBox[{"Arrow", "[", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", 
+                    RowBox[{"-", "1"}]}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}], "]"}], 
+                ",", "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{"Orange", ",", 
+                  RowBox[{"Arrow", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"Normalize", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", "\[Omega]3"}], "}"}], "]"}], ".", "RotL"}]}], "}"}],
+                    "]"}]}], "}"}], ",", 
+                RowBox[{"(*", " ", 
+                 RowBox[{"unit", " ", "\[Omega]", " ", "vector"}], " ", 
+                 "*)"}], "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{"Purple", ",", 
+                  RowBox[{"Arrow", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"Normalize", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", "Ip", "  ", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", "Ip", " ", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", 
+                    RowBox[{"I3", " ", "\[Omega]3"}]}], "}"}], "]"}], ".", 
+                    "RotL"}]}], "}"}], "]"}]}], "}"}], ",", 
+                RowBox[{"(*", " ", 
+                 RowBox[{"unit", " ", "L", " ", "vector"}], " ", "*)"}], 
+                "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{"Red", ",", 
+                  RowBox[{"Arrow", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", "0", ",", "0"}], "}"}], ".", "RotL"}]}],
+                     "}"}], "]"}]}], "}"}], ",", " ", 
+                RowBox[{"(*", " ", 
+                 RowBox[{"row", " ", "vector"}], " ", "*)"}], 
+                "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{"Green", ",", 
+                  RowBox[{"Arrow", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", "RotL"}]}],
+                     "}"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{"Blue", ",", 
+                  RowBox[{"Arrow", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "1"}], "}"}], ".", "RotL"}]}],
+                     "}"}], "]"}]}], "}"}]}], "\[IndentingNewLine]", 
+               RowBox[{"(*", 
+                RowBox[{"Cylinder", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", 
+                    RowBox[{"-", "0.8"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0.8"}], "}"}]}], "}"}], ".", 
+                   "Rot"}], ",", "0.2"}], "]"}], "*)"}], 
+               "\[IndentingNewLine]", "}"}], ",", 
+              RowBox[{"PlotLabel", "\[Rule]", "\"\<L frame\>\""}]}], "]"}], 
+            ",", "\[IndentingNewLine]", 
+            RowBox[{"ParametricPlot3D", "[", 
+             RowBox[{
+              RowBox[{"{", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", "0", ",", "0"}], "}"}], ".", 
+                 RowBox[{"Rz", "[", 
+                  RowBox[{"k", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+                 RowBox[{"Ry", "[", 
+                  RowBox[{"ArcTan", "[", 
+                   RowBox[{
+                    RowBox[{"I3", " ", "\[Omega]3"}], ",", 
+                    RowBox[{"Ip", " ", "A"}]}], "]"}], " ", "]"}], ".", 
+                 RowBox[{"Rz", "[", 
+                  RowBox[{
+                   SqrtBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"Ip", " ", "A"}], ")"}], "2"], "+", 
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"I3", " ", "\[Omega]3"}], ")"}], "2"]}]], " ", 
+                   "g", " ", "\[Degree]"}], "]"}]}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "1", ",", "0"}], "}"}], ".", 
+                 RowBox[{"Rz", "[", 
+                  RowBox[{"k", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+                 RowBox[{"Ry", "[", 
+                  RowBox[{"ArcTan", "[", 
+                   RowBox[{
+                    RowBox[{"I3", " ", "\[Omega]3"}], ",", 
+                    RowBox[{"Ip", " ", "A"}]}], "]"}], " ", "]"}], ".", 
+                 RowBox[{"Rz", "[", 
+                  RowBox[{
+                   SqrtBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"Ip", " ", "A"}], ")"}], "2"], "+", 
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"I3", " ", "\[Omega]3"}], ")"}], "2"]}]], " ", 
+                   "g", " ", "\[Degree]"}], "]"}]}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "0", ",", "1"}], "}"}], ".", 
+                 RowBox[{"Rz", "[", 
+                  RowBox[{"k", " ", "g", " ", "\[Degree]"}], "]"}], ".", 
+                 RowBox[{"Ry", "[", 
+                  RowBox[{"ArcTan", "[", 
+                   RowBox[{
+                    RowBox[{"I3", " ", "\[Omega]3"}], ",", 
+                    RowBox[{"Ip", " ", "A"}]}], "]"}], " ", "]"}], ".", 
+                 RowBox[{"Rz", "[", 
+                  RowBox[{
+                   SqrtBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"Ip", " ", "A"}], ")"}], "2"], "+", 
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"I3", " ", "\[Omega]3"}], ")"}], "2"]}]], " ", 
+                   "g", " ", "\[Degree]"}], "]"}]}]}], "\[IndentingNewLine]", 
+               "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"g", ",", "0", ",", "700"}], "}"}], ",", 
+              RowBox[{"PlotStyle", "\[Rule]", 
+               RowBox[{"{", 
+                RowBox[{"Red", ",", " ", "Green", ",", "Blue"}], "}"}]}]}], 
+             "]"}]}], "\[IndentingNewLine]", "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Graphics3D", "[", 
+          RowBox[{
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Arrow", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"RotL", ".", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}]}], ",", 
+                RowBox[{"RotL", ".", 
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", "0", ",", "0"}], "}"}]}]}], "}"}], "]"}], 
+             ",", "\[IndentingNewLine]", 
+             RowBox[{"Arrow", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"RotL", ".", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", 
+                   RowBox[{"-", "1"}], ",", "0"}], "}"}]}], ",", 
+                RowBox[{"RotL", ".", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "1", ",", "0"}], "}"}]}]}], "}"}], "]"}], 
+             ",", "\[IndentingNewLine]", 
+             RowBox[{"Arrow", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"RotL", ".", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "0", ",", 
+                   RowBox[{"-", "1"}]}], "}"}]}], ",", 
+                RowBox[{"RotL", ".", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "0", ",", "1"}], "}"}]}]}], "}"}], "]"}], 
+             ",", "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"Orange", ",", 
+               RowBox[{"Arrow", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                  RowBox[{"Normalize", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", "\[Omega]3"}], "}"}], "]"}]}], "}"}], "]"}]}], 
+              "}"}], ",", 
+             RowBox[{"(*", " ", 
+              RowBox[{"unit", " ", "\[Omega]", " ", "vector"}], " ", "*)"}], 
+             "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"Purple", ",", 
+               RowBox[{"Arrow", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                  RowBox[{"Normalize", "[", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", "Ip", "  ", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", 
+                    RowBox[{
+                    RowBox[{"-", "A"}], " ", "Ip", " ", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{
+                    RowBox[{"-", "k"}], " ", "t", " ", "\[Degree]"}], "]"}]}],
+                     ",", 
+                    RowBox[{"I3", " ", "\[Omega]3"}]}], "}"}], "]"}]}], "}"}],
+                 "]"}]}], "}"}], ",", 
+             RowBox[{"(*", " ", 
+              RowBox[{"unit", " ", "L", " ", "vector"}], " ", "*)"}], 
+             "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"Red", ",", 
+               RowBox[{"Arrow", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}]}],
+               "}"}], ",", " ", 
+             RowBox[{"(*", " ", 
+              RowBox[{"row", " ", "vector"}], " ", "*)"}], 
+             "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"Green", ",", 
+               RowBox[{"Arrow", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "}"}], "]"}]}],
+               "}"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"Blue", ",", 
+               RowBox[{"Arrow", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}], "]"}]}],
+               "}"}]}], "\[IndentingNewLine]", 
+            RowBox[{"(*", 
+             RowBox[{"Cylinder", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "0", ",", 
+                   RowBox[{"-", "0.8"}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "0", ",", "0.8"}], "}"}]}], "}"}], ",", 
+               "0.2"}], "]"}], "*)"}], "\[IndentingNewLine]", "}"}], ",", 
+           RowBox[{"PlotLabel", "\[Rule]", "\"\<Body frame\>\""}]}], "]"}]}], 
+        "\[IndentingNewLine]", "}"}], "}"}], ",", " ", 
+      RowBox[{"ImageSize", "\[Rule]", "800"}], ",", 
+      RowBox[{"PlotLabel", "\[Rule]", 
+       RowBox[{"\"\<(Ip, I3, k, A,\[Omega]3,\[Omega])=\>\"", "<>", 
+        RowBox[{"ToString", "[", 
+         RowBox[{"N", "[", 
+          RowBox[{"{", 
+           RowBox[{
+           "Ip", ",", "I3", ",", " ", "k", ",", "A", " ", ",", "\[Omega]3", 
+            ",", 
+            SqrtBox[
+             RowBox[{
+              SuperscriptBox["A", "2"], "+", 
+              SuperscriptBox["\[Omega]3", "2"]}]]}], "}"}], "]"}], 
+         "]"}]}]}]}], "]"}]}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Ip", ",", "2"}], "}"}], ",", "0", ",", "4"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"I3", ",", "0.645"}], "}"}], ",", "0", ",", "4"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"A", ",", "1"}], "}"}], ",", "0", ",", "5"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Omega]3", ",", "1"}], "}"}], ",", "0", ",", "5"}], "}"}], 
+   ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "360"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.648982846589498*^9, 3.648982877477991*^9}, {
+   3.648983077451334*^9, 3.6489831084502277`*^9}, {3.648983253380583*^9, 
+   3.648983253498989*^9}, {3.6489833036233463`*^9, 3.648983307301186*^9}, {
+   3.648983763465509*^9, 3.648983797115728*^9}, 3.6489839129137383`*^9, {
+   3.648984013805109*^9, 3.648984045078949*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`A$$ = 1.01, $CellContext`I3$$ = 
+    0.645, $CellContext`Ip$$ = 2, $CellContext`t$$ = 
+    101., $CellContext`\[Omega]3$$ = 1, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`Ip$$], 2}, 0, 4}, {{
+       Hold[$CellContext`I3$$], 0.645}, 0, 4}, {{
+       Hold[$CellContext`A$$], 1}, 0, 5}, {{
+       Hold[$CellContext`\[Omega]3$$], 1}, 0, 5}, {
+      Hold[$CellContext`t$$], 0, 360}}, Typeset`size$$ = {800., {215., 219.}},
+     Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`Ip$256479$$ = 0, $CellContext`I3$256480$$ = 
+    0, $CellContext`A$256481$$ = 0, $CellContext`\[Omega]3$256482$$ = 
+    0, $CellContext`t$256483$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`A$$ = 1, $CellContext`I3$$ = 
+        0.645, $CellContext`Ip$$ = 2, $CellContext`t$$ = 
+        0, $CellContext`\[Omega]3$$ = 1}, "ControllerVariables" :> {
+        Hold[$CellContext`Ip$$, $CellContext`Ip$256479$$, 0], 
+        Hold[$CellContext`I3$$, $CellContext`I3$256480$$, 0], 
+        Hold[$CellContext`A$$, $CellContext`A$256481$$, 0], 
+        Hold[$CellContext`\[Omega]3$$, $CellContext`\[Omega]3$256482$$, 0], 
+        Hold[$CellContext`t$$, $CellContext`t$256483$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`k = (($CellContext`Ip$$ - \
+$CellContext`I3$$)/$CellContext`I3$$) $CellContext`\[Omega]3$$; \
+$CellContext`RotL = Dot[
+          $CellContext`Rz[$CellContext`k $CellContext`t$$ Degree], 
+          $CellContext`Ry[
+           
+           ArcTan[$CellContext`I3$$ $CellContext`\[Omega]3$$, \
+$CellContext`Ip$$ $CellContext`A$$]], 
+          $CellContext`Rz[(($CellContext`Ip$$ $CellContext`A$$)^2 + \
+($CellContext`I3$$ $CellContext`\[Omega]3$$)^2)^
+            Rational[1, 2] $CellContext`t$$ Degree]]; GraphicsGrid[{{
+           Show[{
+             Graphics3D[{
+               Arrow[{{-1, 0, 0}, {1, 0, 0}}], 
+               Arrow[{{0, -1, 0}, {0, 1, 0}}], 
+               Arrow[{{0, 0, -1}, {0, 0, 1}}], {Orange, 
+                Arrow[{{0, 0, 0}, 
+                  Dot[
+                   
+                   Normalize[{(-$CellContext`A$$) 
+                    Cos[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], (-$CellContext`A$$) 
+                    Sin[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], $CellContext`\[Omega]3$$}], \
+$CellContext`RotL]}]}, {Purple, 
+                Arrow[{{0, 0, 0}, 
+                  Dot[
+                   
+                   Normalize[{(-$CellContext`A$$) $CellContext`Ip$$ 
+                    Cos[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], (-$CellContext`A$$) $CellContext`Ip$$ 
+                    Sin[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], $CellContext`I3$$ $CellContext`\[Omega]3$$}], \
+$CellContext`RotL]}]}, {Red, 
+                Arrow[{{0, 0, 0}, 
+                  Dot[{1, 0, 0}, $CellContext`RotL]}]}, {Green, 
+                Arrow[{{0, 0, 0}, 
+                  Dot[{0, 1, 0}, $CellContext`RotL]}]}, {Blue, 
+                Arrow[{{0, 0, 0}, 
+                  Dot[{0, 0, 1}, $CellContext`RotL]}]}}, PlotLabel -> 
+              "L frame"], 
+             ParametricPlot3D[{
+               Dot[{1, 0, 0}, 
+                $CellContext`Rz[$CellContext`k $CellContext`g Degree], 
+                $CellContext`Ry[
+                 
+                 ArcTan[$CellContext`I3$$ $CellContext`\[Omega]3$$, \
+$CellContext`Ip$$ $CellContext`A$$]], 
+                $CellContext`Rz[(($CellContext`Ip$$ $CellContext`A$$)^2 + \
+($CellContext`I3$$ $CellContext`\[Omega]3$$)^2)^Rational[1, 2] $CellContext`g 
+                 Degree]], 
+               Dot[{0, 1, 0}, 
+                $CellContext`Rz[$CellContext`k $CellContext`g Degree], 
+                $CellContext`Ry[
+                 
+                 ArcTan[$CellContext`I3$$ $CellContext`\[Omega]3$$, \
+$CellContext`Ip$$ $CellContext`A$$]], 
+                $CellContext`Rz[(($CellContext`Ip$$ $CellContext`A$$)^2 + \
+($CellContext`I3$$ $CellContext`\[Omega]3$$)^2)^Rational[1, 2] $CellContext`g 
+                 Degree]], 
+               Dot[{0, 0, 1}, 
+                $CellContext`Rz[$CellContext`k $CellContext`g Degree], 
+                $CellContext`Ry[
+                 
+                 ArcTan[$CellContext`I3$$ $CellContext`\[Omega]3$$, \
+$CellContext`Ip$$ $CellContext`A$$]], 
+                $CellContext`Rz[(($CellContext`Ip$$ $CellContext`A$$)^2 + \
+($CellContext`I3$$ $CellContext`\[Omega]3$$)^2)^Rational[1, 2] $CellContext`g 
+                 Degree]]}, {$CellContext`g, 0, 700}, 
+              PlotStyle -> {Red, Green, Blue}]}], 
+           Graphics3D[{
+             Arrow[{
+               Dot[$CellContext`RotL, {-1, 0, 0}], 
+               Dot[$CellContext`RotL, {1, 0, 0}]}], 
+             Arrow[{
+               Dot[$CellContext`RotL, {0, -1, 0}], 
+               Dot[$CellContext`RotL, {0, 1, 0}]}], 
+             Arrow[{
+               Dot[$CellContext`RotL, {0, 0, -1}], 
+               Dot[$CellContext`RotL, {0, 0, 1}]}], {Orange, 
+              Arrow[{{0, 0, 0}, 
+                
+                Normalize[{(-$CellContext`A$$) 
+                  Cos[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], (-$CellContext`A$$) 
+                  Sin[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], $CellContext`\[Omega]3$$}]}]}, {Purple, 
+              Arrow[{{0, 0, 0}, 
+                
+                Normalize[{(-$CellContext`A$$) $CellContext`Ip$$ 
+                  Cos[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], (-$CellContext`A$$) $CellContext`Ip$$ 
+                  Sin[(-$CellContext`k) $CellContext`t$$ 
+                    Degree], $CellContext`I3$$ $CellContext`\[Omega]3$$}]}]}, \
+{Red, 
+              Arrow[{{0, 0, 0}, {1, 0, 0}}]}, {Green, 
+              Arrow[{{0, 0, 0}, {0, 1, 0}}]}, {Blue, 
+              Arrow[{{0, 0, 0}, {0, 0, 1}}]}}, PlotLabel -> "Body frame"]}}, 
+         ImageSize -> 800, PlotLabel -> 
+         StringJoin["(Ip, I3, k, A,\[Omega]3,\[Omega])=", 
+           ToString[
+            
+            N[{$CellContext`Ip$$, $CellContext`I3$$, $CellContext`k, \
+$CellContext`A$$, $CellContext`\[Omega]3$$, ($CellContext`A$$^2 + \
+$CellContext`\[Omega]3$$^2)^Rational[1, 2]}]]]]), 
+      "Specifications" :> {{{$CellContext`Ip$$, 2}, 0, 
+         4}, {{$CellContext`I3$$, 0.645}, 0, 4}, {{$CellContext`A$$, 1}, 0, 
+         5}, {{$CellContext`\[Omega]3$$, 1}, 0, 5}, {$CellContext`t$$, 0, 
+         360}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{845., {310., 315.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.648982873486021*^9, 3.64898287820646*^9}, 
+   3.6489831094146643`*^9, 3.648983254154889*^9, 3.648983315550645*^9, 
+   3.648983528089794*^9, 3.648983659191371*^9, 3.6489837983457613`*^9, 
+   3.648983913315879*^9, {3.648984014605566*^9, 3.648984045497265*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1488, 867},
+WindowMargins->{{Automatic, 165}, {Automatic, 29}},
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 91, 1, 88, "Title"],
+Cell[673, 25, 2756, 71, 88, "Input"],
+Cell[CellGroupData[{
+Cell[3454, 100, 9024, 210, 430, "Input"],
+Cell[12481, 312, 5065, 98, 574, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17583, 415, 311, 8, 30, "Input"],
+Cell[17897, 425, 2439, 66, 63, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20373, 496, 238, 6, 30, "Input"],
+Cell[20614, 504, 792, 23, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21443, 532, 9528, 223, 468, "Input"],
+Cell[30974, 757, 6439, 122, 614, "Output"]
+}, Open  ]],
+Cell[37428, 882, 100, 1, 30, "Input"],
+Cell[CellGroupData[{
+Cell[37553, 887, 11378, 261, 544, "Input"],
+Cell[48934, 1150, 6663, 124, 562, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[55634, 1279, 896, 25, 50, "Input"],
+Cell[56533, 1306, 1287, 33, 30, "Output"],
+Cell[57823, 1341, 1715, 47, 34, "Output"]
+}, Open  ]],
+Cell[59553, 1391, 94, 1, 30, "Input"],
+Cell[CellGroupData[{
+Cell[59672, 1396, 7142, 176, 411, "Input"],
+Cell[66817, 1574, 4367, 88, 562, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[71221, 1667, 7649, 198, 430, "Input"],
+Cell[78873, 1867, 3640, 74, 562, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[82550, 1946, 5642, 144, 297, "Input"],
+Cell[88195, 2092, 4131, 84, 682, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[92363, 2181, 511, 15, 30, "Input"],
+Cell[92877, 2198, 2463, 72, 50, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[95377, 2275, 28673, 661, 1481, "Input"],
+Cell[124053, 2938, 11208, 222, 634, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[135298, 3165, 17812, 427, 977, "Input"],
+Cell[153113, 3594, 7686, 155, 642, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

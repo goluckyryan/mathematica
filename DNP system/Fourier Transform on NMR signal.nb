@@ -1,0 +1,1361 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     56154,       1352]
+NotebookOptionsPosition[     54560,       1292]
+NotebookOutlinePosition[     54907,       1307]
+CellTagsIndexPosition[     54864,       1304]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Fourier Transform on NMR signal", "Title",
+ CellChangeTimes->{{3.5208198597223797`*^9, 3.520819877485355*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Integrate", "[", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Exp", "[", 
+     RowBox[{"\[ImaginaryI]", 
+      RowBox[{"(", " ", 
+       RowBox[{
+        RowBox[{"2", "\[Pi]", " ", "f0", " ", "t"}], "+", "\[Phi]"}], ")"}]}],
+      "]"}], 
+    RowBox[{"Exp", "[", 
+     FractionBox[
+      RowBox[{"-", "t"}], "T"], "]"}], " ", 
+    RowBox[{"Exp", "[", 
+     RowBox[{
+      RowBox[{"-", "\[ImaginaryI]"}], " ", "2", "\[Pi]", " ", "f", " ", "t"}],
+      "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "a", ",", 
+     RowBox[{"a", "+", "L"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.520818089645102*^9, 3.5208181409982233`*^9}, {
+   3.520818442210355*^9, 3.520818443024679*^9}, 3.520818522488411*^9, {
+   3.520818690628804*^9, 3.520818693156056*^9}, {3.520818887478052*^9, 
+   3.520818887779752*^9}, {3.5208189655491743`*^9, 3.520818976212191*^9}, 
+   3.5208191592686443`*^9, {3.5208191924467897`*^9, 3.520819224936515*^9}, 
+   3.520819563413769*^9, {3.520819732057537*^9, 3.520819734441*^9}, {
+   3.52081979495127*^9, 3.520819824778557*^9}, {3.520821716590661*^9, 
+   3.520821728160129*^9}, 3.5208218353830843`*^9, 3.520822974641818*^9, {
+   3.5208248353406076`*^9, 3.520824842908698*^9}, {3.520825485464817*^9, 
+   3.520825485798781*^9}, {3.520825569219449*^9, 3.5208255717061787`*^9}, {
+   3.520827049840107*^9, 3.520827060203844*^9}, {3.520950685522641*^9, 
+   3.5209506963512607`*^9}, {3.5212605232706137`*^9, 3.5212605278498755`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"\[ImaginaryI]", " ", "\[Phi]"}]], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"-", 
+        FractionBox[
+         RowBox[{"a", " ", 
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+             RowBox[{"(", 
+              RowBox[{"f", "-", "f0"}], ")"}], " ", "\[Pi]", " ", "T"}]}], 
+           ")"}]}], "T"]}]]}], "+", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"a", "+", "L"}], ")"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", 
+           RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+            RowBox[{"(", 
+             RowBox[{"f", "-", "f0"}], ")"}], " ", "\[Pi]", " ", "T"}]}], 
+          ")"}]}], "T"]}]]}], ")"}], " ", "T"}], 
+  RowBox[{
+   RowBox[{"-", "1"}], "-", 
+   RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+    RowBox[{"(", 
+     RowBox[{"f", "-", "f0"}], ")"}], " ", "\[Pi]", " ", "T"}]}]]], "Output",
+ CellChangeTimes->{
+  3.520818144209566*^9, 3.520818445615478*^9, 3.52081852611756*^9, 
+   3.520818699032791*^9, 3.520818889649416*^9, 3.5208189790264683`*^9, 
+   3.5208191603620033`*^9, {3.5208191976821957`*^9, 3.520819225654943*^9}, 
+   3.520819564696382*^9, 3.520819735704298*^9, {3.520819798160038*^9, 
+   3.52081982532648*^9}, {3.520821724862851*^9, 3.5208217301674633`*^9}, 
+   3.5208218366068993`*^9, 3.5208229767041693`*^9, 3.520824845387164*^9, 
+   3.5208254924599733`*^9, 3.52082557247901*^9, 3.5208270616819067`*^9, 
+   3.520950702951638*^9, 3.521260533473197*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["1 Frequency", "Section",
+ CellChangeTimes->{{3.5212601101449842`*^9, 3.521260123199731*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Re", "[", 
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{"\[ImaginaryI]", 
+           RowBox[{"(", " ", 
+            RowBox[{
+             RowBox[{"2", "\[Pi]", " ", "f0", " ", "t"}], "+", "\[Phi]"}], 
+            ")"}]}], "]"}], 
+         RowBox[{"Exp", "[", 
+          FractionBox[
+           RowBox[{"-", "t"}], "T"], "]"}]}], " ", "]"}], ",", 
+       RowBox[{"Im", "[", 
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{"\[ImaginaryI]", 
+           RowBox[{"(", " ", 
+            RowBox[{
+             RowBox[{"2", "\[Pi]", " ", "f0", " ", "t"}], "+", "\[Phi]"}], 
+            ")"}]}], "]"}], 
+         RowBox[{"Exp", "[", 
+          FractionBox[
+           RowBox[{"-", "t"}], "T"], "]"}]}], " ", "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", "200"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "1"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"f0", ",", "0", ",", "10"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Phi]", ",", "0", ",", 
+     RowBox[{"2", "\[Pi]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"T", ",", "60"}], "}"}], ",", "1", ",", "100"}], "}"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.520819297636753*^9, 3.5208193659086103`*^9}, {
+  3.520819446889659*^9, 3.520819479124661*^9}, {3.5208217399793787`*^9, 
+  3.520821747993368*^9}, {3.5208248647187557`*^9, 3.520824870101095*^9}, {
+  3.520825116157043*^9, 3.520825122571106*^9}, {3.5212598242236304`*^9, 
+  3.521259831816065*^9}, {3.5212609034083567`*^9, 3.521260966486964*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`f0$$ = 0, $CellContext`T$$ = 
+    60, $CellContext`\[Phi]$$ = 0., Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`f0$$], 0, 10}, {
+      Hold[$CellContext`\[Phi]$$], 0, 2 Pi}, {{
+       Hold[$CellContext`T$$], 60}, 1, 100}}, Typeset`size$$ = {
+    360., {110., 114.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`f0$4433$$ = 
+    0, $CellContext`\[Phi]$4434$$ = 0, $CellContext`T$4435$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`f0$$ = 0, $CellContext`T$$ = 
+        60, $CellContext`\[Phi]$$ = 0}, "ControllerVariables" :> {
+        Hold[$CellContext`f0$$, $CellContext`f0$4433$$, 0], 
+        Hold[$CellContext`\[Phi]$$, $CellContext`\[Phi]$4434$$, 0], 
+        Hold[$CellContext`T$$, $CellContext`T$4435$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Plot[{
+         Re[
+         Exp[I (((2 
+                Pi) $CellContext`f0$$) $CellContext`t + \
+$CellContext`\[Phi]$$)] Exp[(-$CellContext`t)/$CellContext`T$$]], 
+         Im[
+         Exp[I (((2 
+                Pi) $CellContext`f0$$) $CellContext`t + \
+$CellContext`\[Phi]$$)] 
+          Exp[(-$CellContext`t)/$CellContext`T$$]]}, {$CellContext`t, 0, 200},
+         PlotRange -> 1], 
+      "Specifications" :> {{$CellContext`f0$$, 0, 10}, {$CellContext`\[Phi]$$,
+          0, 2 Pi}, {{$CellContext`T$$, 60}, 1, 100}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{409., {183., 188.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.520819311488552*^9, 3.520819366763034*^9}, {
+   3.5208194477896433`*^9, 3.5208194801997423`*^9}, 3.520821751793647*^9, 
+   3.520825124094098*^9, {3.5212609064235287`*^9, 3.521260923545508*^9}, 
+   3.521260967321012*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Re", "[", 
+           FractionBox[
+            RowBox[{
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"\[ImaginaryI]", " ", "\[Phi]"}]], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", 
+                SuperscriptBox["\[ExponentialE]", 
+                 RowBox[{"-", 
+                  FractionBox[
+                   RowBox[{"a", " ", 
+                    RowBox[{"(", 
+                    RowBox[{"1", "+", 
+                    RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+                    RowBox[{"(", 
+                    RowBox[{"f", "-", "f0"}], ")"}], " ", "\[Pi]", " ", 
+                    "T"}]}], ")"}]}], "T"]}]]}], "+", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{"-", 
+                 FractionBox[
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"a", "+", "L"}], ")"}], " ", 
+                   RowBox[{"(", 
+                    RowBox[{"1", "+", 
+                    RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+                    RowBox[{"(", 
+                    RowBox[{"f", "-", "f0"}], ")"}], " ", "\[Pi]", " ", 
+                    "T"}]}], ")"}]}], "T"]}]]}], ")"}], " ", "T"}], 
+            RowBox[{
+             RowBox[{"-", "1"}], "-", 
+             RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+              RowBox[{"(", 
+               RowBox[{"f", "-", "f0"}], ")"}], " ", "\[Pi]", " ", "T"}]}]], 
+           "]"}], ",", 
+          RowBox[{"Im", "[", 
+           FractionBox[
+            RowBox[{
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"\[ImaginaryI]", " ", "\[Phi]"}]], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", 
+                SuperscriptBox["\[ExponentialE]", 
+                 RowBox[{"-", 
+                  FractionBox[
+                   RowBox[{"a", " ", 
+                    RowBox[{"(", 
+                    RowBox[{"1", "+", 
+                    RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+                    RowBox[{"(", 
+                    RowBox[{"f", "-", "f0"}], ")"}], " ", "\[Pi]", " ", 
+                    "T"}]}], ")"}]}], "T"]}]]}], "+", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{"-", 
+                 FractionBox[
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"a", "+", "L"}], ")"}], " ", 
+                   RowBox[{"(", 
+                    RowBox[{"1", "+", 
+                    RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+                    RowBox[{"(", 
+                    RowBox[{"f", "-", "f0"}], ")"}], " ", "\[Pi]", " ", 
+                    "T"}]}], ")"}]}], "T"]}]]}], ")"}], " ", "T"}], 
+            RowBox[{
+             RowBox[{"-", "1"}], "-", 
+             RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+              RowBox[{"(", 
+               RowBox[{"f", "-", "f0"}], ")"}], " ", "\[Pi]", " ", "T"}]}]], 
+           "]"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"f", ",", 
+          RowBox[{"-", "0.1"}], ",", "0.1"}], "}"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}], ",", " ", 
+        RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Abs", "[", 
+           FractionBox[
+            RowBox[{
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"\[ImaginaryI]", " ", "\[Phi]"}]], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", 
+                SuperscriptBox["\[ExponentialE]", 
+                 RowBox[{"-", 
+                  FractionBox[
+                   RowBox[{"a", " ", 
+                    RowBox[{"(", 
+                    RowBox[{"1", "+", 
+                    RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+                    RowBox[{"(", 
+                    RowBox[{"f", "-", "f0"}], ")"}], " ", "\[Pi]", " ", 
+                    "T"}]}], ")"}]}], "T"]}]]}], "+", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{"-", 
+                 FractionBox[
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"a", "+", "L"}], ")"}], " ", 
+                   RowBox[{"(", 
+                    RowBox[{"1", "+", 
+                    RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+                    RowBox[{"(", 
+                    RowBox[{"f", "-", "f0"}], ")"}], " ", "\[Pi]", " ", 
+                    "T"}]}], ")"}]}], "T"]}]]}], ")"}], " ", "T"}], 
+            RowBox[{
+             RowBox[{"-", "1"}], "-", 
+             RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+              RowBox[{"(", 
+               RowBox[{"f", "-", "f0"}], ")"}], " ", "\[Pi]", " ", "T"}]}]], 
+           "]"}], ",", 
+          RowBox[{"Arg", "[", 
+           FractionBox[
+            RowBox[{
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"\[ImaginaryI]", " ", "\[Phi]"}]], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", 
+                SuperscriptBox["\[ExponentialE]", 
+                 RowBox[{"-", 
+                  FractionBox[
+                   RowBox[{"a", " ", 
+                    RowBox[{"(", 
+                    RowBox[{"1", "+", 
+                    RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+                    RowBox[{"(", 
+                    RowBox[{"f", "-", "f0"}], ")"}], " ", "\[Pi]", " ", 
+                    "T"}]}], ")"}]}], "T"]}]]}], "+", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{"-", 
+                 FractionBox[
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"a", "+", "L"}], ")"}], " ", 
+                   RowBox[{"(", 
+                    RowBox[{"1", "+", 
+                    RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+                    RowBox[{"(", 
+                    RowBox[{"f", "-", "f0"}], ")"}], " ", "\[Pi]", " ", 
+                    "T"}]}], ")"}]}], "T"]}]]}], ")"}], " ", "T"}], 
+            RowBox[{
+             RowBox[{"-", "1"}], "-", 
+             RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+              RowBox[{"(", 
+               RowBox[{"f", "-", "f0"}], ")"}], " ", "\[Pi]", " ", "T"}]}]], 
+           "]"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"f", ",", 
+          RowBox[{"-", "0.1"}], ",", "0.1"}], "}"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}], ",", " ", 
+        RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"f0", ",", "0"}], "}"}], ",", 
+      RowBox[{"-", "0.1"}], ",", "0.1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"T", ",", "70"}], "}"}], ",", "1", ",", "100"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Phi]", ",", "0", ",", 
+      RowBox[{"2", "\[Pi]"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"a", ",", "0", ",", "10"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"L", ",", "200"}], "}"}], ",", "0", ",", "200"}], "}"}]}], 
+   "]"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"time", " ", "in", " ", "\[Mu]s"}], "  ", "|", 
+    RowBox[{"frequency", " ", "in", " ", "MHz"}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.5208196667419453`*^9, 3.520819673470487*^9}, {
+   3.5208197420360537`*^9, 3.5208197611375113`*^9}, {3.520822990072709*^9, 
+   3.520822992259543*^9}, {3.520826924515643*^9, 3.520826958597001*^9}, {
+   3.520827071547084*^9, 3.5208270891845207`*^9}, {3.521260204624388*^9, 
+   3.5212602190492134`*^9}, {3.5212603240812206`*^9, 
+   3.5212603756261687`*^9}, {3.521260573528488*^9, 3.5212606406093254`*^9}, {
+   3.5212610553540473`*^9, 3.5212610952733307`*^9}, {3.5212611836213837`*^9, 
+   3.5212612307860813`*^9}, {3.5212612658320856`*^9, 3.521261268898261*^9}, {
+   3.521261570334502*^9, 3.521261604797474*^9}, {3.521262047212778*^9, 
+   3.521262062751667*^9}, 3.521263736629407*^9}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 0, $CellContext`f0$$ = 
+    0, $CellContext`L$$ = 200, $CellContext`T$$ = 
+    5.51, $CellContext`\[Phi]$$ = 0, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`f0$$], 0}, -0.1, 0.1}, {{
+       Hold[$CellContext`T$$], 70}, 1, 100}, {
+      Hold[$CellContext`\[Phi]$$], 0, 2 Pi}, {
+      Hold[$CellContext`a$$], 0, 10}, {{
+       Hold[$CellContext`L$$], 200}, 0, 200}}, Typeset`size$$ = {
+    825., {120., 124.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`f0$7936$$ = 
+    0, $CellContext`T$7937$$ = 0, $CellContext`\[Phi]$7938$$ = 
+    0, $CellContext`a$7939$$ = 0, $CellContext`L$7940$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 0, $CellContext`f0$$ = 
+        0, $CellContext`L$$ = 200, $CellContext`T$$ = 
+        70, $CellContext`\[Phi]$$ = 0}, "ControllerVariables" :> {
+        Hold[$CellContext`f0$$, $CellContext`f0$7936$$, 0], 
+        Hold[$CellContext`T$$, $CellContext`T$7937$$, 0], 
+        Hold[$CellContext`\[Phi]$$, $CellContext`\[Phi]$7938$$, 0], 
+        Hold[$CellContext`a$$, $CellContext`a$7939$$, 0], 
+        Hold[$CellContext`L$$, $CellContext`L$7940$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> {
+        Plot[{
+          
+          Re[(E^(I $CellContext`\[Phi]$$) (-
+              E^(-($CellContext`a$$ ((
+                   1 + (((2 I) ($CellContext`f - $CellContext`f0$$)) 
+                    Pi) $CellContext`T$$)/$CellContext`T$$))) + 
+             E^(-(($CellContext`a$$ + $CellContext`L$$) ((
+                  1 + (((2 I) ($CellContext`f - $CellContext`f0$$)) 
+                    
+                    Pi) $CellContext`T$$)/$CellContext`T$$))))) \
+($CellContext`T$$/(-1 - (((2 I) ($CellContext`f - $CellContext`f0$$)) 
+             Pi) $CellContext`T$$))], 
+          
+          Im[(E^(I $CellContext`\[Phi]$$) (-
+              E^(-($CellContext`a$$ ((
+                   1 + (((2 I) ($CellContext`f - $CellContext`f0$$)) 
+                    Pi) $CellContext`T$$)/$CellContext`T$$))) + 
+             E^(-(($CellContext`a$$ + $CellContext`L$$) ((
+                  1 + (((2 I) ($CellContext`f - $CellContext`f0$$)) 
+                    Pi) $CellContext`T$$)/$CellContext`T$$))))) \
+($CellContext`T$$/(-1 - (((2 I) ($CellContext`f - $CellContext`f0$$)) 
+             Pi) $CellContext`T$$))]}, {$CellContext`f, -0.1, 0.1}, PlotRange -> 
+         All, ImageSize -> 400], 
+        Plot[{
+          
+          Abs[(E^(I $CellContext`\[Phi]$$) (-
+              E^(-($CellContext`a$$ ((
+                   1 + (((2 I) ($CellContext`f - $CellContext`f0$$)) 
+                    Pi) $CellContext`T$$)/$CellContext`T$$))) + 
+             E^(-(($CellContext`a$$ + $CellContext`L$$) ((
+                  1 + (((2 I) ($CellContext`f - $CellContext`f0$$)) 
+                    Pi) $CellContext`T$$)/$CellContext`T$$))))) \
+($CellContext`T$$/(-1 - (((2 I) ($CellContext`f - $CellContext`f0$$)) 
+             Pi) $CellContext`T$$))], 
+          
+          Arg[(E^(I $CellContext`\[Phi]$$) (-
+              E^(-($CellContext`a$$ ((
+                   1 + (((2 I) ($CellContext`f - $CellContext`f0$$)) 
+                    Pi) $CellContext`T$$)/$CellContext`T$$))) + 
+             E^(-(($CellContext`a$$ + $CellContext`L$$) ((
+                  1 + (((2 I) ($CellContext`f - $CellContext`f0$$)) 
+                    Pi) $CellContext`T$$)/$CellContext`T$$))))) \
+($CellContext`T$$/(-1 - (((2 I) ($CellContext`f - $CellContext`f0$$)) 
+             Pi) $CellContext`T$$))]}, {$CellContext`f, -0.1, 0.1}, PlotRange -> 
+         All, ImageSize -> 400]}, 
+      "Specifications" :> {{{$CellContext`f0$$, 0}, -0.1, 
+         0.1}, {{$CellContext`T$$, 70}, 1, 100}, {$CellContext`\[Phi]$$, 0, 2 
+         Pi}, {$CellContext`a$$, 0, 10}, {{$CellContext`L$$, 200}, 0, 200}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{874., {220., 225.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.520819674678712*^9, 3.5208197618233147`*^9, 3.520822993412025*^9, {
+   3.520826944461316*^9, 3.520826959391995*^9}, 3.520827089715622*^9, 
+   3.521260222232395*^9, {3.521260369084795*^9, 3.5212603794773893`*^9}, 
+   3.5212606413363667`*^9, {3.5212610764572544`*^9, 3.521261097871479*^9}, {
+   3.5212611877376194`*^9, 3.5212612315601254`*^9}, 3.5212612694572935`*^9, 
+   3.5212620644777656`*^9, 3.521263738669524*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"FWHM", " ", "of", " ", "Real"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   FractionBox["1", 
+    RowBox[{"\[Pi]", " ", "10"}]], "//", "N"}]}]], "Input",
+ CellChangeTimes->{{3.5212613795935926`*^9, 3.521261392780347*^9}, {
+   3.521261731749735*^9, 3.521261731870742*^9}, {3.521261766381716*^9, 
+   3.5212617710889845`*^9}, {3.5212618621251917`*^9, 3.521261869448611*^9}, 
+   3.5212632144785423`*^9, {3.521263257127981*^9, 3.5212632590490913`*^9}, {
+   3.521263826505548*^9, 3.5212638334669456`*^9}, {3.521263912193449*^9, 
+   3.521263938485953*^9}, {3.521338707148898*^9, 3.5213387085199766`*^9}, {
+   3.5213387701215*^9, 3.521338772295624*^9}}],
+
+Cell[BoxData["0.03183098861837907`"], "Output",
+ CellChangeTimes->{
+  3.5212613933403788`*^9, 3.521261732288766*^9, 3.5212617743151693`*^9, 
+   3.5212632174247103`*^9, {3.5212638310108056`*^9, 3.521263836476118*^9}, 
+   3.521263940115046*^9, 3.5213387091750135`*^9, 3.521338772854656*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Solve", "[", 
+   RowBox[{
+    RowBox[{
+     FractionBox["1", 
+      RowBox[{"2", "\[Pi]", " ", "t"}]], "\[Equal]", "0.05"}], ",", "t"}], 
+   "]"}], "//", "N"}]], "Input",
+ CellChangeTimes->{{3.521261857495927*^9, 3.521261859139021*^9}, {
+  3.521261894590049*^9, 3.5212619435908513`*^9}, {3.5212638488588266`*^9, 
+  3.521263868384943*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{"t", "\[Rule]", "3.183098861837907`"}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{{3.5212619136181374`*^9, 3.521261944314893*^9}, {
+  3.521263855509207*^9, 3.5212638688469696`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"FWHM", " ", "of", " ", "Amp"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   FractionBox[
+    SqrtBox["3"], 
+    RowBox[{"\[Pi]", " ", "10"}]], "//", "N"}]}]], "Input",
+ CellChangeTimes->{{3.521263918002781*^9, 3.5212639594221506`*^9}, 
+   3.5213386948811965`*^9, {3.5213388064855795`*^9, 3.5213388173342*^9}}],
+
+Cell[BoxData["0.05513288954217921`"], "Output",
+ CellChangeTimes->{{3.52126395032563*^9, 3.521263959917179*^9}, 
+   3.5213386956162386`*^9, {3.521338808115673*^9, 3.5213388182322516`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Solve", "[", 
+   RowBox[{
+    RowBox[{
+     FractionBox[
+      SqrtBox["3"], 
+      RowBox[{"2", "\[Pi]", " ", "t"}]], "\[Equal]", "0.05"}], ",", "t"}], 
+   "]"}], "//", "N"}]], "Input",
+ CellChangeTimes->{{3.521263966303544*^9, 3.5212639678126307`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{"t", "\[Rule]", "5.51328895421792`"}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{3.5212639682716565`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2 Frequencies", "Section",
+ CellChangeTimes->{{3.52126016198895*^9, 3.5212601822811103`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"S", "[", 
+   RowBox[{"A_", ",", "f0_", ",", "\[Phi]_", ",", "T_", ",", "t_"}], "]"}], ":=", 
+  RowBox[{"A", " ", 
+   RowBox[{"Exp", "[", 
+    RowBox[{"\[ImaginaryI]", 
+     RowBox[{"(", " ", 
+      RowBox[{
+       RowBox[{"2", "\[Pi]", " ", "f0", " ", "t"}], "+", "\[Phi]"}], ")"}]}], 
+    "]"}], 
+   RowBox[{"Exp", "[", 
+    FractionBox[
+     RowBox[{"-", "t"}], "T"], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"FS", "[", 
+   RowBox[{
+   "A_", ",", "f0_", ",", "\[Phi]_", ",", "T_", ",", "f_", ",", "a_", ",", 
+    "L_"}], "]"}], ":=", 
+  RowBox[{"A", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"\[ImaginaryI]", " ", "\[Phi]"}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", 
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"-", 
+          FractionBox[
+           RowBox[{"a", " ", 
+            RowBox[{"(", 
+             RowBox[{"1", "+", 
+              RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+               RowBox[{"(", 
+                RowBox[{"f", "-", "f0"}], ")"}], " ", "\[Pi]", " ", "T"}]}], 
+             ")"}]}], "T"]}]]}], "+", 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"-", 
+         FractionBox[
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"a", "+", "L"}], ")"}], " ", 
+           RowBox[{"(", 
+            RowBox[{"1", "+", 
+             RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+              RowBox[{"(", 
+               RowBox[{"f", "-", "f0"}], ")"}], " ", "\[Pi]", " ", "T"}]}], 
+            ")"}]}], "T"]}]]}], ")"}], " ", "T"}], 
+    RowBox[{
+     RowBox[{"-", "1"}], "-", 
+     RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+      RowBox[{"(", 
+       RowBox[{"f", "-", "f0"}], ")"}], " ", "\[Pi]", " ", 
+      "T"}]}]]}]}]}], "Input",
+ CellChangeTimes->{{3.521264027738058*^9, 3.521264067588337*^9}, {
+  3.521264125233634*^9, 3.521264127127743*^9}, {3.5212641615347104`*^9, 
+  3.521264213918707*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Abs", "[", 
+          RowBox[{
+           RowBox[{"FS", "[", 
+            RowBox[{
+            "A0", ",", "f0", ",", "\[Phi]0", ",", "T0", ",", "f", ",", "a", 
+             ",", "L"}], "]"}], "+", 
+           RowBox[{"FS", "[", 
+            RowBox[{
+            "A1", ",", "f1", ",", "\[Phi]1", ",", "T1", ",", "f", ",", "a", 
+             ",", "L"}], "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Arg", "[", 
+          RowBox[{
+           RowBox[{"FS", "[", 
+            RowBox[{
+            "A0", ",", "f0", ",", "\[Phi]0", ",", "T0", ",", "f", ",", "a", 
+             ",", "L"}], "]"}], "+", 
+           RowBox[{"FS", "[", 
+            RowBox[{
+            "A1", ",", "f1", ",", "\[Phi]1", ",", "T1", ",", "f", ",", "a", 
+             ",", "L"}], "]"}]}], "]"}]}], "}"}], "\[IndentingNewLine]", ",", 
+       
+       RowBox[{"{", 
+        RowBox[{"f", ",", 
+         RowBox[{"-", "0.1"}], ",", " ", "0.1"}], "}"}], ",", 
+       RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Re", "[", 
+          RowBox[{
+           RowBox[{"S", "[", 
+            RowBox[{"A0", ",", "f0", ",", "\[Phi]0", ",", "T0", ",", "t"}], 
+            "]"}], "+", 
+           RowBox[{"S", "[", 
+            RowBox[{"A1", ",", "f1", ",", "\[Phi]1", ",", "T1", ",", "t"}], 
+            "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Im", "[", 
+          RowBox[{
+           RowBox[{"S", "[", 
+            RowBox[{"A0", ",", "f0", ",", "\[Phi]0", ",", "T0", ",", "t"}], 
+            "]"}], "+", 
+           RowBox[{"S", "[", 
+            RowBox[{"A1", ",", "f1", ",", "\[Phi]1", ",", "T1", ",", "t"}], 
+            "]"}]}], "]"}]}], "}"}], "\[IndentingNewLine]", ",", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "20", ",", 
+         RowBox[{"a", "+", "L"}]}], "}"}], ",", 
+       RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", "400"}], ",", " ", 
+       RowBox[{"PlotStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Red", ",", "Blue"}], "}"}]}]}], "]"}]}], 
+    "\[IndentingNewLine]", "}"}], " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"frequency", " ", "in", " ", "MHz"}], ",", " ", 
+     RowBox[{"time", " ", "in", " ", "\[Mu]s"}]}], " ", "*)"}], 
+   "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"A0", ",", "0.78"}], "}"}], ",", "0", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"f0", ",", "0.045"}], "}"}], ",", 
+     RowBox[{"-", "0.1"}], ",", "0.1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Phi]0", ",", "2.5"}], "}"}], ",", "0", ",", 
+     RowBox[{"2", "\[Pi]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"T0", ",", "50"}], "}"}], ",", "1", ",", "100"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"A1", ",", "0.86"}], "}"}], ",", "0", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"f1", ",", 
+       RowBox[{"-", "0.025"}]}], "}"}], ",", 
+     RowBox[{"-", "0.1"}], ",", "0.1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Phi]1", ",", "2"}], "}"}], ",", "0", ",", 
+     RowBox[{"2", "\[Pi]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"T1", ",", "50"}], "}"}], ",", "1", ",", "100"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", ",", "30"}], "}"}], ",", "0", ",", "40"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"L", ",", "170"}], "}"}], ",", "50", ",", "250"}], "}"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.5212640848863263`*^9, 3.52126414771492*^9}, {
+   3.5212642197340393`*^9, 3.5212642758372483`*^9}, {3.521264325607095*^9, 
+   3.5212643686955595`*^9}, {3.521264426873887*^9, 3.5212644592987413`*^9}, {
+   3.521264555161225*^9, 3.521264573892296*^9}, {3.521264750577402*^9, 
+   3.5212648063425913`*^9}, {3.5212648795347776`*^9, 
+   3.5212648797077875`*^9}, {3.5212649248053675`*^9, 3.5212649288856*^9}, {
+   3.5212650595760756`*^9, 3.5212650639823275`*^9}, {3.5212652136048856`*^9, 
+   3.5212652219373617`*^9}, 3.521265252097087*^9, {3.521265440680874*^9, 
+   3.521265465691304*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 
+    30, $CellContext`A0$$ = -0.78, $CellContext`A1$$ = -0.86, \
+$CellContext`f0$$ = 0.045, $CellContext`f1$$ = -0.025, $CellContext`L$$ = 
+    170, $CellContext`T0$$ = 50, $CellContext`T1$$ = 
+    50, $CellContext`\[Phi]0$$ = Pi, $CellContext`\[Phi]1$$ = 
+    3.267256359733385, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`A0$$], 0.78}, 0, 2}, {{
+       Hold[$CellContext`f0$$], 0.045}, -0.1, 0.1}, {{
+       Hold[$CellContext`\[Phi]0$$], 2.5}, 0, 2 Pi}, {{
+       Hold[$CellContext`T0$$], 50}, 1, 100}, {{
+       Hold[$CellContext`A1$$], 0.86}, 0, 2}, {{
+       Hold[$CellContext`f1$$], -0.025}, -0.1, 0.1}, {{
+       Hold[$CellContext`\[Phi]1$$], 2}, 0, 2 Pi}, {{
+       Hold[$CellContext`T1$$], 50}, 1, 100}, {{
+       Hold[$CellContext`a$$], 30}, 0, 40}, {{
+       Hold[$CellContext`L$$], 170}, 50, 250}}, Typeset`size$$ = {
+    825., {120., 124.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`A0$13021$$ = 
+    0, $CellContext`f0$13022$$ = 0, $CellContext`\[Phi]0$13023$$ = 
+    0, $CellContext`T0$13024$$ = 0, $CellContext`A1$13025$$ = 
+    0, $CellContext`f1$13026$$ = 0, $CellContext`\[Phi]1$13027$$ = 
+    0, $CellContext`T1$13028$$ = 0, $CellContext`a$13029$$ = 
+    0, $CellContext`L$13030$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 30, $CellContext`A0$$ = 
+        0.78, $CellContext`A1$$ = 0.86, $CellContext`f0$$ = 
+        0.045, $CellContext`f1$$ = -0.025, $CellContext`L$$ = 
+        170, $CellContext`T0$$ = 50, $CellContext`T1$$ = 
+        50, $CellContext`\[Phi]0$$ = 2.5, $CellContext`\[Phi]1$$ = 2}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`A0$$, $CellContext`A0$13021$$, 0], 
+        Hold[$CellContext`f0$$, $CellContext`f0$13022$$, 0], 
+        Hold[$CellContext`\[Phi]0$$, $CellContext`\[Phi]0$13023$$, 0], 
+        Hold[$CellContext`T0$$, $CellContext`T0$13024$$, 0], 
+        Hold[$CellContext`A1$$, $CellContext`A1$13025$$, 0], 
+        Hold[$CellContext`f1$$, $CellContext`f1$13026$$, 0], 
+        Hold[$CellContext`\[Phi]1$$, $CellContext`\[Phi]1$13027$$, 0], 
+        Hold[$CellContext`T1$$, $CellContext`T1$13028$$, 0], 
+        Hold[$CellContext`a$$, $CellContext`a$13029$$, 0], 
+        Hold[$CellContext`L$$, $CellContext`L$13030$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> {
+        Plot[{
+          
+          Abs[$CellContext`FS[$CellContext`A0$$, $CellContext`f0$$, \
+$CellContext`\[Phi]0$$, $CellContext`T0$$, $CellContext`f, $CellContext`a$$, \
+$CellContext`L$$] + $CellContext`FS[$CellContext`A1$$, $CellContext`f1$$, \
+$CellContext`\[Phi]1$$, $CellContext`T1$$, $CellContext`f, $CellContext`a$$, \
+$CellContext`L$$]], 
+          
+          Arg[$CellContext`FS[$CellContext`A0$$, $CellContext`f0$$, \
+$CellContext`\[Phi]0$$, $CellContext`T0$$, $CellContext`f, $CellContext`a$$, \
+$CellContext`L$$] + $CellContext`FS[$CellContext`A1$$, $CellContext`f1$$, \
+$CellContext`\[Phi]1$$, $CellContext`T1$$, $CellContext`f, $CellContext`a$$, \
+$CellContext`L$$]]}, {$CellContext`f, -0.1, 0.1}, PlotRange -> All, ImageSize -> 
+         400], 
+        Plot[{
+          
+          Re[$CellContext`S[$CellContext`A0$$, $CellContext`f0$$, \
+$CellContext`\[Phi]0$$, $CellContext`T0$$, $CellContext`t] + \
+$CellContext`S[$CellContext`A1$$, $CellContext`f1$$, $CellContext`\[Phi]1$$, \
+$CellContext`T1$$, $CellContext`t]], 
+          
+          Im[$CellContext`S[$CellContext`A0$$, $CellContext`f0$$, \
+$CellContext`\[Phi]0$$, $CellContext`T0$$, $CellContext`t] + \
+$CellContext`S[$CellContext`A1$$, $CellContext`f1$$, $CellContext`\[Phi]1$$, \
+$CellContext`T1$$, $CellContext`t]]}, {$CellContext`t, 
+          20, $CellContext`a$$ + $CellContext`L$$}, PlotRange -> All, 
+         ImageSize -> 400, PlotStyle -> {Red, Blue}]}, 
+      "Specifications" :> {{{$CellContext`A0$$, 0.78}, 0, 
+         2}, {{$CellContext`f0$$, 0.045}, -0.1, 
+         0.1}, {{$CellContext`\[Phi]0$$, 2.5}, 0, 2 
+         Pi}, {{$CellContext`T0$$, 50}, 1, 100}, {{$CellContext`A1$$, 0.86}, 
+         0, 2}, {{$CellContext`f1$$, -0.025}, -0.1, 
+         0.1}, {{$CellContext`\[Phi]1$$, 2}, 0, 2 
+         Pi}, {{$CellContext`T1$$, 50}, 1, 100}, {{$CellContext`a$$, 30}, 0, 
+         40}, {{$CellContext`L$$, 170}, 50, 250}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{1110., {202., 207.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Input",
+ CellChangeTimes->{3.5213403905911856`*^9}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 
+    30, $CellContext`A0$$ = -0.78, $CellContext`A1$$ = 
+    1.815, $CellContext`f0$$ = 
+    0.045, $CellContext`f1$$ = -0.025, $CellContext`L$$ = 
+    170, $CellContext`T0$$ = 50, $CellContext`T1$$ = 
+    50, $CellContext`\[Phi]0$$ = 3.267256359733385, $CellContext`\[Phi]1$$ = 
+    4.39822971502571, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`A0$$], -0.78}, 0, 2}, {{
+       Hold[$CellContext`f0$$], 0.045}, -0.1, 0.1}, {{
+       Hold[$CellContext`\[Phi]0$$], Pi}, 0, 2 Pi}, {{
+       Hold[$CellContext`T0$$], 50}, 1, 100}, {{
+       Hold[$CellContext`A1$$], -0.86}, 0, 2}, {{
+       Hold[$CellContext`f1$$], -0.025}, -0.1, 0.1}, {{
+       Hold[$CellContext`\[Phi]1$$], 3.267256359733385}, 0, 2 Pi}, {{
+       Hold[$CellContext`T1$$], 50}, 1, 100}, {{
+       Hold[$CellContext`a$$], 30}, 0, 40}, {{
+       Hold[$CellContext`L$$], 170}, 50, 250}}, Typeset`size$$ = {
+    825., {120., 124.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`A0$4868$$ = 
+    0, $CellContext`f0$4869$$ = 0, $CellContext`\[Phi]0$4870$$ = 
+    0, $CellContext`T0$4871$$ = 0, $CellContext`A1$4872$$ = 
+    0, $CellContext`f1$4873$$ = 0, $CellContext`\[Phi]1$4874$$ = 
+    0, $CellContext`T1$4875$$ = 0, $CellContext`a$4876$$ = 
+    0, $CellContext`L$4877$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 
+        30, $CellContext`A0$$ = -0.78, $CellContext`A1$$ = -0.86, \
+$CellContext`f0$$ = 0.045, $CellContext`f1$$ = -0.025, $CellContext`L$$ = 
+        170, $CellContext`T0$$ = 50, $CellContext`T1$$ = 
+        50, $CellContext`\[Phi]0$$ = Pi, $CellContext`\[Phi]1$$ = 
+        3.267256359733385}, "ControllerVariables" :> {
+        Hold[$CellContext`A0$$, $CellContext`A0$4868$$, 0], 
+        Hold[$CellContext`f0$$, $CellContext`f0$4869$$, 0], 
+        Hold[$CellContext`\[Phi]0$$, $CellContext`\[Phi]0$4870$$, 0], 
+        Hold[$CellContext`T0$$, $CellContext`T0$4871$$, 0], 
+        Hold[$CellContext`A1$$, $CellContext`A1$4872$$, 0], 
+        Hold[$CellContext`f1$$, $CellContext`f1$4873$$, 0], 
+        Hold[$CellContext`\[Phi]1$$, $CellContext`\[Phi]1$4874$$, 0], 
+        Hold[$CellContext`T1$$, $CellContext`T1$4875$$, 0], 
+        Hold[$CellContext`a$$, $CellContext`a$4876$$, 0], 
+        Hold[$CellContext`L$$, $CellContext`L$4877$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> {
+        Plot[{
+          
+          Abs[$CellContext`FS[$CellContext`A0$$, $CellContext`f0$$, \
+$CellContext`\[Phi]0$$, $CellContext`T0$$, $CellContext`f, $CellContext`a$$, \
+$CellContext`L$$] + $CellContext`FS[$CellContext`A1$$, $CellContext`f1$$, \
+$CellContext`\[Phi]1$$, $CellContext`T1$$, $CellContext`f, $CellContext`a$$, \
+$CellContext`L$$]], 
+          
+          Arg[$CellContext`FS[$CellContext`A0$$, $CellContext`f0$$, \
+$CellContext`\[Phi]0$$, $CellContext`T0$$, $CellContext`f, $CellContext`a$$, \
+$CellContext`L$$] + $CellContext`FS[$CellContext`A1$$, $CellContext`f1$$, \
+$CellContext`\[Phi]1$$, $CellContext`T1$$, $CellContext`f, $CellContext`a$$, \
+$CellContext`L$$]]}, {$CellContext`f, -0.1, 0.1}, PlotRange -> All, ImageSize -> 
+         400], 
+        Plot[{
+          
+          Re[$CellContext`S[$CellContext`A0$$, $CellContext`f0$$, \
+$CellContext`\[Phi]0$$, $CellContext`T0$$, $CellContext`t] + \
+$CellContext`S[$CellContext`A1$$, $CellContext`f1$$, $CellContext`\[Phi]1$$, \
+$CellContext`T1$$, $CellContext`t]], 
+          
+          Im[$CellContext`S[$CellContext`A0$$, $CellContext`f0$$, \
+$CellContext`\[Phi]0$$, $CellContext`T0$$, $CellContext`t] + \
+$CellContext`S[$CellContext`A1$$, $CellContext`f1$$, $CellContext`\[Phi]1$$, \
+$CellContext`T1$$, $CellContext`t]]}, {$CellContext`t, 
+          20, $CellContext`a$$ + $CellContext`L$$}, PlotRange -> All, 
+         ImageSize -> 400, PlotStyle -> {Red, Blue}]}, 
+      "Specifications" :> {{{$CellContext`A0$$, -0.78}, 0, 
+         2}, {{$CellContext`f0$$, 0.045}, -0.1, 
+         0.1}, {{$CellContext`\[Phi]0$$, Pi}, 0, 2 
+         Pi}, {{$CellContext`T0$$, 50}, 1, 100}, {{$CellContext`A1$$, -0.86}, 
+         0, 2}, {{$CellContext`f1$$, -0.025}, -0.1, 
+         0.1}, {{$CellContext`\[Phi]1$$, 3.267256359733385}, 0, 2 
+         Pi}, {{$CellContext`T1$$, 50}, 1, 100}, {{$CellContext`a$$, 30}, 0, 
+         40}, {{$CellContext`L$$, 170}, 50, 250}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{1110., {189., 194.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.5213403924712925`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Abs", "[", 
+          RowBox[{
+           RowBox[{"FS", "[", 
+            RowBox[{
+            "A0", ",", "f0", ",", "\[Phi]0", ",", "T0", ",", "f", ",", "a", 
+             ",", "L"}], "]"}], "+", 
+           RowBox[{"FS", "[", 
+            RowBox[{
+            "A1", ",", "f1", ",", "\[Phi]1", ",", "T1", ",", "f", ",", "a", 
+             ",", "L"}], "]"}], "+", 
+           RowBox[{"FS", "[", 
+            RowBox[{
+            "A2", ",", "f2", ",", "\[Phi]2", ",", "T2", ",", "f", ",", "a", 
+             ",", "L"}], "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Arg", "[", 
+          RowBox[{
+           RowBox[{"FS", "[", 
+            RowBox[{
+            "A0", ",", "f0", ",", "\[Phi]0", ",", "T0", ",", "f", ",", "a", 
+             ",", "L"}], "]"}], "+", 
+           RowBox[{"FS", "[", 
+            RowBox[{
+            "A1", ",", "f1", ",", "\[Phi]1", ",", "T1", ",", "f", ",", "a", 
+             ",", "L"}], "]"}], "+", 
+           RowBox[{"FS", "[", 
+            RowBox[{
+            "A2", ",", "f2", ",", "\[Phi]2", ",", "T2", ",", "f", ",", "a", 
+             ",", "L"}], "]"}]}], "]"}]}], "}"}], "\[IndentingNewLine]", ",", 
+       
+       RowBox[{"{", 
+        RowBox[{"f", ",", 
+         RowBox[{"-", "0.1"}], ",", " ", "0.1"}], "}"}], ",", 
+       RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Re", "[", 
+          RowBox[{
+           RowBox[{"S", "[", 
+            RowBox[{"A0", ",", "f0", ",", "\[Phi]0", ",", "T0", ",", "t"}], 
+            "]"}], "+", 
+           RowBox[{"S", "[", 
+            RowBox[{"A1", ",", "f1", ",", "\[Phi]1", ",", "T1", ",", "t"}], 
+            "]"}], "+", 
+           RowBox[{"S", "[", 
+            RowBox[{"A2", ",", "f2", ",", "\[Phi]2", ",", "T2", ",", "t"}], 
+            "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Im", "[", 
+          RowBox[{
+           RowBox[{"S", "[", 
+            RowBox[{"A0", ",", "f0", ",", "\[Phi]0", ",", "T0", ",", "t"}], 
+            "]"}], "+", 
+           RowBox[{"S", "[", 
+            RowBox[{"A1", ",", "f1", ",", "\[Phi]1", ",", "T1", ",", "t"}], 
+            "]"}], "+", 
+           RowBox[{"S", "[", 
+            RowBox[{"A2", ",", "f2", ",", "\[Phi]2", ",", "T2", ",", "t"}], 
+            "]"}]}], "]"}]}], "}"}], "\[IndentingNewLine]", ",", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "20", ",", 
+         RowBox[{"a", "+", "L"}]}], "}"}], ",", 
+       RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", "400"}], ",", " ", 
+       RowBox[{"PlotStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Red", ",", "Blue"}], "}"}]}]}], "]"}]}], 
+    "\[IndentingNewLine]", "}"}], " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"frequency", " ", "in", " ", "MHz"}], ",", " ", 
+     RowBox[{"time", " ", "in", " ", "\[Mu]s"}]}], " ", "*)"}], 
+   "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"A0", ",", "0.78"}], "}"}], ",", "0", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"f0", ",", "0.045"}], "}"}], ",", 
+     RowBox[{"-", "0.1"}], ",", "0.1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Phi]0", ",", "2.5"}], "}"}], ",", "0", ",", 
+     RowBox[{"2", "\[Pi]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"T0", ",", "50"}], "}"}], ",", "1", ",", "100"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"A1", ",", "0.86"}], "}"}], ",", "0", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"f1", ",", 
+       RowBox[{"-", "0.025"}]}], "}"}], ",", 
+     RowBox[{"-", "0.1"}], ",", "0.1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Phi]1", ",", "2"}], "}"}], ",", "0", ",", 
+     RowBox[{"2", "\[Pi]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"T1", ",", "50"}], "}"}], ",", "1", ",", "100"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"A2", ",", "0.25"}], "}"}], ",", "0", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"f2", ",", "0.02"}], "}"}], ",", 
+     RowBox[{"-", "0.1"}], ",", "0.1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Phi]2", ",", "2.5"}], "}"}], ",", "0", ",", 
+     RowBox[{"2", "\[Pi]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"T2", ",", "50"}], "}"}], ",", "1", ",", "100"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", ",", "30"}], "}"}], ",", "0", ",", "40"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"L", ",", "170"}], "}"}], ",", "50", ",", "250"}], "}"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.5209515573275056`*^9, 3.5209516357909937`*^9}, 
+   3.520951718764739*^9, {3.520951755439837*^9, 3.520951775298973*^9}, {
+   3.5212653896319537`*^9, 3.521265404584809*^9}, {3.5212655185173254`*^9, 
+   3.5212656168139477`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 30, $CellContext`A0$$ = 
+    0.78, $CellContext`A1$$ = 0.86, $CellContext`A2$$ = 
+    2., $CellContext`f0$$ = 
+    0.045, $CellContext`f1$$ = -0.025, $CellContext`f2$$ = 
+    0.009499999999999995, $CellContext`L$$ = 170, $CellContext`T0$$ = 
+    50, $CellContext`T1$$ = 50, $CellContext`T2$$ = 
+    13.3, $CellContext`\[Phi]0$$ = 2.5, $CellContext`\[Phi]1$$ = 
+    2, $CellContext`\[Phi]2$$ = 0., Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`A0$$], 0.78}, 0, 2}, {{
+       Hold[$CellContext`f0$$], 0.045}, -0.1, 0.1}, {{
+       Hold[$CellContext`\[Phi]0$$], 2.5}, 0, 2 Pi}, {{
+       Hold[$CellContext`T0$$], 50}, 1, 100}, {{
+       Hold[$CellContext`A1$$], 0.86}, 0, 2}, {{
+       Hold[$CellContext`f1$$], -0.025}, -0.1, 0.1}, {{
+       Hold[$CellContext`\[Phi]1$$], 2}, 0, 2 Pi}, {{
+       Hold[$CellContext`T1$$], 50}, 1, 100}, {{
+       Hold[$CellContext`A2$$], 0.25}, 0, 2}, {{
+       Hold[$CellContext`f2$$], 0.02}, -0.1, 0.1}, {{
+       Hold[$CellContext`\[Phi]2$$], 2.5}, 0, 2 Pi}, {{
+       Hold[$CellContext`T2$$], 50}, 1, 100}, {{
+       Hold[$CellContext`a$$], 30}, 0, 40}, {{
+       Hold[$CellContext`L$$], 170}, 50, 250}}, Typeset`size$$ = {
+    825., {120., 124.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`A0$13195$$ = 
+    0, $CellContext`f0$13196$$ = 0, $CellContext`\[Phi]0$13197$$ = 
+    0, $CellContext`T0$13198$$ = 0, $CellContext`A1$13199$$ = 
+    0, $CellContext`f1$13200$$ = 0, $CellContext`\[Phi]1$13201$$ = 
+    0, $CellContext`T1$13202$$ = 0, $CellContext`A2$13203$$ = 
+    0, $CellContext`f2$13204$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 30, $CellContext`A0$$ = 
+        0.78, $CellContext`A1$$ = 0.86, $CellContext`A2$$ = 
+        0.25, $CellContext`f0$$ = 
+        0.045, $CellContext`f1$$ = -0.025, $CellContext`f2$$ = 
+        0.02, $CellContext`L$$ = 170, $CellContext`T0$$ = 
+        50, $CellContext`T1$$ = 50, $CellContext`T2$$ = 
+        50, $CellContext`\[Phi]0$$ = 2.5, $CellContext`\[Phi]1$$ = 
+        2, $CellContext`\[Phi]2$$ = 2.5}, "ControllerVariables" :> {
+        Hold[$CellContext`A0$$, $CellContext`A0$13195$$, 0], 
+        Hold[$CellContext`f0$$, $CellContext`f0$13196$$, 0], 
+        Hold[$CellContext`\[Phi]0$$, $CellContext`\[Phi]0$13197$$, 0], 
+        Hold[$CellContext`T0$$, $CellContext`T0$13198$$, 0], 
+        Hold[$CellContext`A1$$, $CellContext`A1$13199$$, 0], 
+        Hold[$CellContext`f1$$, $CellContext`f1$13200$$, 0], 
+        Hold[$CellContext`\[Phi]1$$, $CellContext`\[Phi]1$13201$$, 0], 
+        Hold[$CellContext`T1$$, $CellContext`T1$13202$$, 0], 
+        Hold[$CellContext`A2$$, $CellContext`A2$13203$$, 0], 
+        Hold[$CellContext`f2$$, $CellContext`f2$13204$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> {
+        Plot[{
+          
+          Abs[$CellContext`FS[$CellContext`A0$$, $CellContext`f0$$, \
+$CellContext`\[Phi]0$$, $CellContext`T0$$, $CellContext`f, $CellContext`a$$, \
+$CellContext`L$$] + $CellContext`FS[$CellContext`A1$$, $CellContext`f1$$, \
+$CellContext`\[Phi]1$$, $CellContext`T1$$, $CellContext`f, $CellContext`a$$, \
+$CellContext`L$$] + $CellContext`FS[$CellContext`A2$$, $CellContext`f2$$, \
+$CellContext`\[Phi]2$$, $CellContext`T2$$, $CellContext`f, $CellContext`a$$, \
+$CellContext`L$$]], 
+          
+          Arg[$CellContext`FS[$CellContext`A0$$, $CellContext`f0$$, \
+$CellContext`\[Phi]0$$, $CellContext`T0$$, $CellContext`f, $CellContext`a$$, \
+$CellContext`L$$] + $CellContext`FS[$CellContext`A1$$, $CellContext`f1$$, \
+$CellContext`\[Phi]1$$, $CellContext`T1$$, $CellContext`f, $CellContext`a$$, \
+$CellContext`L$$] + $CellContext`FS[$CellContext`A2$$, $CellContext`f2$$, \
+$CellContext`\[Phi]2$$, $CellContext`T2$$, $CellContext`f, $CellContext`a$$, \
+$CellContext`L$$]]}, {$CellContext`f, -0.1, 0.1}, PlotRange -> All, ImageSize -> 
+         400], 
+        Plot[{
+          
+          Re[$CellContext`S[$CellContext`A0$$, $CellContext`f0$$, \
+$CellContext`\[Phi]0$$, $CellContext`T0$$, $CellContext`t] + \
+$CellContext`S[$CellContext`A1$$, $CellContext`f1$$, $CellContext`\[Phi]1$$, \
+$CellContext`T1$$, $CellContext`t] + $CellContext`S[$CellContext`A2$$, \
+$CellContext`f2$$, $CellContext`\[Phi]2$$, $CellContext`T2$$, \
+$CellContext`t]], 
+          
+          Im[$CellContext`S[$CellContext`A0$$, $CellContext`f0$$, \
+$CellContext`\[Phi]0$$, $CellContext`T0$$, $CellContext`t] + \
+$CellContext`S[$CellContext`A1$$, $CellContext`f1$$, $CellContext`\[Phi]1$$, \
+$CellContext`T1$$, $CellContext`t] + $CellContext`S[$CellContext`A2$$, \
+$CellContext`f2$$, $CellContext`\[Phi]2$$, $CellContext`T2$$, \
+$CellContext`t]]}, {$CellContext`t, 20, $CellContext`a$$ + $CellContext`L$$}, 
+         PlotRange -> All, ImageSize -> 400, PlotStyle -> {Red, Blue}]}, 
+      "Specifications" :> {{{$CellContext`A0$$, 0.78}, 0, 
+         2}, {{$CellContext`f0$$, 0.045}, -0.1, 
+         0.1}, {{$CellContext`\[Phi]0$$, 2.5}, 0, 2 
+         Pi}, {{$CellContext`T0$$, 50}, 1, 100}, {{$CellContext`A1$$, 0.86}, 
+         0, 2}, {{$CellContext`f1$$, -0.025}, -0.1, 
+         0.1}, {{$CellContext`\[Phi]1$$, 2}, 0, 2 
+         Pi}, {{$CellContext`T1$$, 50}, 1, 100}, {{$CellContext`A2$$, 0.25}, 
+         0, 2}, {{$CellContext`f2$$, 0.02}, -0.1, 
+         0.1}, {{$CellContext`\[Phi]2$$, 2.5}, 0, 2 
+         Pi}, {{$CellContext`T2$$, 50}, 1, 100}, {{$CellContext`a$$, 30}, 0, 
+         40}, {{$CellContext`L$$, 170}, 50, 250}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{1110., {206., 211.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.521265583301031*^9, 3.521265626102479*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Plot", "::", "exclul"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"\[NoBreak]\\!\\({\\(\\(Im[\\(\\(\\(\\(FS[\\(\\(0.78`, \
+0.045`, 2.5`, 50, f, 30, 170\\)\\)]\\)\\) + \\(\\(FS[\\(\\(0.86`, \
+\\(\\(-0.025`\\)\\), 2, 50, f, 30, 170\\)\\)]\\)\\) + \\(\\(FS[\\(\\(2.`, \
+0.009499999999999995`, 0.`, 13.3`, f, 30, 170\\)\\)]\\)\\)\\)\\)]\\)\\) - \
+0}\\)\[NoBreak] must be a list of equalities or real-valued functions. \\!\\(\
+\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/Plot\\\", ButtonNote -> \
+\\\"Plot::exclul\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.5213395716993475`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1310, 407},
+WindowMargins->{{Automatic, -115}, {Automatic, 1}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 116, 1, 83, "Title"],
+Cell[CellGroupData[{
+Cell[720, 27, 1474, 31, 47, "Input"],
+Cell[2197, 60, 1715, 43, 75, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3949, 108, 98, 1, 71, "Section"],
+Cell[CellGroupData[{
+Cell[4072, 113, 1709, 46, 47, "Input"],
+Cell[5784, 161, 2532, 52, 388, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8353, 218, 8252, 201, 224, "Input"],
+Cell[16608, 421, 5152, 98, 462, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21797, 524, 714, 14, 68, "Input"],
+Cell[22514, 540, 288, 4, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22839, 549, 373, 10, 48, "Input"],
+Cell[23215, 561, 239, 5, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23491, 571, 377, 10, 75, "Input"],
+Cell[23871, 583, 188, 2, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24096, 590, 289, 9, 52, "Input"],
+Cell[24388, 601, 163, 4, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24600, 611, 99, 1, 71, "Section"],
+Cell[24702, 614, 1973, 57, 113, "Input"],
+Cell[26678, 673, 4677, 124, 232, "Input"],
+Cell[CellGroupData[{
+Cell[31380, 801, 5219, 97, 426, InheritFromParent],
+Cell[36602, 900, 5268, 98, 400, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41907, 1003, 5478, 151, 232, "Input"],
+Cell[47388, 1156, 6419, 116, 434, "Output"],
+Cell[53810, 1274, 710, 13, 21, "Message"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,344 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     12720,        335]
+NotebookOptionsPosition[     12141,        310]
+NotebookOutlinePosition[     12480,        325]
+CellTagsIndexPosition[     12437,        322]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["DNP sequence", "Title",
+ CellChangeTimes->{{3.514184690782209*^9, 3.514184700501316*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"fchop", 
+  RowBox[{"(*", " ", 
+   RowBox[{"chopper", " ", "fequency", " ", "kHz"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"du", 
+  RowBox[{"(*", 
+   RowBox[{"laser", " ", "duty"}], " ", "*)"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.514185145048003*^9, 3.514185209472108*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"PulseW", "[", 
+   RowBox[{"fchop_", ",", "duty_"}], "]"}], ":=", 
+  RowBox[{
+   FractionBox["duty", "fchop"], "10"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"DelayM", "[", 
+   RowBox[{"fchop_", ",", "duty_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"duty", " ", 
+    FractionBox["10", "fchop"]}], "+", "3", "-", 
+   FractionBox["1000", "30"]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"OverM", "[", 
+   RowBox[{"fchop_", ",", "duty_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"PulseW", "[", 
+    RowBox[{"fchop", ",", "duty"}], "]"}], "-", 
+   RowBox[{"DelayM", "[", 
+    RowBox[{"fchop", ",", "duty"}], "]"}], "-", 
+   RowBox[{
+    FractionBox["1000", "31.5"], 
+    FractionBox["1", "2"]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"F", "[", 
+   RowBox[{"fchop_", ",", "duty_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"fchop", ",", "duty", ",", 
+     RowBox[{"PulseW", "[", 
+      RowBox[{"fchop", ",", "duty"}], "]"}], ",", 
+     RowBox[{"DelayM", "[", 
+      RowBox[{"fchop", ",", "duty"}], "]"}], ",", 
+     RowBox[{
+      RowBox[{"DelayM", "[", 
+       RowBox[{"fchop", ",", "duty"}], "]"}], "+", "6"}], ",", 
+     RowBox[{"OverM", "[", 
+      RowBox[{"fchop", ",", "duty"}], "]"}]}], "}"}], "//", "N"}]}]}], "Input",\
+
+ CellChangeTimes->{{3.514190113644088*^9, 3.514190287622217*^9}, {
+  3.5141903280416183`*^9, 3.514190328477112*^9}, {3.514190414406913*^9, 
+  3.5141906441563187`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"F", "[", 
+  RowBox[{"7", ",", "30"}], "]"}]], "Input",
+ CellChangeTimes->{{3.514190154083756*^9, 3.514190155943486*^9}, {
+   3.514190296127531*^9, 3.5141903096492357`*^9}, 3.514190777605824*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "7.`", ",", "30.`", ",", "42.857142857142854`", ",", "12.523809523809524`", 
+   ",", "18.523809523809526`", ",", "14.46031746031746`"}], "}"}]], "Output",
+ CellChangeTimes->{{3.514190310323398*^9, 3.514190330983227*^9}, 
+   3.5141906507846203`*^9, 3.514190778327759*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Piecewise", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", 
+             RowBox[{"t", "<", "0"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", " ", 
+             RowBox[{
+              FractionBox["1000", "fchop"], ">", "t", ">", 
+              RowBox[{"du", " ", 
+               FractionBox["10", "fchop"]}]}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", 
+             RowBox[{
+              RowBox[{"du", " ", 
+               FractionBox["10", "fchop"]}], ">", "t", ">", "0"}]}], "}"}]}], 
+          "}"}], ",", "0.1"}], "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"0.7", 
+        RowBox[{"Piecewise", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", 
+             RowBox[{"t", "<", "delay"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"UnitStep", "[", 
+              RowBox[{"-", 
+               RowBox[{"Sin", "[", 
+                RowBox[{"2", "\[Pi]", 
+                 FractionBox["31.5", "1000"], 
+                 RowBox[{"(", 
+                  RowBox[{"t", "-", "delay"}], ")"}]}], "]"}]}], "]"}], ",", 
+             RowBox[{
+              RowBox[{
+               FractionBox["1000", "31.5"], "+", "delay"}], ">", "t", ">", 
+              "delay"}]}], "}"}]}], "}"}], "]"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"0.2", 
+         RowBox[{"Piecewise", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", 
+              RowBox[{"t", "<", 
+               RowBox[{"delay", "+", "s"}]}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{
+               FractionBox["2", "\[Pi]"], 
+               RowBox[{"ArcSin", "[", 
+                RowBox[{"Sin", "[", 
+                 RowBox[{"2", "\[Pi]", 
+                  FractionBox["30", "1000"], 
+                  RowBox[{"(", 
+                   RowBox[{"t", "-", "delay", "-", "s"}], ")"}]}], "]"}], 
+                "]"}]}], ",", 
+              RowBox[{
+               RowBox[{
+                FractionBox["1000", "30"], "+", "delay", "+", "s"}], ">", "t",
+                ">", 
+               RowBox[{"delay", "+", "s"}]}]}], "}"}]}], "}"}], "]"}]}], "+", 
+        "0.4"}]}], "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", 
+       RowBox[{"-", "10"}], ",", 
+       RowBox[{
+        RowBox[{"du", " ", 
+         FractionBox["10", "fchop"]}], "+", "6"}]}], "}"}], ",", 
+     RowBox[{"Exclusions", "\[Rule]", "None"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1"}], "}"}]}], ",", 
+     RowBox[{"Axes", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"True", ",", "False"}], "}"}]}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"fchop", ",", "7"}], "}"}], ",", "0.75", ",", "12"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"du", ",", "30"}], "}"}], ",", "0", ",", "100"}], "}"}], " ", 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"delay", ",", "12.52"}], "}"}], ",", "0", ",", "50"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"s", ",", "7.3"}], "}"}], ",", "5", ",", "8", ",", "0.1"}], 
+    "}"}]}], "]"}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJwd0GtIkwEUxvFXKS/dDAUjGdbSxMD5wZBajNBYsiJHiCUxRNBWLenCCGQf
+bKyWxIoVbYw5YzATu40ac0iuNl0Lp0GNGEHUJDEpGGErYYUsa//3w+HH4YEH
+zpF2X2jT5guCsCs3+Dpwemq6PtVcMvgkin69P4HOig+f8Huocx7lLaYMWu90
+CLGcS+qnxXi3erwMNyzurMK6cXkdnmlS7MZT2ewe/KV8L8dbCeMBvC9dUOFZ
+p7sDG1Rve9BrKerFyDHbOaw9MWLAmh9jl9HZv2JGVbpzALcrayz4rGDYgZs1
+3S4M79jrFvN7fzyY7usbRvc/VxANBS/DONJ1JYoah+sVvrgamhX7fZYEXuw9
++BGnvIqvGD88lxLvX9WnUZaUSGdyJmO2WmzX1stw1bpOgYHk3yM4P+RoRbV3
+kwaPP9rYgxVdAzosvVR5XtzbFvTY4HngwYikcRSr7F+8GLK2+3FfvjGAeWpD
+EB8bks9xunA5go0310exesI2g6Z4Zg5HV8pSYv+EbAmF26Zl/Hw9ncXY4rW8
+Wf5SOSka/h0uRlV/SSlqbxwqR3NmaAvG1wYl2LL13Tb0rXnYJObfJpXi7nuj
+wyLDUSOW636acX+r3Y6yyMlB0eZCF/4HKC9VLA==
+  "]],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`delay$$ = 12.9, $CellContext`du$$ = 
+    30, $CellContext`fchop$$ = 7, $CellContext`s$$ = 7.3, Typeset`show$$ = 
+    True, Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`fchop$$], 7}, 0.75, 12}, {{
+       Hold[$CellContext`du$$], 30}, 0, 100}, {{
+       Hold[$CellContext`delay$$], 12.52}, 0, 50}, {{
+       Hold[$CellContext`s$$], 7.3}, 5, 8, 0.1}}, Typeset`size$$ = {
+    360., {115., 120.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`fchop$280027$$ = 
+    0, $CellContext`du$280028$$ = 0, $CellContext`delay$280029$$ = 
+    0, $CellContext`s$280030$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`delay$$ = 12.52, $CellContext`du$$ = 
+        30, $CellContext`fchop$$ = 7, $CellContext`s$$ = 7.3}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`fchop$$, $CellContext`fchop$280027$$, 0], 
+        Hold[$CellContext`du$$, $CellContext`du$280028$$, 0], 
+        Hold[$CellContext`delay$$, $CellContext`delay$280029$$, 0], 
+        Hold[$CellContext`s$$, $CellContext`s$280030$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Plot[{
+         Piecewise[{{0, $CellContext`t < 0}, {
+           0, 1000/$CellContext`fchop$$ > $CellContext`t > $CellContext`du$$ (
+              10/$CellContext`fchop$$)}, {
+           1, $CellContext`du$$ (10/$CellContext`fchop$$) > $CellContext`t > 
+            0}}, 0.1], 0.7 
+         Piecewise[{{0, $CellContext`t < $CellContext`delay$$}, {
+             
+             UnitStep[-
+              Sin[2 Pi (31.5/1000) ($CellContext`t - $CellContext`delay$$)]], 
+             1000/
+               31.5 + $CellContext`delay$$ > $CellContext`t > \
+$CellContext`delay$$}}], 
+         0.2 Piecewise[{{
+             0, $CellContext`t < $CellContext`delay$$ + $CellContext`s$$}, {(
+               2/Pi) ArcSin[
+                Sin[
+                2 Pi (30/
+                  1000) ($CellContext`t - $CellContext`delay$$ - \
+$CellContext`s$$)]], 
+              1000/30 + $CellContext`delay$$ + $CellContext`s$$ > \
+$CellContext`t > $CellContext`delay$$ + $CellContext`s$$}}] + 
+         0.4}, {$CellContext`t, -10, $CellContext`du$$ (
+           10/$CellContext`fchop$$) + 6}, Exclusions -> None, 
+        PlotRange -> {0, 1}, Axes -> {True, False}], 
+      "Specifications" :> {{{$CellContext`fchop$$, 7}, 0.75, 
+         12}, {{$CellContext`du$$, 30}, 0, 
+         100}, {{$CellContext`delay$$, 12.52}, 0, 
+         50}, {{$CellContext`s$$, 7.3}, 5, 8, 0.1}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{405., {198., 203.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.5141876330953417`*^9, 3.514187653047172*^9}, 
+   3.5141881012595177`*^9, 3.514188153164126*^9, 3.514188234861249*^9, 
+   3.5141885104223013`*^9, {3.514188551585904*^9, 3.514188569122633*^9}, 
+   3.514188621555612*^9, {3.514188715491461*^9, 3.514188751527893*^9}, {
+   3.514188798423675*^9, 3.514188836525848*^9}, {3.514188891273849*^9, 
+   3.514188911030587*^9}, {3.5141889619680634`*^9, 3.514189024521635*^9}, 
+   3.5141890701478367`*^9, {3.514189106194831*^9, 3.514189118541719*^9}, 
+   3.5141891617391453`*^9, {3.51418920401066*^9, 3.514189220622383*^9}, 
+   3.514189279894034*^9, {3.51418932809799*^9, 3.514189337060689*^9}, 
+   3.514189386789624*^9, {3.5141894183357487`*^9, 3.514189503399827*^9}, 
+   3.5141895543987513`*^9, {3.51418965571245*^9, 3.514189681888422*^9}, {
+   3.514189785139634*^9, 3.5141898000478067`*^9}, 3.514189838554009*^9, {
+   3.514189930576353*^9, 3.5141899697721663`*^9}, 3.514190013463252*^9, {
+   3.514190075050355*^9, 3.514190079236923*^9}, 3.514190319720228*^9, 
+   3.514190374539752*^9, 3.514190673829871*^9, {3.514190736810205*^9, 
+   3.514190752638193*^9}, 3.51419079158501*^9, {3.514190833653475*^9, 
+   3.514190843129096*^9}, {3.514190891765201*^9, 3.514190978005629*^9}, 
+   3.514191013328994*^9, 3.5141910569105988`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{910, 743},
+WindowMargins->{{178, Automatic}, {Automatic, 124}},
+FrontEndVersion->"7.0 for Linux x86 (64-bit) (November 11, 2008)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 95, 1, 85, "Title"],
+Cell[665, 25, 355, 9, 99, "Input"],
+Cell[1023, 36, 1458, 42, 216, "Input"],
+Cell[CellGroupData[{
+Cell[2506, 82, 218, 4, 32, "Input"],
+Cell[2727, 88, 312, 6, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3076, 99, 4370, 119, 357, "Input"],
+Cell[7449, 220, 4664, 86, 418, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
